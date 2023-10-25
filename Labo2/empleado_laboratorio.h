@@ -10,11 +10,9 @@ typedef struct
     char perfil [20];
 }empleados_laboratorio;
 
-typedef struct
-{
-    empleados_laboratorio empleado;
-    struct nodo * siguiente;
-}nodoEmpleado;
+empleados_laboratorio crearRegistroEmpleados();
+void alta_empleado(char archivoEmpleado[]);
+int verificar_archivo_empleados(char archivo[],int DNI);
 
 
 #endif // EMPLEADO_LABORATORIO_H_INCLUDED

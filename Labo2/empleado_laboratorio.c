@@ -10,10 +10,10 @@ empleados_laboratorio crearRegistroEmpleados()
 {
     empleados_laboratorio empleado;
 
-    printf("\nIngrese DNI: ");
+    printf("\nIngrese DNI: ");///verificar int
     fflush(stdin);
     scanf("%d",&empleado.dni);
-    printf("\nIngrese Apellido y Nombre: ");
+    printf("\nIngrese Apellido y Nombre: ");///verificar string
     fflush(stdin);
     gets(empleado.ape_nombre);
     printf("\nIngrese el Usuario que desea registrar: ");
@@ -23,6 +23,7 @@ empleados_laboratorio crearRegistroEmpleados()
     printf("\nIngrese su perfil (administrador/empleado/bioquimico) : ");
     gets(empleado.perfil);
 
+    ///una vez ingresado los datos mostrarlos y preguntar si esta seguro de guardar los datos o volver a reescribir
     return empleado;
 }
 
