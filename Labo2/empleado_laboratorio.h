@@ -10,4 +10,11 @@ typedef struct
     char perfil [20];
 }empleados_laboratorio;
 
+typedef struct
+{
+    empleados_laboratorio empleado;
+    struct nodo * siguiente;
+}nodoEmpleado;
+
+
 #endif // EMPLEADO_LABORATORIO_H_INCLUDED
