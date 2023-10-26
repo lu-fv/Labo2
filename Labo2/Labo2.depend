@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\diseño.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<conio.h>
+
+1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\empleado_laboratorio.c
+	"empleado_laboratorio.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1698284685 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\empleado_laboratorio.h
+
+1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\ingreso_labo.c
+
+1698324389 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\pacientes.c
+
+1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\practicas_ingreso.c
+
+1698333094 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\practicas_labo.c
+	<stdio.h>
+	"string.h"
+	<stdlib.h>
+	<conio.h>
+	"practicas_Labo.h"
+	"diseño.h"
+
+1698328717 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\practicas_labo.h
+
+1698284685 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\diseño.h
+
