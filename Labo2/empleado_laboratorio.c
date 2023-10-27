@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "conio.h"
 
 #define BORRAR system("cls")
 #define PAUSA system("pause")
@@ -10,59 +11,116 @@ empleados_laboratorio crearRegistroEmpleados()
 {
     empleados_laboratorio empleado;
 
-    printf("\nIngrese DNI: ");///verificar int
-    fflush(stdin);
-    scanf("%d",&empleado.dni);
-    printf("\nIngrese Apellido y Nombre: ");///verificar string
-    fflush(stdin);
-    gets(empleado.ape_nombre);
-    printf("\nIngrese el Usuario que desea registrar: ");
-    gets(empleado.usuario);
-    printf("\nIngrese la Clave que desea registrar: ");
-    gets(empleado.clave);
-    printf("\nIngrese su perfil (administrador/empleado/bioquimico) : ");
-    gets(empleado.perfil);
+    char ok ='n';
 
-    ///una vez ingresado los datos mostrarlos y preguntar si esta seguro de guardar los datos o volver a reescribir
+    while(ok == 'n' || ok == 'N')
+    {
+        printf("\nIngrese DNI: ");///verificar int HACER FUNCION
+        fflush(stdin);
+        scanf("%d",&empleado.dni);
+        printf("\nIngrese Apellido y Nombre: ");///verificar string HACER FUNCION
+        fflush(stdin);
+        gets(empleado.ape_nombre);
+        printf("\nIngrese el Usuario que desea registrar: ");
+        fflush(stdin);
+        gets(empleado.usuario);
+        printf("\nIngrese la Clave que desea registrar: ");
+        fflush(stdin);
+        gets(empleado.clave);
+        printf("\nIngrese su perfil (administrador/empleado/bioquimico) : ");
+        fflush(stdin);
+        gets(empleado.perfil);
+        empleado.eliminado=0;
+        PAUSA;
+        BORRAR;
+
+        mostrar_un_empleado(empleado);
+
+        printf("\n\nLos Datos ingresados son correctos? s/n : ");
+        fflush(stdin);
+        ok=getch();
+
+        PAUSA;
+        BORRAR;
+
+        if(ok == 'n' || ok == 'N')
+        {
+            printf("\nSobreescribir los campos nuevamente...\n\n");
+            BORRAR;
+        }
+    }
+
     return empleado;
+}
+
+void mostrar_un_empleado(empleados_laboratorio empleado)
+{
+    printf("\n____________________________________________________\n");
+    printf("\nAPELLIDO Y NOMBRE: %s", empleado.ape_nombre);
+    printf("\t[%s]", empleado.perfil);
+    printf("\nDNI: %d", empleado.dni);
+    printf("\nUSUARIO : [%s]", empleado.usuario);
+    printf("\nCLAVE :[%s]", empleado.clave);
+    printf("\n____________________________________________________\n");
 }
 
 void alta_empleado(char archivoEmpleado[])
 {
     empleados_laboratorio empleado;
+
     char rta='s';
     char modifica_empleado;
 
-    FILE * arch=fopen(archivoEmpleado,"ab");
-
-    if(arch)
+    while(rta=='s')
     {
-        while(rta=='s')
+        FILE * arch=fopen(archivoEmpleado,"ab");
+
+        if(arch)
         {
             empleado=crearRegistroEmpleados();
 
-            if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==0)
+            if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==0 && verificar_usuario_unico(archivoEmpleado,empleado.usuario)==0)
             {
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);
-                printf("\nDesea ingresar un nuevo empleado? s/n ");
+                printf("\nDesea ingresar un nuevo empleado? s/n : ");
                 fflush(stdin);
                 scanf("%c",&rta);
+                BORRAR;
             }
             else
             {
-                printf("\nEl Empleado que esta ingresando ya existe en los registros.Desea Modificarlo? s/n ");
-                scanf("%c",&modifica_empleado);
-                if(modifica_empleado=='s')
+                fclose(arch);
+                if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==1)
                 {
-                    ///si desea modificar poner la funcion de modifica
+                    printf("\nEl Empleado que esta ingresando ya existe en los registros.Desea Modificarlo? s/n ");
+                    fflush(stdin);
+                    scanf("%c",&modifica_empleado);
+                    BORRAR;
+
+                    if(modifica_empleado=='s')
+                    {
+                        ///si desea modificar poner la funcion de modifica
+
+                        printf("\nDesea ingresar un nuevo empleado? s/n : ");
+                        fflush(stdin);
+                        scanf("%c",&rta);
+                        BORRAR;
+                    }
+                    printf("\nDesea ingresar un nuevo empleado? s/n : ");
+                    fflush(stdin);
+                    scanf("%c",&rta);
+                    BORRAR;
+                }
+                if(verificar_usuario_unico(archivoEmpleado,empleado.usuario)==1)
+                {
+                    printf("\nEl USUARIO que ingreso ya existe en la base de datos vuelva a ingresarlo\n");
+                    BORRAR;
+                    rta='s';
+                    getch();
+                    BORRAR;
                 }
             }
         }
-        fclose(arch);
-    }
-    else
-    {
-        printf("\nERROR AL ABRIR EL ARCHIVO");
     }
 
 }
@@ -88,4 +146,29 @@ int verificar_archivo_empleados(char archivo[],int DNI)
     }
 
     return encontrado;
+}
+
+void verificar_usuario_unico(char archivo[],char usuarioNuevo[])
+{
+    empleados_laboratorio empleado;
+
+    int encontrado=0;
+
+    FILE * arch=fopen(archivo,"rb");
+
+
+    if(arch)
+    {
+        while(encontrado==0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+        {
+            if(strcmpi(empleado.usuario,usuarioNuevo)==0)
+            {
+                encontrado=1;
+            }
+        }
+        fclose(arch);
+    }
+
+    return encontrado;
+
 }

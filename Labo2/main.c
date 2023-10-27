@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define EMPLEADOS "archivo_empleados.dat"
 
 int main()
 {
-    printf("Odio GitHub\n");
+    alta_empleado(EMPLEADOS);
+
     return 0;
 }
