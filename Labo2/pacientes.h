@@ -11,6 +11,18 @@ typedef struct
     int eliminado;///0 vigente,1 eliminado
 }pacientes;
 
+typedef struct
+{
+    pacientes p;
+    struct nodoArbol *izq;
+    struct nodoArbol *der;
+} nodoArbol;
+
+pacientes cargaPacientes();
+void imprimirUnPaciente( pacientes p);
+nodoArbol * inicArbol();
+nodoArbol * crearNodoPacientes (pacientes p);
+nodoArbol * insertar( nodoArbol * arbol, int dni);
 
 
 #endif // PACIENTES_H_INCLUDED
