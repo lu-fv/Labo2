@@ -5,33 +5,39 @@
 	<windows.h>
 	<conio.h>
 
-1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\empleado_laboratorio.c
+1698452060 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\empleado_laboratorio.c
 	"empleado_laboratorio.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	"conio.h"
 
-1698284685 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\empleado_laboratorio.h
+1698452060 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\empleado_laboratorio.h
 
 1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\ingreso_labo.c
 
-1698324389 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\main.c
+1698452060 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\main.c
 	<stdio.h>
 	<stdlib.h>
 
-1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\pacientes.c
+1698452060 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\pacientes.c
+	"Pacientes.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
 
 1698284685 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\practicas_ingreso.c
 
-1698333094 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\practicas_labo.c
+1698452791 source:c:\users\jessica\desktop\laboratorio 2\labo2\labo2\practicas_labo.c
 	<stdio.h>
-	"string.h"
+	<string.h>
 	<stdlib.h>
 	<conio.h>
 	"practicas_Labo.h"
 	"diseño.h"
 
-1698328717 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\practicas_labo.h
+1698452582 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\practicas_labo.h
 
 1698284685 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\diseño.h
 
@@ -48,11 +54,16 @@
 	<stdlib.h>
 	"empleado_laboratorio.h"
 
-1698366380 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\pacientes.c
+1698457690 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\pacientes.c
+	"Pacientes.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
 
 1698366380 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\practicas_ingreso.c
 
-1698370314 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\practicas_labo.c
+1698457690 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\practicas_labo.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
@@ -60,16 +71,20 @@
 	"practicas_Labo.h"
 	"diseño.h"
 
-1698366380 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\practicas_labo.h
+1698457690 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\practicas_labo.h
 
 1698366380 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.h
 
-1698452747 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.c
+1698454455 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.c
 	"empleado_laboratorio.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"conio.h"
 
-1698454254 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.h
+1698457337 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.h
+
+1698452060 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\pacientes.h
+
+1698457690 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\pacientes.h
 

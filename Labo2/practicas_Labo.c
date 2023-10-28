@@ -43,7 +43,6 @@ int verificarSiExistePractica(FILE * nombreArchivo, char PracticaNueva[])
                 flag = 1;
             }
         }
-        fclose(nombreArchivo);
     }
 
     return flag;
@@ -76,9 +75,9 @@ void AltaDePracticasNuevas(char nombreArchivo[])
                 fflush(stdin);
                 opcion = getch();
 
-                if(opcion != ESC)///?
+                if(opcion != ESC)
                 {
-                    NuevaPractica = ModificacionArchivoPracticas(nombreArchivo, NuevaPractica.nombre);///?
+                    ModificacionArchivoPracticas(nombreArchivo, NuevaPractica.nombre);
                 }
 
                 printf("¿Desea seguir cargando prácticas? Presione ESC para cancelar o cualquier tecla para continuar\n");
@@ -96,7 +95,7 @@ void AltaDePracticasNuevas(char nombreArchivo[])
 }
 
 ///Función para modificar el nombre de la práctica
-practicas ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePractica)
+void ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePractica)
 {
     practicas PracticaAModificar;
     FILE * archi = fopen(nombreArchivo, "r+b");
@@ -106,9 +105,9 @@ practicas ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePracti
 
     if(archi)
     {
-        if(verificarSiExistePractica(archi, nombrePractica)== 1)///esta funcion te dice si existe pero no te dice la posicion poruqe adentro abre y cierra el archivo...
+        if(verificarSiExistePractica(archi, nombrePractica)== 1)
         {
-            fseek(archi, -1 * sizeof(archi),SEEK_CUR);///como sabe la posicion donde va a modificar
+            fseek(archi, -1 * sizeof(archi),SEEK_CUR);
             fread(&PracticaAModificar, sizeof(practicas), 1, archi);
             printf("Ingrese el nuevo nombre de la practica\n");
             fflush(stdin);
@@ -123,8 +122,7 @@ practicas ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePracti
             opcion = getch();
             if(opcion == 'S')
             {
-                PracticaAModificar = CrearPracticaLaboratorio();///no iria la funcion de alta de practica? sino cuando la graba?
-                ///esta funcion solo crea un registro de practica ...
+                AltaDePracticasNuevas(nombreArchivo);
             }
         }
         fclose(archi);
@@ -134,6 +132,4 @@ practicas ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePracti
     {
         printf("Error al abrir el archivo\n");
     }
-
-    return PracticaAModificar;///yo no retornaria nada ... lee el archivo, me posiciono donde quiero modificar, modifico y grabo
 }

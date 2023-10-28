@@ -18,7 +18,7 @@ typedef struct
 practicas CrearPracticaLaboratorio ();
 int verificarSiExistePractica(FILE * nombreArchivo, char * PracticaNueva);
 void AltaDePracticasNuevas(char * nombreArchivo);
-practicas ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePractica);
+void ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePractica);
 
 
 #endif // PRACTICAS_LABO_H_INCLUDED
