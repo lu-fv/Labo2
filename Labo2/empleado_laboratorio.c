@@ -68,12 +68,9 @@ void alta_empleado(char archivoEmpleado[])
 {
     empleados_laboratorio empleado;
 
-    char rta='s';
     char modifica_empleado;
 
-    while(rta=='s')
-    {
-        FILE * arch=fopen(archivoEmpleado,"ab");
+    FILE * arch=fopen(archivoEmpleado,"ab");
 
         if(arch)
         {
@@ -82,14 +79,9 @@ void alta_empleado(char archivoEmpleado[])
             if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==0 && verificar_usuario_unico(archivoEmpleado,empleado.usuario)==0)
             {
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);
-                printf("\nDesea ingresar un nuevo empleado? s/n : ");
-                fflush(stdin);
-                scanf("%c",&rta);
-                BORRAR;
             }
             else
             {
-                fclose(arch);
                 if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==1)
                 {
                     printf("\nEl Empleado que esta ingresando ya existe en los registros.Desea Modificarlo? s/n ");
@@ -100,29 +92,26 @@ void alta_empleado(char archivoEmpleado[])
                     if(modifica_empleado=='s')
                     {
                         ///si desea modificar poner la funcion de modifica
-
-                        printf("\nDesea ingresar un nuevo empleado? s/n : ");
-                        fflush(stdin);
-                        scanf("%c",&rta);
-                        BORRAR;
+                        printf("\nARCHIVO MODIFICADO\n");
                     }
-                    printf("\nDesea ingresar un nuevo empleado? s/n : ");
-                    fflush(stdin);
-                    scanf("%c",&rta);
-                    BORRAR;
                 }
-                if(verificar_usuario_unico(archivoEmpleado,empleado.usuario)==1)
-                {
-                    printf("\nEl USUARIO que ingreso ya existe en la base de datos vuelva a ingresarlo\n");
-                    BORRAR;
-                    rta='s';
-                    getch();
-                    BORRAR;
-                }
-            }
-        }
-    }
+                else
+                    {
+                         if(verificar_usuario_unico(archivoEmpleado,empleado.usuario)==1)
+                        {
+                            printf("\nEl USUARIO que ingreso ya existe en la base de datos vuelva a ingresarlo\n");
+                            PAUSA;
+                            BORRAR;
+                        }
+                    }
 
+            }
+            fclose(arch);
+        }
+        else
+        {
+            printf("\nERROR AL ABRIR EL ARCHIVO. LLAME AL 111\n");
+        }
 }
 
 int verificar_archivo_empleados(char archivo[],int DNI)
@@ -148,7 +137,7 @@ int verificar_archivo_empleados(char archivo[],int DNI)
     return encontrado;
 }
 
-void verificar_usuario_unico(char archivo[],char usuarioNuevo[])
+int verificar_usuario_unico(char archivo[],char usuarioNuevo[])
 {
     empleados_laboratorio empleado;
 
@@ -161,7 +150,7 @@ void verificar_usuario_unico(char archivo[],char usuarioNuevo[])
     {
         while(encontrado==0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
         {
-            if(strcmpi(empleado.usuario,usuarioNuevo)==0)
+            if(strcmp(empleado.usuario,usuarioNuevo)==0)
             {
                 encontrado=1;
             }
