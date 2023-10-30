@@ -7,7 +7,8 @@
 
 int main()
 {
-    char rta='s';
+    menu();///aun no me sale lo de validacion de clave
+    /*char rta='s';
 
     while(rta=='s')
     {
@@ -16,8 +17,7 @@ int main()
         fflush(stdin);
         scanf("%c",&rta);
         BORRAR;
-    }
-
+    }*/
 
     return 0;
 }

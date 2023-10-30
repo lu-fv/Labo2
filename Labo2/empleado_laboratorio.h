@@ -16,6 +16,10 @@ void mostrar_un_empleado(empleados_laboratorio empleado);
 void alta_empleado(char archivoEmpleado[]);
 int verificar_archivo_empleados(char archivo[],int DNI);
 int verificar_usuario_unico(char archivo[],char usuarioNuevo[]);
-
+void baja_empleado(char archivoEmpleado[],int dni);
+void modificacion_de_empleado(char archivoEmpleados[],int dni);
+void listado_empleados_vigentes(char archivoEmpleados[]);
+void listado_empleados_eliminados(char archivoEmpleados[]);
+int validacion_usuarioYclave(char archivoEmpleados[], char usuario[], char clave[], char perfil[]);
 
 #endif // EMPLEADO_LABORATORIO_H_INCLUDED

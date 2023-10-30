@@ -36,7 +36,7 @@ empleados_laboratorio crearRegistroEmpleados()
 
         mostrar_un_empleado(empleado);
 
-        printf("\n\nLos Datos ingresados son correctos? s/n : ");
+        printf("\n\nLos Datos ingresados son correctos? s/n : \n");
         fflush(stdin);
         ok=getch();
 
@@ -46,6 +46,7 @@ empleados_laboratorio crearRegistroEmpleados()
         if(ok == 'n' || ok == 'N')
         {
             printf("\nSobreescribir los campos nuevamente...\n\n");
+            getch();
             BORRAR;
         }
     }
@@ -159,5 +160,128 @@ int verificar_usuario_unico(char archivo[],char usuarioNuevo[])
     }
 
     return encontrado;
+}
 
+void baja_empleado(char archivoEmpleado[],int dni)
+{
+    empleados_laboratorio empleado;
+    int verificaEmpleado;
+    int encontrado=0;
+
+    FILE * arch=fopen(archivoEmpleado,"r+b");
+
+        if(arch)
+        {
+            verificaEmpleado=verificar_archivo_empleados(archivoEmpleado,dni);
+
+            if(verificaEmpleado==1)
+            {
+                fseek(arch,0,SEEK_SET);///posiciono el cursor al principio y busco el empleado por dni
+                while(encontrado == 0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+                {
+                    if(empleado.dni==dni)
+                    {
+                        encontrado=1;///el while corta en la posicion del empleado buscado
+                    }
+                }
+                empleado.eliminado=1;///modifico
+
+                fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);///grabo
+            }
+        fclose(arch);
+        }
+}
+
+void modificacion_de_empleado(char archivoEmpleados[],int dni)
+{
+    empleados_laboratorio empleado;
+    int encontrado;
+    FILE * arch=fopen(archivoEmpleados,"w+b");
+
+    if(arch)
+    {
+        int verificaEmpleado=verificar_archivo_empleados(archivoEmpleados,dni);
+
+            if(verificaEmpleado==1)
+            {
+                fseek(arch,0,SEEK_SET);///posiciono el cursor al principio y busco el empleado por dni
+                while(encontrado == 0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+                {
+                    if(empleado.dni==dni)
+                    {
+                        encontrado=1;///el while corta en la posicion del empleado buscado
+                    }
+                }
+                ///modifica concretamente los datos del empleado;
+
+            }
+            else
+            {
+                marco_borde_ancho();
+                gotoxy(42,3);printf("EL EMPLEADO QUE DESEA MODIFICAR NO EXISTE EN LA BASE DE DATOS");
+            }
+        fclose(arch);
+    }
+}
+
+void listado_empleados_vigentes(char archivoEmpleados[])
+{
+    empleados_laboratorio empleado;
+
+    FILE * arch=fopen(archivoEmpleados,"rb");
+
+    if(arch)
+    {
+        printf("\nLISTADO DE EMPLEADOS EN NOMINA");
+        while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+        {
+            if(empleado.eliminado==0)
+            {
+                mostrar_un_empleado(empleado);
+            }
+        }
+
+        fclose(arch);
+    }
+}
+
+void listado_empleados_eliminados(char archivoEmpleados[])
+{
+    empleados_laboratorio empleado;
+
+    FILE * arch=fopen(archivoEmpleados,"rb");
+
+    if(arch)
+    {
+        printf("\nLISTADO DE EMPLEADOS NO VIGENTES");
+        while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+        {
+            if(empleado.eliminado==1)
+            {
+                mostrar_un_empleado(empleado);
+            }
+        }
+        fclose(arch);
+    }
+}
+
+int validacion_usuarioYclave(char archivoEmpleados[], char usuario[], char clave[], char perfil[])
+{
+    empleados_laboratorio empleado;
+    int habilitado=0;
+
+    FILE * arch=fopen(archivoEmpleados,"rb");
+
+    if(arch)
+    {
+        while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+        {
+            if(strcmp(empleado.usuario,usuario)==0 && strcmp(empleado.clave,clave)==0 && strcmpi(empleado.perfil,perfil)==0)
+            {
+                habilitado=1;
+            }
+        }
+        fclose(arch);
+    }
+    return habilitado;
 }

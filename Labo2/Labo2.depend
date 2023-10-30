@@ -41,7 +41,7 @@
 
 1698284685 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\diseño.h
 
-1698366380 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.c
+1698633911 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -49,7 +49,7 @@
 
 1698366380 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\ingreso_labo.c
 
-1698452830 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\main.c
+1698633817 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"empleado_laboratorio.h"
@@ -75,14 +75,14 @@
 
 1698366380 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.h
 
-1698454455 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.c
+1698634438 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.c
 	"empleado_laboratorio.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"conio.h"
 
-1698457337 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.h
+1698634438 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.h
 
 1698452060 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\pacientes.h
 

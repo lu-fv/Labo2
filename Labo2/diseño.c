@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <conio.h>
+
+#define ARCHIVO_EMPLEADOS "empleados.dat"
 #define BORRAR system("cls")
 #define PAUSA system("pause")
 
@@ -333,11 +335,23 @@ void menu()
         case 1:
             BORRAR;
             menu_contrasenia();
-            ///if la contrasenia y usuario es correcto
-            menu_administrador();
-            ///else
-            gotoxy(35,2);printf("contraseña o usuario incorrecto");
-            ///volver a ingresar o presione salir
+            char usuario[20];
+            char clave[20];
+
+            gotoxy(53,12);fflush(stdin);gets(usuario);
+
+            gotoxy(53,17);fflush(stdin);gets(clave);
+
+            if(validacion_usuarioYclave(ARCHIVO_EMPLEADOS,usuario,clave,"administrador")==1)
+            {
+                gotoxy(53,20);printf("HOLAAA");
+                menu_administrador();
+            }
+            else
+            {
+                marco_borde_ancho();
+                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+            }
             goto menu;
 
         case 2:
@@ -662,41 +676,45 @@ void menu_administrador_empleados()
         {
         case 1:
             BORRAR;
-            menu_administrador_empleados();
+            alta_empleado(ARCHIVO_EMPLEADOS);
             goto menu;
 
         case 2:
             BORRAR;
+            int dnibaja;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            gotoxy(43,3),printf("INGRESE EL DNI DEL EMPLEADO QUE QUIERE DAR DE BAJA : ");
+            fflush(stdin);
+            gotoxy(70,3);scanf("%d",&dnibaja);
+            ///validar dni
+            baja_empleado(ARCHIVO_EMPLEADOS, dnibaja);
             getch();
             goto menu;
 
         case 3:
             BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
-            getch();
+            int dni_a_modificar;
+            printf("\nINGRESE EL DNI DEL EMPLEADO QUE QUIERE MODIFICAR : ");
+            fflush(stdin);
+            scanf("%d",&dni_a_modificar);
+            ///validar dni
+            modificacion_de_empleado(ARCHIVO_EMPLEADOS,dni_a_modificar);
             goto menu;
 
         case 4:
             BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
-            getch();
+            listado_empleados_vigentes(ARCHIVO_EMPLEADOS);
             goto menu;
 
         case 5:
             BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
-            getch();
+            listado_empleados_eliminados(ARCHIVO_EMPLEADOS);
             goto menu;
 
         case 6:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
+            gotoxy(35,2);printf("que se hace aca????");
             getch();
             goto menu;
 
