@@ -88,3 +88,59 @@
 
 1698457690 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\pacientes.h
 
+1698794226 source:c:\users\lagun\github\labo2\labo2\diseño.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<conio.h>
+
+1698794226 source:c:\users\lagun\github\labo2\labo2\empleado_laboratorio.c
+	"empleado_laboratorio.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"conio.h"
+
+1698794226 c:\users\lagun\github\labo2\labo2\empleado_laboratorio.h
+
+1698794226 source:c:\users\lagun\github\labo2\labo2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado_laboratorio.h"
+
+1698794226 source:c:\users\lagun\github\labo2\labo2\pacientes.c
+	"Pacientes.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+
+1698794226 c:\users\lagun\github\labo2\labo2\pacientes.h
+
+1698794226 source:c:\users\lagun\github\labo2\labo2\practicas_ingreso.c
+
+1698794226 source:c:\users\lagun\github\labo2\labo2\practicas_labo.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<conio.h>
+	"practicas_Labo.h"
+	"diseño.h"
+
+1698794226 c:\users\lagun\github\labo2\labo2\practicas_labo.h
+
+1698794226 c:\users\lagun\github\labo2\labo2\diseño.h
+
+1698795100 source:c:\users\lagun\github\labo2\labo2\ingreso_labo.c
+	<time.h>
+	<stdio.h>
+	<string.h>
+	"ingresos_Labo.h"
+
+1698794806 c:\users\lagun\github\labo2\labo2\ingresos_labo.h
+	<time.h>
+	<stdio.h>
+	"practicas_ingreso.h"
+
+1698794226 c:\users\lagun\github\labo2\labo2\practicas_ingreso.h
+
