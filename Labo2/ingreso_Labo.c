@@ -1,7 +1,13 @@
 #include <time.h>
 #include <stdio.h>
 #include <string.h>
+
+#include "diseño.h"
+#include "empleado_laboratorio.h"
+#include "pacientes.h"
 #include "ingresos_Labo.h"
+#include "practicas_ingreso.h"
+#include "practicas_Labo.h"
 
 #define PAUSA system("pause")
 #define BORRAR system("cls")
@@ -61,7 +67,7 @@ laboratorios nuevoRegistro(char archivo[])
     return nuevo;
 }
 
-nodoListaIngreso * crearNodoIngreso(laboratorios nuevo)
+/*nodoListaIngreso * crearNodoIngreso(laboratorios nuevo)
 {
     nodoArbol * lista = (nodoArbol*) malloc(sizeof((nodoArbol));
 
@@ -69,7 +75,7 @@ nodoListaIngreso * crearNodoIngreso(laboratorios nuevo)
     lista->ingreso->siguiente=NULL;
 
     return lista;
-}
+}*/
 
 
 nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIngreso * nuevo)

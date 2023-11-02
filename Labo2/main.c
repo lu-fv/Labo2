@@ -1,18 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "empleado_laboratorio.h"
-#define EMPLEADOS "archivo_empleados.dat"
+
+
 #define BORRAR system("cls")
 #define PAUSA system("pause")
 
 int main()
 {
-    menu();///aun no me sale lo de validacion de clave
+    ///mostrar_archivo(ARCHIVO_EMPLEADOS);
+    menu();
     /*char rta='s';
 
     while(rta=='s')
     {
-        alta_empleado(EMPLEADOS);
+        alta_empleado(ARCHIVO_EMPLEADOS);
         printf("\nDesea ingresar un nuevo empleado? s/n : ");
         fflush(stdin);
         scanf("%c",&rta);

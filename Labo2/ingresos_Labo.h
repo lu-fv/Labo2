@@ -6,6 +6,7 @@
 #include "practicas_ingreso.h"
 
 #define ARCHIVOINGRESOS "ingresos.dat"
+
 typedef struct
 {
     int Nro_de_ingreso;
@@ -16,23 +17,6 @@ typedef struct
     int vigencia;///0 vigente, 1 NO vigente
 }laboratorios;
 
-typedef struct
-{
-    char nomb_apell[40];
-    int edad;
-    int dni;
-    char telefono[15];
-    char direccion[30];
-    int eliminado;///0 vigente,1 eliminado
-}pacientes;
-
-typedef struct
-{
-    pracXingreso ingreso;
-    struct nodoListaPracticas * siguiente;
-
-}nodoListaPracticas;
-
 
 typedef struct
 {
@@ -41,16 +25,6 @@ typedef struct
     struct nodoListaIngreso * siguiente;
 
 }nodoListaIngreso;
-
-
-typedef struct
-{
-    pacientes p;
-    struct nodoArbol *izq;
-    struct nodoArbol *der;
-    nodoListaIngreso * ingreso;
-
-} nodoArbol;
 
 
 void fechaActual(char fecha[]);

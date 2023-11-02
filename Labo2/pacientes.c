@@ -1,10 +1,15 @@
-#include "Pacientes.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 #include <string.h>
+#include "diseño.h"
+#include "empleado_laboratorio.h"
+#include "pacientes.h"
+#include "ingresos_Labo.h"
+#include "practicas_ingreso.h"
+#include "practicas_Labo.h"
 #define ESC 27
-
+#define ARCHIVO_PACIENTES "pacientes.dat"
 
 pacientes cargaPacientes()
 {

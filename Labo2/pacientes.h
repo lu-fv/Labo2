@@ -1,8 +1,15 @@
 #ifndef PACIENTES_H_INCLUDED
 #define PACIENTES_H_INCLUDED
+#include "diseño.h"
+#include "empleado_laboratorio.h"
+#include "pacientes.h"
+#include "ingresos_Labo.h"
+#include "practicas_ingreso.h"
+#include "practicas_Labo.h"
+#define ARCHIVO_PACIENTES "pacientes.dat"
+
 typedef struct
 {
-
     char nomb_apell[40];
     int edad;
     int dni;
@@ -14,9 +21,11 @@ typedef struct
 typedef struct
 {
     pacientes p;
+    nodoListaIngreso * ingreso;
     struct nodoArbol *izq;
     struct nodoArbol *der;
-} nodoArbol;
+}nodoArbol;
+
 
 pacientes cargaPacientes();
 void imprimirUnPaciente( pacientes p);

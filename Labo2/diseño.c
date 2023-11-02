@@ -1,9 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <windows.h>
 #include <conio.h>
+#include "empleado_laboratorio.h"
+#include "pacientes.h"
+#include "ingresos_Labo.h"
+#include "practicas_ingreso.h"
+#include "practicas_Labo.h"
 
-#define ARCHIVO_EMPLEADOS "empleados.dat"
+#define ARCHIVO_EMPLEADOS "archivo_empleados.dat"
 #define BORRAR system("cls")
 #define PAUSA system("pause")
 
@@ -335,43 +341,51 @@ void menu()
         case 1:
             BORRAR;
             menu_contrasenia();
-            char usuario[20];
-            char clave[20];
 
-            gotoxy(53,12);fflush(stdin);gets(usuario);
-
-            gotoxy(53,17);fflush(stdin);gets(clave);
-
-            if(validacion_usuarioYclave(ARCHIVO_EMPLEADOS,usuario,clave,"administrador")==1)
+            if(validacion_usuarioYclave(ARCHIVO_EMPLEADOS,"administrador")==1)
             {
-                gotoxy(53,20);printf("HOLAAA");
                 menu_administrador();
             }
             else
             {
                 marco_borde_ancho();
                 gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                getch();
             }
             goto menu;
 
         case 2:
             BORRAR;
             menu_contrasenia();
-            ///if la contrasenia y usuario es correcto
-            menu_gestion_administrativa();
-            ///else
-            gotoxy(35,2);printf("contraseña o usuario incorrecto");
-            ///volver a ingresar o presione salir
+
+            if(validacion_usuarioYclave(ARCHIVO_EMPLEADOS,"empleado")==1)
+            {
+                menu_gestion_administrativa();
+            }
+            else
+            {
+                marco_borde_ancho();
+                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                getch();
+            }
             goto menu;
 
         case 3:
             BORRAR;
             menu_contrasenia();
-            ///if la contrasenia y usuario es correcto
-            menu_bioquimico();
-            ///else
-            gotoxy(35,2);printf("contraseña o usuario incorrecto");
-            ///volver a ingresar o presione salir
+            char usuario[20];
+            char clave[20];
+
+            if(validacion_usuarioYclave(ARCHIVO_EMPLEADOS,"bioquimico")==1)
+            {
+                menu_bioquimico();
+            }
+            else
+            {
+                marco_borde_ancho();
+                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                getch();
+            }
             goto menu;
 
         /*case 4:
@@ -1322,15 +1336,139 @@ void menu_contrasenia()
     int password;
     marco_contrasenia();
     gotoxy(57,10);printf("LOGIN:");gotoxy(56,15);printf("PASSWORD:");
-    gotoxy(57,12);scanf("%s",&login);
-    gotoxy(56,17);scanf("%d",&password);
-    ///TODO ESTA VERIFICACION SE HARIA EN LA OPCION MENU CORRESPONDIENTE
-    ///hay que verificar la contraseña (verificar login y/o password correcto)
-    ///si es login incorrecto especificar que login es incorrecto
-    ///si es password incorrecto especificar que el password es incorrecto
-    ///sino podria ser que ambos sean incorrectos, tambien especificar dicho error
-    /// ... si es correcta que salte al menu correspondiente
-    ///else que pregunte si desea intentar nuevamente o salir y volver al menu principal
-
 }
 
+///carga arbol de la base de datos de los 3 archivos= empleado,ingresos_lab y practicasXingreso
+void carga_arbol()
+{
+    nodoArbol * arbol=NULL;
+
+    FILE * pac=fopen(ARCHIVO_PACIENTES,"rb");
+    pacientes pacientito;
+    FILE * ing=fopen(ARCHIVOINGRESOS,"rb");
+    laboratorios ingreso;
+    FILE * prac=fopen(ARCHIVO_PRACXINGRESO,"rb");
+    pracXingreso practica;
+
+    if(pac && ing && prac)
+    {
+        ///carga los pacientes al arbol
+        while(fread(&pacientito,sizeof(pacientes),1,pac)>0)
+        {
+            ///cargo paciente en el arbol
+            carga_arbol_un_paciente(arbol,crearNodoPacientes(pacientito));
+            ///verifico que el paciente tenga ingresos de laboratorios y
+            ///si tiene ingresos procedo a cargar la lista de ingresos del nodo arbol paciente
+            if(valida_existencia_de_ingresos_x_paciente(ARCHIVOINGRESOS,pacientito.dni)==1)
+            {
+                nodoArbol * arbolpaciente=busca_nodopaciente_en_arbol(arbol,pacientito.dni);
+
+                while(fread(&ingreso,sizeof(laboratorios),1,ing)>0)
+                {
+                    if(ingreso.dni_paciente==pacientito.dni)
+                    {
+                        arbolpaciente->ingreso=agregarAlFinalIngresos(arbolpaciente->ingreso,crearNodoIngreso(ingreso));
+                    }
+                }
+                ///procedo a cargar las practicas al ingreso correspondiente
+                while(fread(&practica,sizeof(pracXingreso),1,ing)>0)
+                {
+                    if(arbolpaciente->ingreso->practica->ingreso.nro_de_ingreso == ingreso.Nro_de_ingreso)
+                    {
+                        arbolpaciente->ingreso->practica=agregarAlFinalListaPracticas(arbolpaciente->ingreso->practica,crearNodoListaPracticas(practica));
+
+                    }
+                }
+            }
+
+        }
+
+        fclose(pac);
+        fclose(ing);
+        fclose(prac);
+    }
+}
+
+int valida_existencia_de_ingresos_x_paciente(char archivoingresos[],int dni_paciente)
+{
+    laboratorios ing;
+    int existeIngreso=-1;
+    FILE * arch=fopen(archivoingresos,"rb");
+
+    if(arch)
+    {
+        while(existeIngreso==-1 && fread(&ing,sizeof(laboratorios),1,arch)>0)
+        {
+            if(ing.dni_paciente==dni_paciente)
+            {
+                existeIngreso=1;
+            }
+        }
+        fclose(arch);
+    }
+    return existeIngreso;
+}
+
+nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
+{
+    nodoArbol * pacientebuscado;
+
+    if(arbol->p.dni==dni)
+    {
+        pacientebuscado=arbol;
+    }
+    else
+    {
+        if(dni < arbol->p.dni)
+        {
+            arbol->izq=busca_paciente_en_arbol(arbol->izq,dni);
+        }
+        else
+        {
+            arbol->der=busca_paciente_en_arbol(arbol->der,dni);
+        }
+    }
+
+
+    return pacientebuscado;
+}
+
+nodoArbol * crear_nodo_arbol(pacientes p)
+{
+    nodoArbol * nuevo=(nodoArbol*)malloc(sizeof(nodoArbol));
+
+    nuevo->p=p;
+    nuevo->izq=NULL;
+    nuevo->ingreso=NULL;
+
+    return nuevo;
+}
+
+nodoListaPracticas * crearNodoListaPracticas(pracXingreso practica)
+{
+    nodoListaPracticas * nuevo = (nodoListaPracticas*)malloc(sizeof(nodoListaPracticas));
+
+    nuevo->ingreso=practica;
+    nuevo->siguiente=NULL;
+
+    return nuevo;
+}
+
+void carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
+{
+    if(arbol==NULL)
+    {
+        arbol=nuevo;
+    }
+    else
+    {
+        if(nuevo->p.dni > arbol->p.dni)
+        {
+            arbol->der=carga_arbol_un_paciente(arbol->der,nuevo);
+        }
+        else
+        {
+           arbol->izq=carga_arbol_un_paciente(arbol->izq,nuevo);
+        }
+    }
+}

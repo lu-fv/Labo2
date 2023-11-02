@@ -3,7 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include "conio.h"
-
+#include "diseño.h"
+#include "empleado_laboratorio.h"
+#include "pacientes.h"
+#include "ingresos_Labo.h"
+#include "practicas_ingreso.h"
+#include "practicas_Labo.h"
+#define ARCHIVO_EMPLEADOS "archivo_empleados.dat"
 #define BORRAR system("cls")
 #define PAUSA system("pause")
 
@@ -45,7 +51,7 @@ empleados_laboratorio crearRegistroEmpleados()
 
         if(ok == 'n' || ok == 'N')
         {
-            printf("\nSobreescribir los campos nuevamente...\n\n");
+            printf("\nIngrese los datos nuevamente...\n\n");
             getch();
             BORRAR;
         }
@@ -265,11 +271,16 @@ void listado_empleados_eliminados(char archivoEmpleados[])
     }
 }
 
-int validacion_usuarioYclave(char archivoEmpleados[], char usuario[], char clave[], char perfil[])
+int validacion_usuarioYclave(char archivoEmpleados[], char perfil[])
 {
     empleados_laboratorio empleado;
     int habilitado=0;
 
+    char usuario[20];
+    char clave[20];
+    gotoxy(55,12);fflush(stdin);gets(usuario);
+    gotoxy(55,17);fflush(stdin);gets(clave);
+    BORRAR;
     FILE * arch=fopen(archivoEmpleados,"rb");
 
     if(arch)
@@ -285,3 +296,25 @@ int validacion_usuarioYclave(char archivoEmpleados[], char usuario[], char clave
     }
     return habilitado;
 }
+
+void mostrar_archivo(char archivo[])
+{
+    empleados_laboratorio empleado;
+
+    FILE * arch=fopen(archivo,"rb");
+
+    if(arch)
+    {
+        while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+        {
+            printf("\n APELLIDO Y NOMBRE = %s", empleado.ape_nombre);
+            printf("\n               DNI = %d",empleado.dni);
+            printf("\n           USUARIO = %s",empleado.usuario);
+            printf("\n             CLAVE = %s",empleado.clave);
+            printf("\n            PERFIL = %s", empleado.perfil);
+            printf("\n=================================================\n");
+        }
+        fclose(arch);
+    }
+}
+

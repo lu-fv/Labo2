@@ -1,5 +1,11 @@
 #ifndef DISEÒO_H_INCLUDED
 #define DISEÒO_H_INCLUDED
+#include "empleado_laboratorio.h"
+#include "pacientes.h"
+#include "ingresos_Labo.h"
+#include "practicas_ingreso.h"
+#include "practicas_Labo.h"
+#define ARCHIVO_PACIENTES "pacientes.dat"
 
 void gotoxy(int x,int y);
 
@@ -25,6 +31,13 @@ void menu_gestion_administrativa_pacientes();
 void menu_gestion_administrativa_practicas();
 void menu_gestion_administrativa_laboratorios();
 void menu_contrasenia();
+
+void carga_arbol();
+int valida_existencia_de_ingresos_x_paciente(char archivoingresos[],int dni_paciente);
+nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni);
+nodoArbol * crear_nodo_arbol(pacientes p);
+nodoListaPracticas * crearNodoListaPracticas(pracXingreso practica);
+void carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo);
 
 
 #endif // DISEÒO_H_INCLUDED
