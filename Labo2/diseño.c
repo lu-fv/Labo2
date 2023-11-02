@@ -349,7 +349,7 @@ void menu()
             else
             {
                 marco_borde_ancho();
-                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                gotoxy(35,2);printf("contraseÃ±a o usuario incorrecto");
                 getch();
             }
             goto menu;
@@ -365,7 +365,7 @@ void menu()
             else
             {
                 marco_borde_ancho();
-                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                gotoxy(35,2);printf("contraseÃ±a o usuario incorrecto");
                 getch();
             }
             goto menu;
@@ -383,7 +383,7 @@ void menu()
             else
             {
                 marco_borde_ancho();
-                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                gotoxy(35,2);printf("contraseÃ±a o usuario incorrecto");
                 getch();
             }
             goto menu;
@@ -1421,11 +1421,11 @@ nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
     {
         if(dni < arbol->p.dni)
         {
-            arbol->izq=busca_paciente_en_arbol(arbol->izq,dni);
+            arbol->izq=busca_paciente_en_arbol(arbol->izq,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->izq,dni); 
         }
         else
         {
-            arbol->der=busca_paciente_en_arbol(arbol->der,dni);
+            arbol->der=busca_paciente_en_arbol(arbol->der,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->der,dni); 
         }
     }
 
