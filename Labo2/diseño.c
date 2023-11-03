@@ -1338,7 +1338,9 @@ void menu_contrasenia()
     gotoxy(57,10);printf("LOGIN:");gotoxy(56,15);printf("PASSWORD:");
 }
 
-///carga arbol de la base de datos de los 3 archivos= empleado,ingresos_lab y practicasXingreso
+
+///carga arbol de la base de datos de los 3 archivos (empleado,ingresos_lab y practicasXingreso)
+
 void carga_arbol()
 {
     nodoArbol * arbol=NULL;
@@ -1421,11 +1423,11 @@ nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
     {
         if(dni < arbol->p.dni)
         {
-            ///arbol->izq=busca_paciente_en_arbol(arbol->izq,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->izq,dni);
+            arbol->izq=busca_nodopaciente_en_arbol(arbol->izq,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->izq,dni);
         }
         else
         {
-            ///arbol->der=busca_paciente_en_arbol(arbol->der,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->der,dni);
+            arbol->der=busca_nodopaciente_en_arbol(arbol->der,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->der,dni);
         }
     }
 
@@ -1454,7 +1456,7 @@ nodoListaPracticas * crearNodoListaPracticas(pracXingreso practica)
     return nuevo;
 }
 
-void carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
+ nodoArbol * carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
 {
     if(arbol==NULL)
     {
@@ -1464,11 +1466,11 @@ void carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
     {
         if(nuevo->p.dni > arbol->p.dni)
         {
-            ///arbol->der=carga_arbol_un_paciente(arbol->der,nuevo);
+            arbol->der=carga_arbol_un_paciente(arbol->der,nuevo);
         }
         else
         {
-           ///arbol->izq=carga_arbol_un_paciente(arbol->izq,nuevo);
+            arbol->izq=carga_arbol_un_paciente(arbol->izq,nuevo);
         }
     }
 }
