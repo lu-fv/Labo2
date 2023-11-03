@@ -2,6 +2,15 @@
 #define PRACTICAS_INGRESO_H_INCLUDED
 #define ARCHIVO_PRACXINGRESO "practicaXingreso.dat"
 
+#include "diseño.h"
+#include "empleado_laboratorio.h"
+#include "ingresos_Labo.h"
+#include "pacientes.h"
+#include "practicas_Labo.h"
+#include "practicas_ingreso.h"
+
+
+
 
 typedef struct
 {
@@ -16,7 +25,6 @@ typedef struct
 {
     pracXingreso ingreso;
     struct nodoListaPracticas * siguiente;
-
 }nodoListaPracticas;
 
 

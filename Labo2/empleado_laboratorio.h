@@ -1,6 +1,12 @@
 #ifndef EMPLEADO_LABORATORIO_H_INCLUDED
 #define EMPLEADO_LABORATORIO_H_INCLUDED
 
+#include "diseño.h"
+#include "ingresos_Labo.h"
+#include "pacientes.h"
+#include "practicas_Labo.h"
+#include "practicas_ingreso.h"
+
 typedef struct
 {
     int dni;

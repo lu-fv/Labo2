@@ -3,7 +3,12 @@
 
 #include <time.h>
 #include <stdio.h>
+
 #include "practicas_ingreso.h"
+#include "diseño.h"
+#include "empleado_laboratorio.h"
+#include "pacientes.h"
+#include "practicas_Labo.h"
 
 #define ARCHIVOINGRESOS "ingresos.dat"
 
@@ -21,7 +26,7 @@ typedef struct
 typedef struct
 {
     laboratorios dato;
-    nodoListaPracticas * practica;
+    struct nodoListaPracticas * practica;
     struct nodoListaIngreso * siguiente;
 
 }nodoListaIngreso;

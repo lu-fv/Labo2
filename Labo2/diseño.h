@@ -1,11 +1,13 @@
 #ifndef DISEÒO_H_INCLUDED
 #define DISEÒO_H_INCLUDED
+
 #include "empleado_laboratorio.h"
 #include "pacientes.h"
 #include "ingresos_Labo.h"
 #include "practicas_ingreso.h"
 #include "practicas_Labo.h"
 #define ARCHIVO_PACIENTES "pacientes.dat"
+
 
 void gotoxy(int x,int y);
 

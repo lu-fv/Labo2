@@ -2,7 +2,6 @@
 #define PACIENTES_H_INCLUDED
 #include "diseño.h"
 #include "empleado_laboratorio.h"
-#include "pacientes.h"
 #include "ingresos_Labo.h"
 #include "practicas_ingreso.h"
 #include "practicas_Labo.h"
@@ -21,7 +20,7 @@ typedef struct
 typedef struct
 {
     pacientes p;
-    nodoListaIngreso * ingreso;
+    struct nodoListaIngreso * ingreso;
     struct nodoArbol *izq;
     struct nodoArbol *der;
 }nodoArbol;

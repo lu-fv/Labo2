@@ -1,17 +1,22 @@
-#include "empleado_laboratorio.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "conio.h"
+
 #include "diseño.h"
 #include "empleado_laboratorio.h"
 #include "pacientes.h"
 #include "ingresos_Labo.h"
 #include "practicas_ingreso.h"
 #include "practicas_Labo.h"
+
 #define ARCHIVO_EMPLEADOS "archivo_empleados.dat"
 #define BORRAR system("cls")
 #define PAUSA system("pause")
+#define TECLA_ENTER 13
+#define TECLA_BACKSPACE 8
+#define LONGITUD 5
+#define MAX_INTENTOS 3
 
 empleados_laboratorio crearRegistroEmpleados()
 {
@@ -275,11 +280,32 @@ int validacion_usuarioYclave(char archivoEmpleados[], char perfil[])
 {
     empleados_laboratorio empleado;
     int habilitado=0;
-
+    int i=0;
     char usuario[20];
     char clave[20];
-    gotoxy(55,12);fflush(stdin);gets(usuario);
-    gotoxy(55,17);fflush(stdin);gets(clave);
+    char caracter;
+    gotoxy(57,12);fflush(stdin);gets(usuario);
+    gotoxy(59,17);
+
+    while (caracter = getch()) {
+			if (caracter == TECLA_ENTER) {
+				clave[i] = '\0';
+				break;
+
+			} else if (caracter == TECLA_BACKSPACE) {
+				if (i > 0) {
+					i--;
+					printf("\b \b");
+				}
+
+			} else {
+				if (i < LONGITUD) {
+					printf("*");
+					clave[i] = caracter;
+					i++;
+				}
+			}
+		}
     BORRAR;
     FILE * arch=fopen(archivoEmpleados,"rb");
 

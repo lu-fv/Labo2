@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "empleado_laboratorio.h"
-
-
 #define BORRAR system("cls")
 #define PAUSA system("pause")
 

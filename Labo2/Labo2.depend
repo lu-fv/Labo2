@@ -41,11 +41,17 @@
 
 1698284685 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\diseño.h
 
-1698877514 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.c
+1698979198 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	<windows.h>
 	<conio.h>
+	"empleado_laboratorio.h"
+	"pacientes.h"
+	"ingresos_Labo.h"
+	"practicas_ingreso.h"
+	"practicas_Labo.h"
 
 1698890460 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\ingreso_labo.c
 	<time.h>
@@ -58,10 +64,9 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1698886704 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\main.c
+1698977671 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\main.c
 	<stdio.h>
 	<stdlib.h>
-	"empleado_laboratorio.h"
 
 1698890460 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\pacientes.c
 	<stdio.h>
@@ -91,15 +96,14 @@
 
 1698796992 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\practicas_labo.h
 
-1698891163 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.h
+1698977691 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.h
 	"empleado_laboratorio.h"
 	"pacientes.h"
 	"ingresos_Labo.h"
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1698890460 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.c
-	"empleado_laboratorio.h"
+1698979080 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -111,14 +115,18 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1698877401 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.h
+1698977775 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.h
+	"diseño.h"
+	"ingresos_Labo.h"
+	"pacientes.h"
+	"practicas_Labo.h"
+	"practicas_ingreso.h"
 
 1698452060 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\pacientes.h
 
-1698890836 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\pacientes.h
+1698977202 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\pacientes.h
 	"diseño.h"
 	"empleado_laboratorio.h"
-	"pacientes.h"
 	"ingresos_Labo.h"
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
@@ -179,10 +187,20 @@
 
 1698794226 c:\users\lagun\github\labo2\labo2\practicas_ingreso.h
 
-1698890460 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\ingresos_labo.h
+1698977775 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\ingresos_labo.h
 	<time.h>
 	<stdio.h>
 	"practicas_ingreso.h"
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"pacientes.h"
+	"practicas_Labo.h"
 
-1698890460 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\practicas_ingreso.h
+1698977345 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\practicas_ingreso.h
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"ingresos_Labo.h"
+	"pacientes.h"
+	"practicas_Labo.h"
+	"practicas_ingreso.h"
 

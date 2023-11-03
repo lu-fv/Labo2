@@ -1367,15 +1367,15 @@ void carga_arbol()
                 {
                     if(ingreso.dni_paciente==pacientito.dni)
                     {
-                        arbolpaciente->ingreso=agregarAlFinalIngresos(arbolpaciente->ingreso,crearNodoIngreso(ingreso));
+                        ///arbolpaciente->ingreso=agregarAlFinalIngresos(arbolpaciente->ingreso,crearNodoIngreso(ingreso));
                     }
                 }
                 ///procedo a cargar las practicas al ingreso correspondiente
                 while(fread(&practica,sizeof(pracXingreso),1,ing)>0)
                 {
-                    if(arbolpaciente->ingreso->practica->ingreso.nro_de_ingreso == ingreso.Nro_de_ingreso)
+                    if(practica.nro_de_ingreso == ingreso.Nro_de_ingreso)
                     {
-                        arbolpaciente->ingreso->practica=agregarAlFinalListaPracticas(arbolpaciente->ingreso->practica,crearNodoListaPracticas(practica));
+                        ///arbolpaciente->ingreso->practica=agregarAlFinalListaPracticas(arbolpaciente->ingreso->practica,crearNodoListaPracticas(practica));
 
                     }
                 }
@@ -1421,11 +1421,11 @@ nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
     {
         if(dni < arbol->p.dni)
         {
-            arbol->izq=busca_paciente_en_arbol(arbol->izq,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->izq,dni); 
+            ///arbol->izq=busca_paciente_en_arbol(arbol->izq,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->izq,dni);
         }
         else
         {
-            arbol->der=busca_paciente_en_arbol(arbol->der,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->der,dni); 
+            ///arbol->der=busca_paciente_en_arbol(arbol->der,dni); //pacientebuscado =busca_paciente_en_arbol(arbol->der,dni);
         }
     }
 
@@ -1464,11 +1464,13 @@ void carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
     {
         if(nuevo->p.dni > arbol->p.dni)
         {
-            arbol->der=carga_arbol_un_paciente(arbol->der,nuevo);
+            ///arbol->der=carga_arbol_un_paciente(arbol->der,nuevo);
         }
         else
         {
-           arbol->izq=carga_arbol_un_paciente(arbol->izq,nuevo);
+           ///arbol->izq=carga_arbol_un_paciente(arbol->izq,nuevo);
         }
     }
 }
+
+
