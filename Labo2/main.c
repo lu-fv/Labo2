@@ -2,11 +2,15 @@
 #include <stdlib.h>
 #define BORRAR system("cls")
 #define PAUSA system("pause")
+#define ARCHIVO_EMPLEADOS "archivo_empleados.dat"
 
 int main()
 {
     ///mostrar_archivo(ARCHIVO_EMPLEADOS);
+
     menu();
+
+    ///carga el archivo empleados
     /*char rta='s';
 
     while(rta=='s')

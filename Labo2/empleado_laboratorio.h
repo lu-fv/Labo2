@@ -18,7 +18,7 @@ typedef struct
 }empleados_laboratorio;
 
 empleados_laboratorio crearRegistroEmpleados();
-void mostrar_un_empleado(empleados_laboratorio empleado);
+void mostrar_un_empleado(empleados_laboratorio empleado, int x, int y);
 void alta_empleado(char archivoEmpleado[]);
 int verificar_archivo_empleados(char archivo[],int DNI);
 int verificar_usuario_unico(char archivo[],char usuarioNuevo[]);

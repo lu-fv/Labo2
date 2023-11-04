@@ -20,39 +20,48 @@
 
 empleados_laboratorio crearRegistroEmpleados()
 {
+    marco_menu();
+    gotoxy(52,2);printf("ALTA DE EMPLEADO");
     empleados_laboratorio empleado;
 
     char ok ='n';
 
     while(ok == 'n' || ok == 'N')
     {
-        printf("\nIngrese DNI: ");///verificar int HACER FUNCION
+        gotoxy(20,6);printf("Ingrese DNI: ");///verificar int HACER FUNCION
+        gotoxy(20,7);printf("Ingrese Apellido y Nombre: ");///verificar string HACER FUNCION
+        gotoxy(20,8);printf("Ingrese el Usuario que desea registrar: ");
+        gotoxy(20,9);printf("Ingrese la Clave que desea registrar: ");
+        gotoxy(20,10);printf("Ingrese su perfil (administrador/empleado/bioquimico) : ");
         fflush(stdin);
-        scanf("%d",&empleado.dni);
-        printf("\nIngrese Apellido y Nombre: ");///verificar string HACER FUNCION
+        gotoxy(33,6);scanf("%d",&empleado.dni);
+
         fflush(stdin);
-        gets(empleado.ape_nombre);
-        printf("\nIngrese el Usuario que desea registrar: ");
+        gotoxy(47,7);gets(empleado.ape_nombre);
+
         fflush(stdin);
-        gets(empleado.usuario);
-        printf("\nIngrese la Clave que desea registrar: ");
+        gotoxy(60,8);gets(empleado.usuario);
+
         fflush(stdin);
-        gets(empleado.clave);
-        printf("\nIngrese su perfil (administrador/empleado/bioquimico) : ");
+        gotoxy(58,9);gets(empleado.clave);
+
         fflush(stdin);
-        gets(empleado.perfil);
+        gotoxy(75,10);gets(empleado.perfil);
+
         empleado.eliminado=0;
-        PAUSA;
+        getch();
         BORRAR;
+        marco_menu();
+        gotoxy(52,2);printf("ALTA DE EMPLEADO");
+        mostrar_un_empleado(empleado,35,8);
 
-        mostrar_un_empleado(empleado);
-
-        printf("\n\nLos Datos ingresados son correctos? s/n : \n");
+        gotoxy(35,14);printf("Los Datos ingresados son correctos? s/n : ");
         fflush(stdin);
-        ok=getch();
+        gotoxy(58,14);ok=getch();
 
         PAUSA;
         BORRAR;
+
 
         if(ok == 'n' || ok == 'N')
         {
@@ -65,15 +74,14 @@ empleados_laboratorio crearRegistroEmpleados()
     return empleado;
 }
 
-void mostrar_un_empleado(empleados_laboratorio empleado)
+void mostrar_un_empleado(empleados_laboratorio empleado, int x, int y)
 {
-    printf("\n____________________________________________________\n");
-    printf("\nAPELLIDO Y NOMBRE: %s", empleado.ape_nombre);
-    printf("\t[%s]", empleado.perfil);
-    printf("\nDNI: %d", empleado.dni);
-    printf("\nUSUARIO : [%s]", empleado.usuario);
-    printf("\nCLAVE :[%s]", empleado.clave);
-    printf("\n____________________________________________________\n");
+    gotoxy(x,y++);printf("=====================================================");
+    gotoxy(x,y++);printf("APELLIDO Y NOMBRE: %s [%s]", empleado.ape_nombre,empleado.perfil);
+    gotoxy(x,y++);printf("DNI: %d", empleado.dni);
+    gotoxy(x,y++);printf("USUARIO : [%s]", empleado.usuario);
+    gotoxy(x,y++);printf("CLAVE :[%s]", empleado.clave);
+    gotoxy(x,y++);printf("=====================================================");
 }
 
 void alta_empleado(char archivoEmpleado[])
@@ -175,56 +183,77 @@ int verificar_usuario_unico(char archivo[],char usuarioNuevo[])
 
 void baja_empleado(char archivoEmpleado[],int dni)
 {
+    marco_menu();
+    gotoxy(52,2);printf("BAJA DE EMPLEADO");
+
     empleados_laboratorio empleado;
-    int verificaEmpleado;
     int encontrado=0;
 
-    FILE * arch=fopen(archivoEmpleado,"r+b");
+    if(verificar_archivo_empleados(archivoEmpleado,dni)==1)
+    {
+        FILE * arch=fopen(archivoEmpleado,"r+b");
 
         if(arch)
         {
-            verificaEmpleado=verificar_archivo_empleados(archivoEmpleado,dni);
-
-            if(verificaEmpleado==1)
+            while(encontrado == 0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
             {
-                fseek(arch,0,SEEK_SET);///posiciono el cursor al principio y busco el empleado por dni
-                while(encontrado == 0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+                if(empleado.dni==dni)
                 {
-                    if(empleado.dni==dni)
-                    {
-                        encontrado=1;///el while corta en la posicion del empleado buscado
-                    }
+                    encontrado=1;///el while corta en la posicion del empleado buscado
                 }
-                empleado.eliminado=1;///modifico
-
-                fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);///grabo
             }
-        fclose(arch);
+            gotoxy(30,6);printf("Usted quiere dar de baja al siguiente empleado");
+            mostrar_un_empleado(empleado,25,8);
+            char eliminar;
+            gotoxy(25,15);printf("Presione s si es correcto sino presione cualquier tecla");
+            fflush(stdin);
+            gotoxy(82,15);scanf("%d",&eliminar);
+                if(eliminar=='s')
+                {
+                    empleado.eliminado=1;///modifico
+
+                    fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);///grabo
+                    gotoxy(45,18);printf("Baja de Empleado Exitosa");
+                }
+                else
+                {
+                    gotoxy(35,18);printf("Cambio NO realizado, vuelva a intentarlo");
+                }
+                fclose(arch);
         }
+
+    }
+
 }
 
 void modificacion_de_empleado(char archivoEmpleados[],int dni)
 {
     empleados_laboratorio empleado;
-    int encontrado;
-    FILE * arch=fopen(archivoEmpleados,"w+b");
-
-    if(arch)
+    int encontrado=0;
+    if(verificar_archivo_empleados(archivoEmpleados,dni)==1)
     {
-        int verificaEmpleado=verificar_archivo_empleados(archivoEmpleados,dni);
-
-            if(verificaEmpleado==1)
+        FILE * arch=fopen(archivoEmpleados,"r+b");
+        if(arch)
+        {
+            while(encontrado == 0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
             {
-                fseek(arch,0,SEEK_SET);///posiciono el cursor al principio y busco el empleado por dni
-                while(encontrado == 0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+                if(empleado.dni==dni)
                 {
-                    if(empleado.dni==dni)
-                    {
-                        encontrado=1;///el while corta en la posicion del empleado buscado
-                    }
+                    encontrado=1;///el while corta en la posicion del empleado buscado
                 }
-                ///modifica concretamente los datos del empleado;
+            }
+            gotoxy(30,6);printf("Usted quiere modificar el siguiente empleado");
+            mostrar_un_empleado(empleado,25,8);
+            char eliminar;
+            gotoxy(25,15);printf("Presione \"s\" si es correcto sino presione cualquier tecla");
+            fflush(stdin);
+            gotoxy(82,15);scanf("%d",&eliminar);
+            if(eliminar=='s')
+            {
+                ///modifico
 
+                ///fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);///grabo
+                gotoxy(45,18);printf("Baja de Empleado Exitosa");
             }
             else
             {
@@ -232,32 +261,43 @@ void modificacion_de_empleado(char archivoEmpleados[],int dni)
                 gotoxy(42,3);printf("EL EMPLEADO QUE DESEA MODIFICAR NO EXISTE EN LA BASE DE DATOS");
             }
         fclose(arch);
+
+        }
+
     }
 }
 
 void listado_empleados_vigentes(char archivoEmpleados[])
 {
     empleados_laboratorio empleado;
+    int x=25,y=4;
 
     FILE * arch=fopen(archivoEmpleados,"rb");
 
     if(arch)
     {
-        printf("\nLISTADO DE EMPLEADOS EN NOMINA");
+        gotoxy(50,2);printf("\nLISTADO DE EMPLEADOS EN NOMINA");
+        PAUSA;
         while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
         {
             if(empleado.eliminado==0)
             {
-                mostrar_un_empleado(empleado);
+                mostrar_un_empleado(empleado,x,y);
             }
+            PAUSA;
+            x=x+7;
+            y=y+7;
         }
 
+        PAUSA;
         fclose(arch);
     }
 }
 
 void listado_empleados_eliminados(char archivoEmpleados[])
 {
+    marco_menu();
+
     empleados_laboratorio empleado;
 
     FILE * arch=fopen(archivoEmpleados,"rb");
@@ -269,7 +309,7 @@ void listado_empleados_eliminados(char archivoEmpleados[])
         {
             if(empleado.eliminado==1)
             {
-                mostrar_un_empleado(empleado);
+                mostrar_un_empleado(empleado, 43, 8);
             }
         }
         fclose(arch);

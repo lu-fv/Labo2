@@ -2,14 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="ingresos_Labo.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+	<File name="diseño.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="109" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="diseño.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="35897" topLine="76" />
+			<Cursor1 position="17466" topLine="98" />
 		</Cursor>
 		<Folding>
 			<Collapse line="17" />
@@ -24,69 +19,75 @@
 			<Collapse line="431" />
 			<Collapse line="506" />
 			<Collapse line="583" />
-			<Collapse line="666" />
-			<Collapse line="751" />
-			<Collapse line="834" />
-			<Collapse line="918" />
-			<Collapse line="1001" />
-			<Collapse line="1084" />
-			<Collapse line="1167" />
-			<Collapse line="1250" />
-			<Collapse line="1333" />
-			<Collapse line="1344" />
-			<Collapse line="1394" />
-			<Collapse line="1414" />
-			<Collapse line="1438" />
-			<Collapse line="1449" />
-			<Collapse line="1459" />
+			<Collapse line="763" />
+			<Collapse line="846" />
+			<Collapse line="930" />
+			<Collapse line="1013" />
+			<Collapse line="1096" />
+			<Collapse line="1179" />
+			<Collapse line="1262" />
+			<Collapse line="1345" />
+			<Collapse line="1356" />
+			<Collapse line="1406" />
+			<Collapse line="1426" />
+			<Collapse line="1450" />
+			<Collapse line="1461" />
+			<Collapse line="1471" />
 		</Folding>
-	</File>
-	<File name="empleado_laboratorio.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="7337" topLine="248" />
-		</Cursor>
-		<Folding>
-			<Collapse line="259" />
-		</Folding>
-	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="39" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="pacientes.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="268" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="pacientes.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="481" topLine="0" />
-		</Cursor>
 	</File>
 	<File name="diseño.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1242" topLine="23" />
-		</Cursor>
-	</File>
-	<File name="ingreso_Labo.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="60" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="practicas_ingreso.h" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="577" topLine="11" />
-		</Cursor>
-	</File>
-	<File name="practicas_ingreso.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="1242" topLine="24" />
 		</Cursor>
 	</File>
 	<File name="empleado_laboratorio.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="104" topLine="0" />
+			<Cursor1 position="531" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="ingresos_Labo.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="109" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="pacientes.c" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="268" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="220" topLine="5" />
+		</Cursor>
+	</File>
+	<File name="pacientes.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="481" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="practicas_ingreso.c" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="practicas_ingreso.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="577" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="empleado_laboratorio.c" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1758" topLine="50" />
+		</Cursor>
+		<Folding>
+			<Collapse line="160" />
+			<Collapse line="229" />
+			<Collapse line="366" />
+		</Folding>
+	</File>
+	<File name="ingreso_Labo.c" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="60" topLine="9" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

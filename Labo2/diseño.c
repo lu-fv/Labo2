@@ -690,16 +690,26 @@ void menu_administrador_empleados()
         {
         case 1:
             BORRAR;
-            alta_empleado(ARCHIVO_EMPLEADOS);
-            goto menu;
+            char rta='s';
 
+            while(rta=='s')
+            {
+                alta_empleado(ARCHIVO_EMPLEADOS);
+                printf("\nDesea ingresar un nuevo empleado? s/n : ");
+                fflush(stdin);
+                scanf("%c",&rta);
+                BORRAR;
+            }
+            goto menu;
         case 2:
             BORRAR;
             int dnibaja;
-            marco_borde_ancho();
-            gotoxy(43,3),printf("INGRESE EL DNI DEL EMPLEADO QUE QUIERE DAR DE BAJA : ");
+            marco_menu();
+            gotoxy(52,2);printf("BAJA DE EMPLEADO");
+            gotoxy(20,6),printf("INGRESE EL DNI DEL EMPLEADO QUE QUIERE DAR DE BAJA : ");
             fflush(stdin);
-            gotoxy(70,3);scanf("%d",&dnibaja);
+            gotoxy(80,6);scanf("%d",&dnibaja);
+            BORRAR;
             ///validar dni
             baja_empleado(ARCHIVO_EMPLEADOS, dnibaja);
             getch();
@@ -708,9 +718,11 @@ void menu_administrador_empleados()
         case 3:
             BORRAR;
             int dni_a_modificar;
-            printf("\nINGRESE EL DNI DEL EMPLEADO QUE QUIERE MODIFICAR : ");
+            marco_menu();
+            gotoxy(45,2);printf("MODIFICACION DE EMPLEADO");
+            gotoxy(20,6),printf("INGRESE EL DNI DEL EMPLEADO QUE QUIERE MODIFICAR : ");
             fflush(stdin);
-            scanf("%d",&dni_a_modificar);
+            gotoxy(80,6);scanf("%d",&dni_a_modificar);
             ///validar dni
             modificacion_de_empleado(ARCHIVO_EMPLEADOS,dni_a_modificar);
             goto menu;
