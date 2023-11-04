@@ -676,9 +676,9 @@ void menu_administrador_empleados()
     gotoxy(43,6);printf("1) ALTA DE EMPLEADO");
     gotoxy(43,7);printf("2) BAJA DE EMPLEADO");
     gotoxy(43,8);printf("3) MODIFICACION DE EMPLEADO");
-    gotoxy(43,9);printf("4) BLANQUEO DE CLAVES");
-    gotoxy(43,10);printf("5) LISTADO DE EMPLEADOS EN NOMINA");
-    gotoxy(43,11);printf("6) LISTADO DE EMPLEADOS NO VIGENTES");
+    gotoxy(43,9);printf("4) LISTADO DE EMPLEADOS EN NOMINA");
+    gotoxy(43,10);printf("5) LISTADO DE EMPLEADOS NO VIGENTES");
+    gotoxy(43,11);printf("6) BLANQUEO DE CLAVES");
     ///gotoxy(43,12);printf("7) SEPTIMA OPCION");
     gotoxy(43,12);printf("7) SALIR");
     gotoxy(45,14);printf("OPCION SELECCIONADA...");
@@ -722,7 +722,7 @@ void menu_administrador_empleados()
             gotoxy(45,2);printf("MODIFICACION DE EMPLEADO");
             gotoxy(20,6),printf("INGRESE EL DNI DEL EMPLEADO QUE QUIERE MODIFICAR : ");
             fflush(stdin);
-            gotoxy(80,6);scanf("%d",&dni_a_modificar);
+            gotoxy(75,6);scanf("%d",&dni_a_modificar);
             ///validar dni
             modificacion_de_empleado(ARCHIVO_EMPLEADOS,dni_a_modificar);
             goto menu;

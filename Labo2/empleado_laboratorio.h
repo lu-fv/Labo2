@@ -28,5 +28,6 @@ void listado_empleados_vigentes(char archivoEmpleados[]);
 void listado_empleados_eliminados(char archivoEmpleados[]);
 int validacion_usuarioYclave(char archivoEmpleados[], char perfil[]);
 void mostrar_archivo(char archivo[]);
+void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado);
 
 #endif // EMPLEADO_LABORATORIO_H_INCLUDED

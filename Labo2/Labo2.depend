@@ -41,7 +41,7 @@
 
 1698284685 c:\users\jessica\desktop\laboratorio 2\labo2\labo2\diseño.h
 
-1699056867 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.c
+1699109492 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\diseño.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -103,7 +103,7 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1699057295 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.c
+1699108262 source:c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -115,7 +115,7 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1699053620 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.h
+1699105638 c:\users\mariu\onedrive\escritorio\github\labo2\labo2\empleado_laboratorio.h
 	"diseño.h"
 	"ingresos_Labo.h"
 	"pacientes.h"

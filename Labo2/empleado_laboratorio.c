@@ -49,7 +49,7 @@ empleados_laboratorio crearRegistroEmpleados()
         gotoxy(75,10);gets(empleado.perfil);
 
         empleado.eliminado=0;
-        getch();
+
         BORRAR;
         marco_menu();
         gotoxy(52,2);printf("ALTA DE EMPLEADO");
@@ -59,13 +59,9 @@ empleados_laboratorio crearRegistroEmpleados()
         fflush(stdin);
         gotoxy(58,14);ok=getch();
 
-        PAUSA;
-        BORRAR;
-
-
         if(ok == 'n' || ok == 'N')
         {
-            printf("\nIngrese los datos nuevamente...\n\n");
+            gotoxy(40,16);printf("\nIngrese los datos nuevamente...\n\n");
             getch();
             BORRAR;
         }
@@ -95,6 +91,8 @@ void alta_empleado(char archivoEmpleado[])
         if(arch)
         {
             empleado=crearRegistroEmpleados();
+            marco_menu();
+            gotoxy(52,2);printf("ALTA DE EMPLEADO");
 
             if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==0 && verificar_usuario_unico(archivoEmpleado,empleado.usuario)==0)
             {
@@ -104,22 +102,21 @@ void alta_empleado(char archivoEmpleado[])
             {
                 if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==1)
                 {
-                    printf("\nEl Empleado que esta ingresando ya existe en los registros.Desea Modificarlo? s/n ");
+                    gotoxy(20,5);printf("El Empleado que esta ingresando ya existe en los registros. Desea Modificarlo? s/n ");
                     fflush(stdin);
                     scanf("%c",&modifica_empleado);
                     BORRAR;
 
-                    if(modifica_empleado=='s')
+                    if(modifica_empleado=='s'||modifica_empleado=='S')
                     {
-                        ///si desea modificar poner la funcion de modifica
-                        printf("\nARCHIVO MODIFICADO\n");
+                        modificacion_de_empleado(archivoEmpleado,empleado.dni);
                     }
                 }
                 else
                     {
                          if(verificar_usuario_unico(archivoEmpleado,empleado.usuario)==1)
                         {
-                            printf("\nEl USUARIO que ingreso ya existe en la base de datos vuelva a ingresarlo\n");
+                            gotoxy(20,5);printf("El USUARIO que ingreso ya existe en la base de datos vuelva a ingresarlo");
                             PAUSA;
                             BORRAR;
                         }
@@ -130,7 +127,9 @@ void alta_empleado(char archivoEmpleado[])
         }
         else
         {
-            printf("\nERROR AL ABRIR EL ARCHIVO. LLAME AL 111\n");
+            marco_menu();
+            gotoxy(52,2);printf("ALTA DE EMPLEADO");
+            gotoxy(30,5);printf("\nERROR AL ABRIR EL ARCHIVO. LLAME AL 111\n");
         }
 }
 
@@ -205,21 +204,24 @@ void baja_empleado(char archivoEmpleado[],int dni)
             gotoxy(30,6);printf("Usted quiere dar de baja al siguiente empleado");
             mostrar_un_empleado(empleado,25,8);
             char eliminar;
-            gotoxy(25,15);printf("Presione s si es correcto sino presione cualquier tecla");
+            gotoxy(25,15);printf("Presione \"s\" si es correcto sino presione cualquier tecla: ");
             fflush(stdin);
-            gotoxy(82,15);scanf("%d",&eliminar);
-                if(eliminar=='s')
-                {
-                    empleado.eliminado=1;///modifico
+            gotoxy(85,15);scanf("%c",&eliminar);
 
-                    fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);///grabo
-                    gotoxy(45,18);printf("Baja de Empleado Exitosa");
-                }
-                else
-                {
-                    gotoxy(35,18);printf("Cambio NO realizado, vuelva a intentarlo");
-                }
-                fclose(arch);
+            if(eliminar=='s'||eliminar=='S')
+            {
+                empleado.eliminado=1;///modifico
+
+                fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);///grabo
+                gotoxy(45,18);printf("Baja de Empleado Exitosa");
+            }
+
+            else
+            {
+                gotoxy(45,18);printf("Cambio NO realizado, vuelva a intentarlo");
+            }
+
+            fclose(arch);
         }
 
     }
@@ -242,56 +244,68 @@ void modificacion_de_empleado(char archivoEmpleados[],int dni)
                     encontrado=1;///el while corta en la posicion del empleado buscado
                 }
             }
-            gotoxy(30,6);printf("Usted quiere modificar el siguiente empleado");
-            mostrar_un_empleado(empleado,25,8);
-            char eliminar;
-            gotoxy(25,15);printf("Presione \"s\" si es correcto sino presione cualquier tecla");
-            fflush(stdin);
-            gotoxy(82,15);scanf("%d",&eliminar);
-            if(eliminar=='s')
-            {
-                ///modifico
+            gotoxy(30,8);printf("Usted quiere modificar el siguiente empleado");
+            mostrar_un_empleado(empleado,25,9);
 
-                ///fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);///grabo
-                gotoxy(45,18);printf("Baja de Empleado Exitosa");
+            char modificar;
+            gotoxy(25,15);printf("Presione \"s\" si es correcto sino presione cualquier tecla... ");
+            fflush(stdin);
+            gotoxy(85,15);scanf("%c",&modificar);
+
+            if(modificar=='s'||modificar=='S')
+            {
+                menu_modifica_campo_registro(arch,empleado);
+                fclose(arch);
             }
             else
             {
                 marco_borde_ancho();
-                gotoxy(42,3);printf("EL EMPLEADO QUE DESEA MODIFICAR NO EXISTE EN LA BASE DE DATOS");
+                gotoxy(42,3);printf("Vuelva a Seleccionar una opcion o seleccione SALIR");
             }
-        fclose(arch);
-
         }
 
+    }
+    else
+    {
+        marco_borde_ancho();
+        gotoxy(42,6);printf("El empleado que desea modificar NO existe en la base de datos");
     }
 }
 
 void listado_empleados_vigentes(char archivoEmpleados[])
 {
     empleados_laboratorio empleado;
-    int x=25,y=4;
+    gotoxy(43,2);printf("LISTADO DE EMPLEADOS VIGENTES");
+    int x=28,y=4;
+    int vigentes=0;
 
     FILE * arch=fopen(archivoEmpleados,"rb");
 
     if(arch)
     {
-        gotoxy(50,2);printf("\nLISTADO DE EMPLEADOS EN NOMINA");
-        PAUSA;
         while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
         {
             if(empleado.eliminado==0)
             {
                 mostrar_un_empleado(empleado,x,y);
+                vigentes++;
+                y=y+7;
             }
-            PAUSA;
-            x=x+7;
-            y=y+7;
         }
-
-        PAUSA;
+        if(vigentes==0)
+        {
+            gotoxy(45,4);printf("NO EXISTEN EMPLEADOS EN NOMINA");
+            getch();
+        }
         fclose(arch);
     }
+    else
+    {
+        gotoxy(40,6);printf("EL ARCHIVO NO PUDO ABRIRSE CORRECTAMENTE. LLAME AL 111");
+        gotoxy(40,8);PAUSA;
+    }
+
+    getch();
 }
 
 void listado_empleados_eliminados(char archivoEmpleados[])
@@ -299,20 +313,34 @@ void listado_empleados_eliminados(char archivoEmpleados[])
     marco_menu();
 
     empleados_laboratorio empleado;
+    int eliminados=0;
 
     FILE * arch=fopen(archivoEmpleados,"rb");
 
     if(arch)
     {
-        printf("\nLISTADO DE EMPLEADOS NO VIGENTES");
+        gotoxy(43,2);printf("LISTADO DE EMPLEADOS NO VIGENTES");
+        int x=28,y=4;
+
         while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
         {
             if(empleado.eliminado==1)
             {
-                mostrar_un_empleado(empleado, 43, 8);
+                mostrar_un_empleado(empleado,x,y);
+                eliminados++;
             }
         }
+        if(eliminados==0)
+        {
+            gotoxy(45,6);printf("NO EXISTEN EMPLEADOS DADOS DE BAJA");
+            getch();
+        }
         fclose(arch);
+    }
+    else
+    {
+        gotoxy(30,6);printf("EL ARCHIVO NO PUDO ABRIRSE CORRECTAMENTE. LLAME AL 111");
+        gotoxy(40,6);PAUSA;
     }
 }
 
@@ -347,6 +375,7 @@ int validacion_usuarioYclave(char archivoEmpleados[], char perfil[])
 			}
 		}
     BORRAR;
+
     FILE * arch=fopen(archivoEmpleados,"rb");
 
     if(arch)
@@ -384,3 +413,146 @@ void mostrar_archivo(char archivo[])
     }
 }
 
+void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado)
+{
+    menu:
+    BORRAR;
+    system("COLOR E");marco_menu();
+
+    int opc;
+    char rta;
+
+    gotoxy(48,2);printf("MODIFICA EMPLEADO");
+    gotoxy(35,7);printf("Seleccione el campo que desea modificar");
+
+    gotoxy(43,9);printf("1) NOMBRE Y APELLIDO");
+    gotoxy(43,10);printf("2) DNI");
+    gotoxy(43,11);printf("3) USUARIO");
+    gotoxy(43,12);printf("4) CLAVE");
+    gotoxy(43,13);printf("5) PERFIL");
+    gotoxy(43,14);printf("6) SALIR...");
+    gotoxy(45,15);printf("OPCION SELECCIONADA...");
+    gotoxy(70,15);scanf("%d",&opc);
+
+    do
+    {
+        switch(opc)
+        {
+        case 1:
+            BORRAR;
+            marco_menu();
+            gotoxy(48,2);printf("MODIFICA APELLIDO Y NOMBRE");
+            gotoxy(30,5);printf("Ingrese el nuevo Apellido y Nombre : ");
+            fflush(stdin);
+            gets(empleado.ape_nombre);///validar string
+            mostrar_un_empleado(empleado,30,7);
+            gotoxy(30,13);printf("Los datos son correctos? s/n : ");
+            fflush(stdin);
+            gotoxy(63,13);scanf("%c",&rta);
+            if(rta=='s'|| rta=='S')
+            {
+                fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
+                gotoxy(30,15);printf("MODIFICACION EXITOSA");///no me modifica el archivo.
+                getch();
+            }
+            else
+            {
+                gotoxy(20,15);printf("VUELVA A SELECCIONAR LA OPCION A MODIFICAR O PRESIONE SALIR");
+                getch();
+            }
+            goto menu;
+
+        case 2:
+            BORRAR;
+            marco_menu();
+            gotoxy(48,2);printf("MODIFICA DNI");
+            gotoxy(30,5);printf("Ingrese el nuevo Dni : ");
+            fflush(stdin);
+            gets(empleado.dni);///validar string
+            mostrar_un_empleado(empleado,30,7);
+            gotoxy(30,13);printf("Los datos son correctos? s/n : ");
+            fflush(stdin);
+            scanf("%c",&rta);
+            if(rta=='s'|| rta=='S')
+            {
+                fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
+                gotoxy(30,15);printf("MODIFICACION EXITOSA");
+            }
+            else
+            {
+                gotoxy(20,15);printf("VUELVA A SELECCIONAR LA OPCION A MODIFICAR O PRESIONE SALIR");
+            }
+            goto menu;
+
+        case 3:
+            BORRAR;
+            marco_menu();
+            gotoxy(48,2);printf("MODIFICA USUARIO");
+            gotoxy(30,5);printf("Ingrese el nuevo Usuario: ");
+            fflush(stdin);
+            gets(empleado.usuario);///validar string
+            mostrar_un_empleado(empleado,30,7);
+            gotoxy(30,13);printf("Los datos son correctos? s/n : ");
+            fflush(stdin);
+            scanf("%c",&rta);
+            if(rta=='s'|| rta=='S')
+            {
+                fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
+                gotoxy(30,15);printf("MODIFICACION EXITOSA");
+            }
+            else
+            {
+                gotoxy(20,15);printf("VUELVA A SELECCIONAR LA OPCION A MODIFICAR O PRESIONE SALIR");
+            }
+            goto menu;
+
+        case 4:
+            BORRAR;
+            marco_menu();
+            gotoxy(48,2);printf("MODIFICA CLAVE");
+            gotoxy(30,5);printf("Ingrese la nueva Clave : ");
+            fflush(stdin);
+            gets(empleado.clave);///validar string
+            mostrar_un_empleado(empleado,30,7);
+            gotoxy(30,13);printf("Los datos son correctos? s/n : ");
+            fflush(stdin);
+            scanf("%c",&rta);
+            if(rta=='s'|| rta=='S')
+            {
+                fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
+                gotoxy(30,15);printf("MODIFICACION EXITOSA");
+            }
+            else
+            {
+                gotoxy(20,15);printf("VUELVA A SELECCIONAR LA OPCION A MODIFICAR O PRESIONE SALIR");
+            }
+            goto menu;
+
+        case 5:
+            BORRAR;
+            marco_menu();
+            gotoxy(48,2);printf("MODIFICA PERFIL EMPLEADO");
+            gotoxy(30,5);printf("Ingrese el nuevo Perfil : ");
+            fflush(stdin);
+            gets(empleado.perfil);///validar string
+            mostrar_un_empleado(empleado,30,7);
+            gotoxy(30,13);printf("Los datos son correctos? s/n : ");
+            fflush(stdin);
+            scanf("%c",&rta);
+            if(rta=='s'|| rta=='S')
+            {
+                fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
+                gotoxy(30,15);printf("MODIFICACION EXITOSA");
+            }
+            else
+            {
+                gotoxy(20,15);printf("VUELVA A SELECCIONAR LA OPCION A MODIFICAR O PRESIONE SALIR");
+            }
+            goto menu;
+
+        case 6:
+            BORRAR;
+            break;
+        }
+    }while(opc!=6);
+}
