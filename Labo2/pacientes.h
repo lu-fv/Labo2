@@ -1,6 +1,6 @@
 #ifndef PACIENTES_H_INCLUDED
 #define PACIENTES_H_INCLUDED
-#include "diseño.h"
+#include "diseÃ±o.h"
 #include "empleado_laboratorio.h"
 #include "ingresos_Labo.h"
 #include "practicas_ingreso.h"
@@ -15,12 +15,12 @@ typedef struct
     char telefono[15];
     char direccion[30];
     int eliminado;///0 vigente,1 eliminado
+    struct laboratorios * ingreso;
 }pacientes;
 
 typedef struct
 {
     pacientes p;
-    struct nodoListaIngreso * ingreso;
     struct nodoArbol *izq;
     struct nodoArbol *der;
 }nodoArbol;
