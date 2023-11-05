@@ -4,7 +4,6 @@
 #include "conio.h"
 
 #include "diseño.h"
-#include "empleado_laboratorio.h"
 #include "pacientes.h"
 #include "ingresos_Labo.h"
 #include "practicas_ingreso.h"
@@ -85,6 +84,7 @@ void alta_empleado(char archivoEmpleado[])
     empleados_laboratorio empleado;
 
     char modifica_empleado;
+    char activacion;
 
     FILE * arch=fopen(archivoEmpleado,"ab");
 
@@ -120,6 +120,20 @@ void alta_empleado(char archivoEmpleado[])
                             PAUSA;
                             BORRAR;
                         }
+                        if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==-1)
+                        {
+                            BORRAR;
+                            marco_menu();
+                            gotoxy(52,2);printf("ALTA DE EMPLEADO");
+
+                            gotoxy(20,6);printf("El empleado se encuentra dado de baja. Desea reactivarlo? s/n ");
+                            fflush(stdin);
+                            scanf("%c",&activacion);
+                            if(activacion=='s'||activacion=='S')
+                            {
+                                reactivacion_empleado(ARCHIVO_EMPLEADOS,empleado.dni);
+                            }
+                        }
                     }
 
             }
@@ -147,12 +161,20 @@ int verificar_archivo_empleados(char archivo[],int DNI)
         {
             if(empleado.dni==DNI)
             {
-                encontrado=1;
+                if(empleado.eliminado==0)
+                {
+                    encontrado=1;
+                }
+                else
+                {
+                    printf("EMPLEADO DADO DE BAJA");
+                    encontrado=-1;
+                }
             }
         }
         fclose(arch);
-    }
 
+    }
     return encontrado;
 }
 
@@ -212,6 +234,7 @@ void baja_empleado(char archivoEmpleado[],int dni)
             {
                 empleado.eliminado=1;///modifico
 
+                fseek(arch,sizeof(empleados_laboratorio)*-1,SEEK_CUR);
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);///grabo
                 gotoxy(45,18);printf("Baja de Empleado Exitosa");
             }
@@ -320,13 +343,15 @@ void listado_empleados_eliminados(char archivoEmpleados[])
     if(arch)
     {
         gotoxy(43,2);printf("LISTADO DE EMPLEADOS NO VIGENTES");
-        int x=28,y=4;
+        int x=28,y=6;
 
         while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
         {
             if(empleado.eliminado==1)
             {
                 mostrar_un_empleado(empleado,x,y);
+                y=y+7;
+                getch();
                 eliminados++;
             }
         }
@@ -413,6 +438,7 @@ void mostrar_archivo(char archivo[])
     }
 }
 
+
 void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado)
 {
     menu:
@@ -451,6 +477,7 @@ void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado
             gotoxy(63,13);scanf("%c",&rta);
             if(rta=='s'|| rta=='S')
             {
+                fseek(archivo,sizeof(empleados_laboratorio)*-1,SEEK_CUR);
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
                 gotoxy(30,15);printf("MODIFICACION EXITOSA");///no me modifica el archivo.
                 getch();
@@ -475,6 +502,7 @@ void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado
             scanf("%c",&rta);
             if(rta=='s'|| rta=='S')
             {
+                fseek(archivo,sizeof(empleados_laboratorio)*-1,SEEK_CUR);
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
                 gotoxy(30,15);printf("MODIFICACION EXITOSA");
             }
@@ -497,6 +525,7 @@ void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado
             scanf("%c",&rta);
             if(rta=='s'|| rta=='S')
             {
+                fseek(archivo,sizeof(empleados_laboratorio)*-1,SEEK_CUR);
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
                 gotoxy(30,15);printf("MODIFICACION EXITOSA");
             }
@@ -519,6 +548,7 @@ void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado
             scanf("%c",&rta);
             if(rta=='s'|| rta=='S')
             {
+                fseek(archivo,sizeof(empleados_laboratorio)*-1,SEEK_CUR);
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
                 gotoxy(30,15);printf("MODIFICACION EXITOSA");
             }
@@ -541,6 +571,7 @@ void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado
             scanf("%c",&rta);
             if(rta=='s'|| rta=='S')
             {
+                fseek(archivo,sizeof(empleados_laboratorio)*-1,SEEK_CUR);
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,archivo);
                 gotoxy(30,15);printf("MODIFICACION EXITOSA");
             }
@@ -555,4 +586,25 @@ void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado
             break;
         }
     }while(opc!=6);
+}
+
+void reactivacion_empleado(char archivoEmpleado[], int dni)
+{
+    FILE * arch=fopen(archivoEmpleado,"r+b");
+    empleados_laboratorio empleado;
+
+    if(arch)
+    {
+        while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+        {
+            if(empleado.dni==dni)
+            {
+                empleado.eliminado=0;
+                fseek(arch,sizeof(empleados_laboratorio)*-1,SEEK_CUR);
+                fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);
+                gotoxy(45,8);printf("Reactivacion Exitosa!");
+            }
+        }
+        fclose(arch);
+    }
 }

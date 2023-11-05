@@ -3,46 +3,62 @@
 #include <stdlib.h>
 #include <conio.h>
 
-#define Practicas_Laboratorio "practicas.dat"
 #define ESC 27
 
 #include "practicas_Labo.h"
 #include "diseño.h"
 
-
-///Alta_de_practica
-
-///crear un ingreso
 practicas CrearPracticaLaboratorio ()
 {
     practicas nuevaPractica;
 
-//   nuevo.nro_de_practica = //funcion autoincremental Gabi;
+    nuevaPractica.nro_de_practica=autoincrementalPracticas(Practicas_Laboratorio);
     printf("Ingrese el nombre de la practica: \n");
     fflush(stdin);
     gets(nuevaPractica.nombre);
-    printf("Ingrese informacion sobre la vigencia. 0 si no está vigente o 1 si está vigente: \n");///yo le pondria por defecto 1 porque se supone que es un ingreso (euge)
-    scanf("%d", &nuevaPractica.vigencia);
+    nuevaPractica.vigencia=0;
 
     return nuevaPractica;
 }
 
+int autoincrementalPracticas(char archivo[])
+{
+    FILE * archi = fopen(archivo, "rb");
+
+    practicas p;
+    int i=0;
+
+    if(archi)
+    {
+        fseek(archi, sizeof(practicas)*-1,SEEK_END);
+        while(fread(&p, sizeof(practicas), 1, archi)>0)
+        {
+            i=p.nro_de_practica;
+        }
+    fclose(archi);
+    }
+
+    return i+1;
+}
+
 ///funcion para verificar si existe la practica
-int verificarSiExistePractica(FILE * nombreArchivo, char PracticaNueva[])
+int verificarSiExistePractica(char archivo[], char PracticaNueva[])
 {
     int flag = 0;
 
+    FILE * arch=fopen(archivo,"rb");
     practicas PracticaExistente;
 
-    if(nombreArchivo)
+    if(arch)
     {
-        while(flag == 0 && fread(&PracticaExistente, sizeof(practicas), 1, nombreArchivo)>0)
+        while(flag == 0 && fread(&PracticaExistente, sizeof(practicas), 1, arch)>0)
         {
             if(strcmpi(PracticaExistente.nombre, PracticaNueva)==0)
             {
                 flag = 1;
             }
         }
+        fclose(arch);
     }
 
     return flag;
@@ -52,84 +68,107 @@ int verificarSiExistePractica(FILE * nombreArchivo, char PracticaNueva[])
 ///damos de alta una nueva práctica por usuario, verificando que no exista previamente en el archivo de prácticas
 void AltaDePracticasNuevas(char nombreArchivo[])
 {
-    practicas NuevaPractica;
-    FILE * archivo = fopen(nombreArchivo, "ab");
-    char opcion;
+    char opcion='s', modifica;
 
-    if(archivo)
+    while(opcion == 's'||opcion=='S')
     {
-        while(opcion != ESC)
-        {
-            NuevaPractica = CrearPracticaLaboratorio();
+        practicas NuevaPractica=CrearPracticaLaboratorio();
 
-            if(verificarSiExistePractica(archivo, NuevaPractica.nombre)==0)
+        if(verificarSiExistePractica(nombreArchivo, NuevaPractica.nombre)==0)
+        {
+            FILE * archivo = fopen(nombreArchivo, "ab");
+
+            if(archivo)
             {
                 fwrite(&NuevaPractica, sizeof(practicas), 1, archivo);
-                printf("¿Desea seguir cargando prácticas? Presione ESC para cancelar o cualquier tecla para continuar\n");
+                printf("¿Desea seguir cargando prácticas? s/n\n");
                 fflush(stdin);
-                opcion = getch();
+                scanf("%c",&opcion);
+                fclose(archivo);
             }
             else
             {
-                printf("La práctica ya existe. ¿Desea modificar su nombre? Presione cualquier tecla para continuar y modificar o ESC para salir\n");
-                fflush(stdin);
-                opcion = getch();
-
-                if(opcion != ESC)
-                {
-                    ModificacionArchivoPracticas(nombreArchivo, NuevaPractica.nombre);
-                }
-
-                printf("¿Desea seguir cargando prácticas? Presione ESC para cancelar o cualquier tecla para continuar\n");
-                fflush(stdin);
-                opcion = getch();
+                printf("No se pudo abrir el archivo\n");
+                opcion='n';
             }
         }
-        fclose(archivo);
-    }
-    else
-    {
-        printf("No se pudo abrir el archivo\n");
+        else
+        {
+            printf("La práctica ya existe. ¿Desea modificar su nombre? s/n \n");
+            fflush(stdin);
+            modifica = getch();
+
+            if(modifica=='s'|| modifica=='S')
+            {
+                ModificacionArchivoPracticas(nombreArchivo);
+                printf("¿Desea seguir cargando prácticas? S/N\n");
+                fflush(stdin);
+                scanf("%c",&opcion);
+            }
+
+        }
+
     }
 
 }
 
+
 ///Función para modificar el nombre de la práctica
-void ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePractica)
+void ModificacionArchivoPracticas(char nombreArchivo[])
 {
-    practicas PracticaAModificar;
-    FILE * archi = fopen(nombreArchivo, "r+b");
+    char practicaModifica[30];
     char opcion;
 
-    printf("Ingrese nombre de practica a modificar\n");
+    printf("\nINGRESE LA PRACTICA QUE DESEA MODIFICAR: ");
+    fflush(stdin);
+    gets(practicaModifica);
 
-    if(archi)
+    if(verificarSiExistePractica(nombreArchivo,practicaModifica)== 1)
     {
-        if(verificarSiExistePractica(archi, nombrePractica)== 1)
+        FILE * archi = fopen(nombreArchivo, "r+b");
+        practicas Pract;
+
+        if(archi)
         {
-            fseek(archi, -1 * sizeof(archi),SEEK_CUR);
-            fread(&PracticaAModificar, sizeof(practicas), 1, archi);
+            Pract=buscaPoscionPractica(archi,practicaModifica);
             printf("Ingrese el nuevo nombre de la practica\n");
             fflush(stdin);
-            gets(PracticaAModificar.nombre);
-            fseek(archi, -1 * sizeof(archi),SEEK_CUR);
-            fwrite(&PracticaAModificar, sizeof(practicas), 1, archi);
-            printf("Se modificó la práctica\n");
+            gets(Pract.nombre);
+            fseek(archi,sizeof(practicas)*-1,SEEK_CUR);
+            fwrite(&Pract, sizeof(practicas), 1, archi);
+
+            fclose(archi);
         }
         else
         {
-            printf("No existe la práctica que acaba de ingresar. ¿Desea crearla? S/N");
-            opcion = getch();
-            if(opcion == 'S')
-            {
-                AltaDePracticasNuevas(nombreArchivo);
-            }
+            printf("Error al abrir el archivo\n");
         }
-        fclose(archi);
     }
-
     else
     {
-        printf("Error al abrir el archivo\n");
+        printf("No existe la práctica que acaba de ingresar. ¿Desea crearla? S/N");
+        opcion = getch();
+        if(opcion == 'S' || opcion == 's')
+        {
+            AltaDePracticasNuevas(nombreArchivo);
+        }
     }
+
+}
+
+practicas buscaPoscionPractica(FILE * arch,char nombrePractica[])
+{
+    practicas registro;
+    fseek(arch,0,SEEK_SET);
+    int flag=0;
+
+    while(flag==0 && fread(&registro,sizeof(practicas),1,arch)>0)
+    {
+        if(registro.nombre==nombrePractica)
+        {
+            flag=1;
+        }
+    }
+
+    return registro;
 }

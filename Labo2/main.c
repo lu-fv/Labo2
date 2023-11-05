@@ -3,9 +3,11 @@
 #define BORRAR system("cls")
 #define PAUSA system("pause")
 #define ARCHIVO_EMPLEADOS "archivo_empleados.dat"
+#include "practicas_Labo.h"
 
 int main()
 {
+    ///AltaDePracticasNuevas(Practicas_Laboratorio);
     ///mostrar_archivo(ARCHIVO_EMPLEADOS);
 
     menu();

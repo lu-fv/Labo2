@@ -1,5 +1,6 @@
 #ifndef PRACTICAS_LABO_H_INCLUDED
 #define PRACTICAS_LABO_H_INCLUDED
+#define Practicas_Laboratorio "practicas.dat"
 
 typedef struct
 {
@@ -16,9 +17,11 @@ typedef struct
 }nodo;
 
 practicas CrearPracticaLaboratorio ();
-int verificarSiExistePractica(FILE * nombreArchivo, char * PracticaNueva);
+int autoincrementalPracticas(char archivo[]);
+int verificarSiExistePractica(char archivo[], char PracticaNueva[]);
 void AltaDePracticasNuevas(char * nombreArchivo);
-void ModificacionArchivoPracticas(char * nombreArchivo, char * nombrePractica);
+void ModificacionArchivoPracticas(char nombreArchivo[]);
+practicas buscaPoscionPractica(FILE * arch,char nombrePractica[]);
 
 
 #endif // PRACTICAS_LABO_H_INCLUDED
