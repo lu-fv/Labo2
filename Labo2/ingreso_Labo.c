@@ -15,8 +15,6 @@
 ///para pegar en el main o posterior
 
 
-
-
 void fechaActual(char fecha[])
 {
         time_t tiempo = time(0);
@@ -55,7 +53,7 @@ laboratorios nuevoRegistro(char archivo[])
     laboratorios nuevo;
     nuevo.Nro_de_ingreso=autoincrementalIngresos(archivo); ///automatico
     strcpy(nuevo.fecha_de_ingreso, fecha);
-    nuevo.fecha_de_retiro[15]= "a confirmar";
+    strcpy(nuevo.fecha_de_retiro[15]= "a confirmar");
     printf("\nINGRESE DNI DEL PACIENTE: ");
     scanf("%d", nuevo.dni_paciente);
     ///ACA DEBERIA HABER UNA FUNCION QUE INFORME SI EL PACIENTE NO EXISTE EN LA BASE, PARA REMITIRLO A ESE MENU
@@ -67,7 +65,7 @@ laboratorios nuevoRegistro(char archivo[])
     return nuevo;
 }
 
-/*nodoListaIngreso * crearNodoIngreso(laboratorios nuevo)
+nodoListaIngreso * crearNodoIngreso(laboratorios nuevo)
 {
     nodoArbol * lista = (nodoArbol*) malloc(sizeof((nodoArbol));
 
@@ -75,7 +73,7 @@ laboratorios nuevoRegistro(char archivo[])
     lista->ingreso->siguiente=NULL;
 
     return lista;
-}*/
+}
 
 
 nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIngreso * nuevo)

@@ -20,16 +20,9 @@ typedef struct
     int dni_paciente;
     int medico_matricula;
     int vigencia;///0 vigente, 1 NO vigente
-}laboratorios;
-
-
-typedef struct
-{
-    laboratorios dato;
-    struct nodoListaPracticas * practica;
+    struct nodoListaPracticas * listaPracticas;
     struct nodoListaIngreso * siguiente;
-
-}nodoListaIngreso;
+}laboratorios;
 
 
 void fechaActual(char fecha[]);
