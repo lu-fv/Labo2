@@ -25,7 +25,7 @@ typedef struct
 
 typedef struct
 {
-    laboratorios dato;
+
     struct nodoListaPracticas * practica;
     struct nodoListaIngreso * siguiente;
 
