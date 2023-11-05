@@ -20,18 +20,9 @@ typedef struct
     int dni_paciente;
     int medico_matricula;
     int vigencia;///0 vigente, 1 NO vigente
-<<<<<<< HEAD
+
     struct nodoListaPracticas * listaPracticas;
-=======
-}laboratorios;
-
-
-typedef struct
-{
-
-    struct nodoListaPracticas * practica;
->>>>>>> 86890ec8367daa23aaa46f43474279553b71b1be
-    struct nodoListaIngreso * siguiente;
+    struct laboratorios * siguiente;
 }laboratorios;
 
 

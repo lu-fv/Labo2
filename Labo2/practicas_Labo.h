@@ -7,7 +7,7 @@ typedef struct
     int nro_de_practica;
     char nombre[30];
     int vigencia;///0 vigente,1 NO vigente
-    struct nodo * siguiente;
+    struct practicas * siguiente;
 }practicas;
 
 practicas CrearPracticaLaboratorio ();
