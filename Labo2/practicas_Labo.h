@@ -7,14 +7,8 @@ typedef struct
     int nro_de_practica;
     char nombre[30];
     int vigencia;///0 vigente,1 NO vigente
-
-}practicas;
-
-typedef struct
-{
-    practicas datos_cargados;
     struct nodo * siguiente;
-}nodo;
+}practicas;
 
 practicas CrearPracticaLaboratorio ();
 int autoincrementalPracticas(char archivo[]);

@@ -135,7 +135,6 @@ void alta_empleado(char archivoEmpleado[])
                             }
                         }
                     }
-
             }
             fclose(arch);
         }
@@ -146,6 +145,7 @@ void alta_empleado(char archivoEmpleado[])
             gotoxy(30,5);printf("\nERROR AL ABRIR EL ARCHIVO. LLAME AL 111\n");
         }
 }
+
 
 int verificar_archivo_empleados(char archivo[],int DNI)
 {
@@ -177,6 +177,7 @@ int verificar_archivo_empleados(char archivo[],int DNI)
     }
     return encontrado;
 }
+
 
 int verificar_usuario_unico(char archivo[],char usuarioNuevo[])
 {
