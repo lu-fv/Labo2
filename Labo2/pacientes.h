@@ -1,6 +1,6 @@
 #ifndef PACIENTES_H_INCLUDED
 #define PACIENTES_H_INCLUDED
-#include "diseño.h"
+//#include "diseño.h"
 #include "empleado_laboratorio.h"
 #include "ingresos_Labo.h"
 #include "practicas_ingreso.h"

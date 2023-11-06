@@ -311,5 +311,4 @@ void listadoDeLaboratoriosEliminados(char archivo[])
         printf("\nERROR DEL ARCHIVO\n");
     }
 
-
 }
