@@ -12,7 +12,7 @@ void alta_de_UNA_practXingreso(int numIngreso)
     FILE * arch=fopen(ARCHIVO_PRACXINGRESO,"ab");
 
     pracXingreso p;
-    p=registro_practXingreso(numIngreso);
+    p=crear_registro_practXingreso(numIngreso);
 
     if(arch)
     {
@@ -22,7 +22,7 @@ void alta_de_UNA_practXingreso(int numIngreso)
     }
 }
 
-pracXingreso registro_practXingreso(int numIngreso)
+pracXingreso crear_registro_practXingreso(int numIngreso)
 {
         pracXingreso pXi;
     char nompractica[30];

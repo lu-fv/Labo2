@@ -53,7 +53,7 @@ int verificarSiExistePractica(char archivo[], char PracticaNueva[])
     {
         while(flag == 0 && fread(&PracticaExistente, sizeof(practicas), 1, arch)>0)
         {
-            if(strcmpi(PracticaExistente.nombre, PracticaNueva)==0)
+            if(strcmpi(PracticaExistente.nombre, PracticaNueva)==0 && PracticaExistente.vigencia==0)
             {
                 flag = 1;
             }
@@ -63,7 +63,6 @@ int verificarSiExistePractica(char archivo[], char PracticaNueva[])
 
     return flag;
 }
-
 
 ///damos de alta una nueva práctica por usuario, verificando que no exista previamente en el archivo de prácticas
 void AltaDePracticasNuevas(char nombreArchivo[])

@@ -12,7 +12,7 @@ typedef struct
 
 practicas CrearPracticaLaboratorio ();
 int autoincrementalPracticas(char archivo[]);
-int verificarSiExistePractica(char archivo[], char PracticaNueva[]);
+///int verificarSiExistePractica(char archivo[], char PracticaNueva[]);
 void AltaDePracticasNuevas(char * nombreArchivo);
 void ModificacionArchivoPracticas(char nombreArchivo[]);
 practicas buscaPoscionPractica(FILE * arch,char nombrePractica[]);
