@@ -19,14 +19,13 @@ typedef struct
     char nombre[20];
     int vigencia;///0 vigente,1 NO vigente
     char resultado [40];
+    struct pracXingreso * siguiente;
 }pracXingreso;
 
-typedef struct
-{
-    pracXingreso ingreso;
-    struct nodoListaPracticas * siguiente;
-}nodoListaPracticas;
-
-
+pracXingreso alta_de_UNA_practXingreso(int numIngreso);
+pracXingreso registro_practXingreso(int numIngreso);
+int verifica_existe_ingreso(int numIngreso);
+void listado_pract_vigentes();
+int busca_num_practica_vigente(char practica[]);
 
 #endif // PRACTICAS_INGRESO_H_INCLUDED
