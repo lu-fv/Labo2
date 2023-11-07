@@ -22,5 +22,6 @@ pracXingreso crar_registro_practXingreso(int numIngreso);
 int verifica_existe_ingreso(int numIngreso);
 void listado_pract_vigentes();
 int busca_num_practica_vigente(char practica[]);
+///falta hacer funcion agregar practica que seria como agregar al final de la lista
 
 #endif // PRACTICAS_INGRESO_H_INCLUDED

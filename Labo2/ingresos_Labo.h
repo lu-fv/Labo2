@@ -21,7 +21,7 @@ typedef struct
     int medico_matricula;
     int vigencia;///0 vigente, 1 NO vigente
 
-    struct nodoListaPracticas * listaPracticas;
+    struct nodoListaPracticas * listaPracticas;///deberia ser pracXingreso en lugar de nodolistapracticas
     struct laboratorios * siguiente;
 }laboratorios;
 
@@ -29,8 +29,8 @@ typedef struct
 void fechaActual(char fecha[]);
 int autoincrementalIngresos(char archivo[]);
 laboratorios nuevoRegistro(char archivo[]);
-nodoListaIngreso * crearNodoIngreso(laboratorios nuevo);
-nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIngreso * nuevo);
+nodoListaIngreso * crearNodoIngreso(laboratorios nuevo);///deberia ser pracXingreso en lugar de nodolistapracticas
+nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIngreso * nuevo);///deberia ser pracXingreso en lugar de nodolistapracticas
 void altaDeLaboratorio(char archivo[], laboratorios registro);
 void bajDeLabXId(int id, char archivo[]);
 void modificacionDeLaboratorio(char archivo[]);
