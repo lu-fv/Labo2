@@ -53,7 +53,7 @@ laboratorios nuevoRegistro(char archivo[])
     laboratorios nuevo;
     nuevo.Nro_de_ingreso=autoincrementalIngresos(archivo); ///automatico
     strcpy(nuevo.fecha_de_ingreso, fecha);
-    strcpy(nuevo.fecha_de_retiro[15]= "a confirmar");
+    strcpy(nuevo.fecha_de_retiro[15],"a confirmar");
     printf("\nINGRESE DNI DEL PACIENTE: ");
     scanf("%d", nuevo.dni_paciente);
     ///ACA DEBERIA HABER UNA FUNCION QUE INFORME SI EL PACIENTE NO EXISTE EN LA BASE, PARA REMITIRLO A ESE MENU
@@ -65,7 +65,7 @@ laboratorios nuevoRegistro(char archivo[])
     return nuevo;
 }
 
-nodoListaIngreso * crearNodoIngreso(laboratorios nuevo)
+/*nodoListaIngreso * crearNodoIngreso(laboratorios nuevo)
 {
     nodoArbol * lista = (nodoArbol*) malloc(sizeof((nodoArbol));
 
@@ -95,7 +95,7 @@ nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIng
 
     return lista;
 }
-
+*/
 void altaDeLaboratorio(char archivo[], laboratorios registro)
 {
     FILE * archi = fopen(archivo, "ab");

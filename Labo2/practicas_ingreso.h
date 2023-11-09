@@ -17,8 +17,8 @@ typedef struct
     struct pracXingreso * siguiente;
 }pracXingreso;
 
-pracXingreso alta_de_UNA_practXingreso(int numIngreso);
-pracXingreso crar_registro_practXingreso(int numIngreso);
+void alta_de_UNA_practXingreso(int numIngreso);
+pracXingreso crear_registro_practXingreso(int numIngreso);
 int verifica_existe_ingreso(int numIngreso);
 void listado_pract_vigentes();
 int busca_num_practica_vigente(char practica[]);

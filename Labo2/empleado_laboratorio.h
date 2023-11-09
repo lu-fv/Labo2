@@ -25,6 +25,8 @@ int verificar_usuario_unico(char archivo[],char usuarioNuevo[]);
 void baja_empleado(char archivoEmpleado[],int dni);
 void modificacion_de_empleado(char archivoEmpleados[],int dni);
 void listado_empleados_vigentes(char archivoEmpleados[]);
+int cargar_arreglo_ordenado_x_apellido(empleados_laboratorio * arreglo, empleados_laboratorio empleado, int validos);
+void mostrar_arreglo_empleados(empleados_laboratorio arreglo[],int validos);
 void listado_empleados_eliminados(char archivoEmpleados[]);
 int validacion_usuarioYclave(char archivoEmpleados[], char perfil[]);
 void mostrar_archivo(char archivo[]);

@@ -155,7 +155,7 @@ void altaPacientes (char archivo[])
 
 }
 
-void menu_modifica_campo_registro(FILE * archivo, pacientes paciente)
+/*void menu_modifica_campo_registro(FILE * archivo, pacientes paciente)
 {
     menu:
     BORRAR;
@@ -327,3 +327,4 @@ void modificarDireccion (char archivo[], pacientes p)
             }
 }
 
+*/

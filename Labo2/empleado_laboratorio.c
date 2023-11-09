@@ -114,12 +114,13 @@ void alta_empleado(char archivoEmpleado[])
                 }
                 else
                     {
-                         if(verificar_usuario_unico(archivoEmpleado,empleado.usuario)==1)
+                        if(verificar_usuario_unico(archivoEmpleado,empleado.usuario)==1)
                         {
                             gotoxy(20,5);printf("El USUARIO que ingreso ya existe en la base de datos vuelva a ingresarlo");
                             PAUSA;
                             BORRAR;
                         }
+
                         if(verificar_archivo_empleados(archivoEmpleado,empleado.dni)==-1)
                         {
                             BORRAR;
@@ -129,9 +130,10 @@ void alta_empleado(char archivoEmpleado[])
                             gotoxy(20,6);printf("El empleado se encuentra dado de baja. Desea reactivarlo? s/n ");
                             fflush(stdin);
                             scanf("%c",&activacion);
+
                             if(activacion=='s'||activacion=='S')
                             {
-                                reactivacion_empleado(ARCHIVO_EMPLEADOS,empleado.dni);
+                                reactivacion_empleado(archivoEmpleado,empleado.dni);
                             }
                         }
                     }
@@ -142,7 +144,7 @@ void alta_empleado(char archivoEmpleado[])
         {
             marco_menu();
             gotoxy(52,2);printf("ALTA DE EMPLEADO");
-            gotoxy(30,5);printf("\nERROR AL ABRIR EL ARCHIVO. LLAME AL 111\n");
+            gotoxy(30,5);printf("\nERROR AL ABRIR EL ARCHIVO. LLAME AL INTERNO 111\n");
         }
 }
 
@@ -300,8 +302,9 @@ void listado_empleados_vigentes(char archivoEmpleados[])
 {
     empleados_laboratorio empleado;
     gotoxy(43,2);printf("LISTADO DE EMPLEADOS VIGENTES");
-    int x=28,y=4;
-    int vigentes=0;
+
+    empleados_laboratorio arreglo[30];///arreglo para pasar de manera ordenada.
+    int validos=0;
 
     FILE * arch=fopen(archivoEmpleados,"rb");
 
@@ -311,17 +314,20 @@ void listado_empleados_vigentes(char archivoEmpleados[])
         {
             if(empleado.eliminado==0)
             {
-                mostrar_un_empleado(empleado,x,y);
-                vigentes++;
-                y=y+7;
+                validos=cargar_arreglo_ordenado_x_apellido(&arreglo,empleado,validos);
             }
         }
-        if(vigentes==0)
+        if(validos==0)
         {
             gotoxy(45,4);printf("NO EXISTEN EMPLEADOS EN NOMINA");
             getch();
         }
-        fclose(arch);
+        else
+        {
+            mostrar_arreglo_empleados(arreglo,validos);
+        }
+
+    fclose(arch);
     }
     else
     {
@@ -330,6 +336,47 @@ void listado_empleados_vigentes(char archivoEmpleados[])
     }
 
     getch();
+}
+
+int cargar_arreglo_ordenado_x_apellido(empleados_laboratorio * arreglo, empleados_laboratorio empleado, int validos)
+{
+    int stop=0;
+    int pos=validos;
+
+    while(stop ==0 && pos>0)
+    {
+        if(strcmpi(arreglo[pos-1].ape_nombre,empleado.ape_nombre)>0)
+        {
+            arreglo[pos]=arreglo[pos-1];
+            pos--;
+        }
+        else
+        {
+            arreglo[pos]=empleado;
+            validos++;
+            stop=1;
+        }
+    }
+        if(stop==0)
+        {
+            arreglo[0]=empleado;
+            validos++;
+        }
+
+    return validos;
+}
+
+void mostrar_arreglo_empleados(empleados_laboratorio arreglo[],int validos)
+{
+    int i=0;
+    int x=28,y=4;///coordenadas para imprimir
+
+    while(i<validos)
+    {
+        mostrar_un_empleado(arreglo[i],x,y);
+        y=y+7;
+        i++;
+    }
 }
 
 void listado_empleados_eliminados(char archivoEmpleados[])
@@ -438,7 +485,6 @@ void mostrar_archivo(char archivo[])
         fclose(arch);
     }
 }
-
 
 void menu_modifica_campo_registro(FILE * archivo, empleados_laboratorio empleado)
 {
@@ -593,19 +639,22 @@ void reactivacion_empleado(char archivoEmpleado[], int dni)
 {
     FILE * arch=fopen(archivoEmpleado,"r+b");
     empleados_laboratorio empleado;
+    int flag=0;
 
     if(arch)
     {
-        while(fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
+        while(flag==0 && fread(&empleado,sizeof(empleados_laboratorio),1,arch)>0)
         {
             if(empleado.dni==dni)
             {
                 empleado.eliminado=0;
-                fseek(arch,sizeof(empleados_laboratorio)*-1,SEEK_CUR);
+                fseek(arch,-1*sizeof(empleados_laboratorio),SEEK_CUR);
                 fwrite(&empleado,sizeof(empleados_laboratorio),1,arch);
                 gotoxy(45,8);printf("Reactivacion Exitosa!");
+                flag=1;
             }
         }
-        fclose(arch);
+
+    fclose(arch);
     }
 }

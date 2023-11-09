@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "conio.h"
+#include "practicas_ingreso.h"
 
 #define ARCHIVO_PRACXINGRESO "practicaXingreso.dat"
 #define BORRAR system("cls")
@@ -11,8 +12,7 @@ void alta_de_UNA_practXingreso(int numIngreso)
 {
     FILE * arch=fopen(ARCHIVO_PRACXINGRESO,"ab");
 
-    pracXingreso p;
-    p=crear_registro_practXingreso(numIngreso);
+    pracXingreso p=crear_registro_practXingreso(numIngreso);
 
     if(arch)
     {
@@ -24,7 +24,7 @@ void alta_de_UNA_practXingreso(int numIngreso)
 
 pracXingreso crear_registro_practXingreso(int numIngreso)
 {
-        pracXingreso pXi;
+    pracXingreso pXi;
     char nompractica[30];
     int verifica_practica;
 

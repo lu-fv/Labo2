@@ -10,6 +10,7 @@
 #include "practicas_Labo.h"
 
 #define ARCHIVO_EMPLEADOS "archivo_empleados.dat"
+#define ARCHIVO_PRACXINGRESO "practicaXingreso.dat"
 #define BORRAR system("cls")
 #define PAUSA system("pause")
 
@@ -870,29 +871,38 @@ void menu_administrador_practicas()
         {
         case 1:
             BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
+            marco_menu();
+            gotoxy(52,2);printf("ALTA DE PRACTICA");
+            AltaDePracticasNuevas(Practicas_Laboratorio);
             getch();
             goto menu;
 
         case 2:
             BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            marco_menu();
+            gotoxy(52,2);printf("BAJA DE PRACTICA");
+            char nombre[30];
+            gotoxy(30,5);printf("Ingrese el Nombre de la Practica que desea dar de baja = ");
+            fflush(stdin);
+            gets(nombre);
+            BORRAR;
+            bajaDePractica(Practicas_Laboratorio,nombre);
             getch();
             goto menu;
 
         case 3:
             BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
+            marco_menu();
+            gotoxy(52,2);printf("MODIFICACION DE PRACTICA");
+            ModificacionArchivoPracticas(Practicas_Laboratorio);
             getch();
             goto menu;
 
         case 4:
             BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
+            marco_menu();
+            gotoxy(52,2);printf("LISTADO DE PRACTICAS");
+            listado_practicas_ordenadas_alfabeticamente(Practicas_Laboratorio);
             getch();
             goto menu;
 
@@ -1353,7 +1363,7 @@ void menu_contrasenia()
 
 ///carga arbol de la base de datos de los 3 archivos (empleado,ingresos_lab y practicasXingreso)
 
-void carga_arbol()
+/*void carga_arbol()
 {
     nodoArbol * arbol=NULL;
 
@@ -1447,7 +1457,7 @@ nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
     return pacientebuscado;
 }
 
-nodoArbol * crear_nodo_arbol(pacientes p)
+/*nodoArbol * crear_nodo_arbol(pacientes p)
 {
     nodoArbol * nuevo=(nodoArbol*)malloc(sizeof(nodoArbol));
 
@@ -1486,5 +1496,5 @@ nodoListaPracticas * crearNodoListaPracticas(pracXingreso practica)
         }
     }
 }
-
+*/
 

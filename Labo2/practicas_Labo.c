@@ -4,18 +4,23 @@
 #include <conio.h>
 
 #define ESC 27
+#define BORRAR system("cls")
+#define PAUSA system("pause")
 
 #include "practicas_Labo.h"
 #include "diseño.h"
 
 practicas CrearPracticaLaboratorio ()
 {
+    marco_menu();
+    gotoxy(52,2);printf("ALTA DE PRACTICA");
+
     practicas nuevaPractica;
 
     nuevaPractica.nro_de_practica=autoincrementalPracticas(Practicas_Laboratorio);
-    printf("Ingrese el nombre de la practica: \n");
+    gotoxy(30,5);printf("Ingrese el nombre de la practica: ");
     fflush(stdin);
-    gets(nuevaPractica.nombre);
+    gotoxy(66,5);gets(nuevaPractica.nombre);
     nuevaPractica.vigencia=0;
 
     return nuevaPractica;
@@ -53,9 +58,16 @@ int verificarSiExistePractica(char archivo[], char PracticaNueva[])
     {
         while(flag == 0 && fread(&PracticaExistente, sizeof(practicas), 1, arch)>0)
         {
-            if(strcmpi(PracticaExistente.nombre, PracticaNueva)==0 && PracticaExistente.vigencia==0)
+            if(strcmpi(PracticaExistente.nombre, PracticaNueva)==0)
             {
-                flag = 1;
+                if(PracticaExistente.vigencia==0)
+                {
+                    flag = 1;///retorna 1 cuando la practica existe y esta activa
+                }
+                else
+                {
+                    flag=-1;///retorna -1 cuando la practica existe pero esta dada de baja;
+                }
             }
         }
         fclose(arch);
@@ -67,50 +79,121 @@ int verificarSiExistePractica(char archivo[], char PracticaNueva[])
 ///damos de alta una nueva práctica por usuario, verificando que no exista previamente en el archivo de prácticas
 void AltaDePracticasNuevas(char nombreArchivo[])
 {
+    marco_menu();
+    gotoxy(52,2);printf("ALTA DE NUEVA PRACTICA");
+
     char opcion='s', modifica;
 
     while(opcion == 's'||opcion=='S')
     {
         practicas NuevaPractica=CrearPracticaLaboratorio();
-
+        BORRAR;
         if(verificarSiExistePractica(nombreArchivo, NuevaPractica.nombre)==0)
         {
             FILE * archivo = fopen(nombreArchivo, "ab");
 
             if(archivo)
             {
+                marco_menu();
+                gotoxy(52,2);printf("ALTA DE NUEVA PRACTICA");
                 fwrite(&NuevaPractica, sizeof(practicas), 1, archivo);
-                printf("¿Desea seguir cargando prácticas? s/n\n");
+                gotoxy(40,7);printf("¿Desea seguir cargando prácticas? s/n");
                 fflush(stdin);
-                scanf("%c",&opcion);
+                gotoxy(78,7);scanf("%c",&opcion);
                 fclose(archivo);
+                BORRAR;
             }
             else
             {
-                printf("No se pudo abrir el archivo\n");
+                marco_menu();
+                gotoxy(52,2);printf("ALTA DE NUEVA PRACTICA");
+                printf("No se pudo abrir el archivo. Llame al interno 111\n");
                 opcion='n';
             }
         }
         else
         {
-            printf("La práctica ya existe. ¿Desea modificar su nombre? s/n \n");
-            fflush(stdin);
-            modifica = getch();
+            marco_menu();
+            gotoxy(52,2);printf("ALTA DE NUEVA PRACTICA");
 
-            if(modifica=='s'|| modifica=='S')
+            if(verificarSiExistePractica(nombreArchivo, NuevaPractica.nombre)==1)
             {
-                ModificacionArchivoPracticas(nombreArchivo);
-                printf("¿Desea seguir cargando prácticas? S/N\n");
+                gotoxy(30,5);printf("La práctica ya existe. ¿Desea modificar su nombre? s/n ");
                 fflush(stdin);
-                scanf("%c",&opcion);
+                gotoxy(78,5);modifica = getch();
+
+                if(modifica=='s'|| modifica=='S')
+                {
+                    ModificacionArchivoPracticas(nombreArchivo);
+                    gotoxy(48,10);printf("¿Desea seguir cargando prácticas? S/N\n");
+                    fflush(stdin);
+                    scanf("%c",&opcion);
+                    BORRAR;
+                }
             }
+            else
+            {
+                marco_menu();
+                gotoxy(52,2);printf("ALTA DE NUEVA PRACTICA");
+                gotoxy(20,6);printf("La práctica ya existe pero esta dada de baja. ¿Desea Activarla nuevamente? s/n \n");
+                fflush(stdin);
+                gotoxy(80,6);modifica=getch();
 
+                if(modifica=='s'|| modifica=='S')
+                {
+                    reactivacion_Practica(nombreArchivo,NuevaPractica.nombre);
+                }
+            }
         }
-
     }
-
 }
 
+void bajaDePractica(char archivo[],char nombrePractica)
+{
+    marco_menu();
+    gotoxy(52,2);printf("BAJA DE PRACTICA");
+
+    practicas p;
+    int encontrado=0;
+
+    if(verificarSiExistePractica(archivo,nombrePractica)==1)
+    {
+        FILE * arch=fopen(archivo,"r+b");
+
+        if(arch)
+        {
+            while(encontrado == 0 && fread(&p,sizeof(practicas),1,arch)>0)
+            {
+                if(strcmpi(p.nombre,nombrePractica)==0)
+                {
+                    encontrado=1;///el while corta en la posicion del empleado buscado
+                }
+            }
+            gotoxy(30,6);printf("Usted quiere dar de baja al siguiente empleado");
+            gotoxy(25,8);printf("NOMBRE = %s [iD = %d]",p.nombre,p.nro_de_practica);
+            char eliminar;
+            gotoxy(25,15);printf("Presione \"s\" si es correcto sino presione cualquier tecla: ");
+            fflush(stdin);
+            gotoxy(85,15);scanf("%c",&eliminar);
+
+            if(eliminar=='s'||eliminar=='S')
+            {
+                p.vigencia=1;///modifico
+
+                fseek(arch,sizeof(practicas)*-1,SEEK_CUR);
+                fwrite(&p,sizeof(practicas),1,arch);///grabo
+                gotoxy(45,18);printf("Baja de Practica Exitosa");
+            }
+
+            else
+            {
+                gotoxy(45,18);printf("Cambio NO realizado, vuelva a intentarlo");
+            }
+
+            fclose(arch);
+        }
+    }
+}
 
 ///Función para modificar el nombre de la práctica
 void ModificacionArchivoPracticas(char nombreArchivo[])
@@ -170,4 +253,118 @@ practicas buscaPoscionPractica(FILE * arch,char nombrePractica[])
     }
 
     return registro;
+}
+
+void reactivacion_Practica(char archivoPractica[], char nombrePractica)
+{
+    FILE * arch=fopen(archivoPractica,"r+b");
+    practicas p;
+    int flag=0;
+
+    if(arch)
+    {
+        while(flag==0 && fread(&p,sizeof(practicas),1,arch)>0)
+        {
+            if(strcmpi(p.nombre,nombrePractica)==0)
+            {
+                p.vigencia=0;
+                fseek(arch,-1*sizeof(practicas),SEEK_CUR);
+                fwrite(&p,sizeof(practicas),1,arch);
+                gotoxy(45,8);printf("Reactivacion Exitosa!");
+                flag=1;
+            }
+        }
+
+    fclose(arch);
+    }
+}
+
+void listado_practicas_ordenadas_alfabeticamente(char archivoP[])
+{
+    practicas p;
+    gotoxy(43,2);printf("LISTADO DE PRACTICAS VIGENTES");
+
+    practicas arreglo[30];///arreglo para pasar de manera ordenada.
+    int validos=0;
+
+    FILE * arch=fopen(archivoP,"rb");
+
+    if(arch)
+    {
+        while(fread(&p,sizeof(practicas),1,arch)>0)
+        {
+            if(p.vigencia==0)
+            {
+                validos=cargar_arreglo_practicas_ordenado_x_apellido(&arreglo,p,validos);
+            }
+        }
+        if(validos==0)
+        {
+            gotoxy(45,4);printf("NO EXISTEN EMPLEADOS EN NOMINA");
+            getch();
+        }
+        else
+        {
+            mostrar_arreglo_practicas(arreglo,validos);
+        }
+
+    fclose(arch);
+    }
+    else
+    {
+        gotoxy(40,6);printf("EL ARCHIVO NO PUDO ABRIRSE CORRECTAMENTE. LLAME AL 111");
+        gotoxy(40,8);PAUSA;
+    }
+
+    getch();
+}
+
+int cargar_arreglo_practicas_ordenado_x_apellido(practicas * arreglo, practicas p, int validos)
+{
+    int stop=0;
+    int pos=validos;
+
+    while(stop ==0 && pos>0)
+    {
+        if(strcmpi(arreglo[pos-1].nombre,p.nombre)>0)
+        {
+            arreglo[pos]=arreglo[pos-1];
+            pos--;
+        }
+        else
+        {
+            arreglo[pos]=p;
+            validos++;
+            stop=1;
+        }
+    }
+        if(stop==0)
+        {
+            arreglo[0]=p;
+            validos++;
+        }
+
+    return validos;
+}
+
+void mostrar_arreglo_practicas(practicas arreglo[],int validos)
+{
+    BORRAR;
+    int i=0;
+    int x=28,y=4;///coordenadas para imprimir
+
+    gotoxy(20,2);printf("=================LISTADO DE PRACTICAS VIGENTES==================");
+
+    while(i<validos)
+    {
+        mostrar_una_practica(arreglo[i],x,y);
+        y=y+3;
+        i++;
+    }
+}
+
+void mostrar_una_practica(practicas p, int x, int y)
+{
+    gotoxy(x,y++);printf("NOMBRE: %s [iD = %d]", p.nombre,p.nro_de_practica);
+    gotoxy(x,y++);printf("=====================================================");
 }

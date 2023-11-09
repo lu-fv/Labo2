@@ -29,8 +29,8 @@ typedef struct
 void fechaActual(char fecha[]);
 int autoincrementalIngresos(char archivo[]);
 laboratorios nuevoRegistro(char archivo[]);
-nodoListaIngreso * crearNodoIngreso(laboratorios nuevo);///deberia ser pracXingreso en lugar de nodolistapracticas
-nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIngreso * nuevo);///deberia ser pracXingreso en lugar de nodolistapracticas
+///nodoListaIngreso * crearNodoIngreso(laboratorios nuevo);///deberia ser pracXingreso en lugar de nodolistapracticas
+///nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIngreso * nuevo);///deberia ser pracXingreso en lugar de nodolistapracticas
 void altaDeLaboratorio(char archivo[], laboratorios registro);
 void bajDeLabXId(int id, char archivo[]);
 void modificacionDeLaboratorio(char archivo[]);
