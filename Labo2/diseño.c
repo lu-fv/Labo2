@@ -884,17 +884,20 @@ void menu_administrador_practicas()
             char nombre[30];
             gotoxy(30,5);printf("Ingrese el Nombre de la Practica que desea dar de baja = ");
             fflush(stdin);
-            gets(nombre);
+            scanf("%s",&nombre);
             BORRAR;
             bajaDePractica(Practicas_Laboratorio,nombre);
-            getch();
             goto menu;
 
         case 3:
             BORRAR;
             marco_menu();
+            char practicamodif[30];
             gotoxy(52,2);printf("MODIFICACION DE PRACTICA");
-            ModificacionArchivoPracticas(Practicas_Laboratorio);
+            gotoxy(30,6);printf("Ingrese el nombre de la practica: ");
+            fflush(stdin);
+            gotoxy(65,6);gets(practicamodif);
+            ModificacionArchivoPracticas(Practicas_Laboratorio,practicamodif);
             getch();
             goto menu;
 
