@@ -153,7 +153,6 @@ void marco_contrasenia()
 
 
 
-
 ///menu
 void menu()
 {
@@ -1209,7 +1208,7 @@ void menu_contrasenia()
 
 nodoArbol * carga_arbol()
 {
-    nodoArbol * arbol=NULL;
+    nodoArbol * arbol=inicArbol();
 
     FILE * pac=fopen(ARCHIVO_PACIENTES,"rb");
     pacientes pacientito;
@@ -1224,7 +1223,7 @@ nodoArbol * carga_arbol()
         while(fread(&pacientito,sizeof(pacientes),1,pac)>0)
         {
             ///cargo paciente en el arbol
-            carga_arbol_un_paciente(arbol,crearNodoPacientes(pacientito));
+            arbol=insertar(arbol,crearNodoPacientes(pacientito));
             ///verifico que el paciente tenga ingresos de laboratorios y
             ///si tiene ingresos procedo a cargar la lista de ingresos del nodo arbol paciente
             if(valida_existencia_de_ingresos_x_paciente(ARCHIVOINGRESOS,pacientito.dni)==1)
@@ -1236,19 +1235,21 @@ nodoArbol * carga_arbol()
                     ///cargo el ingreso de acuerdo al paciente
                     if(ingreso.dni_paciente==pacientito.dni)
                     {
-                       ///arbol->listaIngresos=agregarAlFinalListaIngresos();
+                       arbolpaciente->listaIngresos=agregarAlFinalIngresos(arbolpaciente->listaIngresos,crearNodoIngreso(ingreso));
                     }
                     ///cargo las practicas del ingreso
-                    while(fread(&practica,sizeof(pracXingreso),1,ing)>0)
+                    while(fread(&practica,sizeof(pracXingreso),1,prac)>0)
                     {
                         if(practica.nro_de_ingreso == ingreso.Nro_de_ingreso)
                         {
-                            ///arbol->listaIngresos->listaPracticas=agregar....
+                           arbolpaciente->listaIngresos->listaPracticas=agregarAlFinalListaPracticas(arbolpaciente->listaIngresos->listaPracticas,crearNodoPracticas(practica));
                         }
                     }
 
                 }
             }
+            fseek(prac,0,SEEK_SET);///reinicio el cursor del archivo practicas
+            fseek(ing,0,SEEK_SET);///reinicio el cursir del archivo ingresos
 
         }
 
@@ -1256,15 +1257,32 @@ nodoArbol * carga_arbol()
         fclose(ing);
         fclose(prac);
     }
+    return arbol;
 }
 
-void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente)
+int valida_existencia_de_ingresos_x_paciente(char archIngresos[],int dni_paciente)
 {
+    FILE * arch=fopen(archIngresos,"rb");
+    laboratorios lab;
     int existeIngreso=0;
 
-    if(arbol)
+    if(arch)
     {
-        if(arbol->listaIngresos->ingr
+        while(existeIngreso==0 && fread(&lab,sizeof(laboratorios),1,arch)>0)
+        {
+            if(lab.dni_paciente==dni_paciente)
+            {
+                if(lab.vigencia==0)
+                {
+                    existeIngreso=1;
+                }
+                else
+                {
+                    existeIngreso=-1;
+                }
+            }
+        }
+        fclose(arch);
     }
 
     return existeIngreso;
@@ -1294,48 +1312,8 @@ nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
     return pacientebuscado;
 }
 
-nodoArbol * crear_nodo_arbol(pacientes p)
-{
-    nodoArbol * nuevo=(nodoArbol*)malloc(sizeof(nodoArbol));
-
-    nuevo->p=p;
-    nuevo->izq=NULL;
-    nuevo->der=NULL;
-
-    return nuevo;
-}
-
-/*pracXingreso * crearNodoListaPracticas(pracXingreso practica)
-{
-    ///nodoListaPracticas * nuevo = (nodoListaPracticas*)malloc(sizeof(nodoListaPracticas));
-
-    ///nuevo->ingreso=practica;
-    ///nuevo->siguiente=NULL;
-
-    return nuevo;
-}*/
-
- nodoArbol * carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
-{
-    if(arbol==NULL)
-    {
-        arbol=nuevo;
-    }
-    else
-    {
-        if(nuevo->p.dni > arbol->p.dni)
-        {
-            arbol->der=carga_arbol_un_paciente(arbol->der,nuevo);
-        }
-        else
-        {
-            arbol->izq=carga_arbol_un_paciente(arbol->izq,nuevo);
-        }
-    }
-}
-
-
 /*
+
 void marco_plantilla()
 {
     ///linea horizontal superior

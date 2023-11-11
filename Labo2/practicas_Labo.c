@@ -62,7 +62,7 @@ int verificarSiExistePractica(char archivo[], char PracticaNueva[])
             {
                 if(PracticaExistente.vigencia==0)
                 {
-                    flag = 1;///retorna 1 cuando la practica existe y esta activa
+                    flag = PracticaExistente.nro_de_practica;///retorna 1 cuando la practica existe y esta activa
                 }
                 else
                 {
@@ -113,7 +113,7 @@ void AltaDePracticasNuevas(char nombreArchivo[])
             marco_menu();
             gotoxy(52,2);printf("ALTA DE PRACTICA");
 
-            if(verificarSiExistePractica(nombreArchivo, NuevaPractica.nombre)==1)
+            if(verificarSiExistePractica(nombreArchivo, NuevaPractica.nombre)>0)
             {
                 gotoxy(20,6);printf("La practica ya existe. Desea modificar su nombre? \"s\"o\"n\": ");
                 fflush(stdin);
@@ -406,4 +406,42 @@ void busca_practica_y_muestra(char archivoPrac[], char nomPrac[])///pasa por par
         }
         fclose(arch);
     }
+}
+
+int verificar_si_practica_es_utilizada(nodoArbol * arbol, int idPractica)
+{
+    int utilizada=0;///inicio considerando que la practica no esta siendo utilizada
+
+    if(utilizada==0 && arbol)
+    {
+        while(utilizada==0 && arbol->listaIngresos!=NULL)///si hay lista ingresos! recorro lista ingresos
+        {
+            if(arbol->listaIngresos->lab.vigencia==0)///si el ingreso no esta dado de baja recorro las practicas
+            {
+                while(utilizada==0 && arbol->listaIngresos->listaPracticas!=NULL)///si hay lista practicas la recorro
+                {
+                    if(arbol->listaIngresos->listaPracticas->datoPractica.nro_de_practica==idPractica)
+                    {
+                        utilizada=1;
+                    }
+                    arbol->listaIngresos->listaPracticas=arbol->listaIngresos->listaPracticas->siguiente;
+                }
+            }
+            arbol->listaIngresos=arbol->listaIngresos->siguiente;
+        }
+
+        if(utilizada==0)///como no cambio el flag en el primer paciente recorro por derecha;
+        {
+            utilizada=verificar_si_practica_es_utilizada(arbol->der,idPractica);
+
+            if(utilizada==0)///como no cambio el flag por derecha recorro por izquierda;
+            {
+                 utilizada=verificar_si_practica_es_utilizada(arbol->izq,idPractica);
+            }
+        }
+
+    }
+
+
+    return utilizada;
 }
