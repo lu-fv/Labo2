@@ -308,3 +308,95 @@
 	"conio.h"
 	"practicas_ingreso.h"
 
+1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\empleado_laboratorio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"conio.h"
+	"diseño.h"
+	"pacientes.h"
+	"ingresos_Labo.h"
+	"practicas_ingreso.h"
+	"practicas_Labo.h"
+
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\diseño.h
+	"empleado_laboratorio.h"
+	"pacientes.h"
+	"ingresos_Labo.h"
+	"practicas_ingreso.h"
+	"practicas_Labo.h"
+
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\empleado_laboratorio.h
+	"diseño.h"
+	"ingresos_Labo.h"
+	"pacientes.h"
+	"practicas_Labo.h"
+	"practicas_ingreso.h"
+
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\ingresos_labo.h
+	<time.h>
+	<stdio.h>
+	"practicas_ingreso.h"
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"pacientes.h"
+	"practicas_Labo.h"
+
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_ingreso.h
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"ingresos_Labo.h"
+	"pacientes.h"
+	"practicas_Labo.h"
+
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\pacientes.h
+	"empleado_laboratorio.h"
+	"ingresos_Labo.h"
+	"practicas_ingreso.h"
+	"practicas_Labo.h"
+
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_labo.h
+
+1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\ingreso_labo.c
+	<time.h>
+	<stdio.h>
+	<string.h>
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"pacientes.h"
+	"ingresos_Labo.h"
+	"practicas_ingreso.h"
+	"practicas_Labo.h"
+
+1699218073 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"practicas_Labo.h"
+
+1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\pacientes.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"pacientes.h"
+	"ingresos_Labo.h"
+	"practicas_ingreso.h"
+	"practicas_Labo.h"
+
+1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_ingreso.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"conio.h"
+	"practicas_ingreso.h"
+
+1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_labo.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"conio.h"
+	"practicas_Labo.h"
+	"diseño.h"
+
