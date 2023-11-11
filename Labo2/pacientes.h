@@ -15,19 +15,19 @@ typedef struct
     char telefono[15];
     char direccion[30];
     int eliminado;///0 vigente,1 eliminado
-    struct laboratorios * ingreso;
+    ///struct laboratorios * ingreso;
 }pacientes;
 
 typedef struct
 {
     pacientes p;
+    struct nodoListaIngreso * listaIngresos;
     struct nodoArbol *izq;
     struct nodoArbol *der;
 }nodoArbol;
 
-
 pacientes cargaPacientes();
-void imprimirUnPaciente( pacientes p);
+void imprimirUnPaciente(pacientes p);
 nodoArbol * inicArbol();
 nodoArbol * crearNodoPacientes (pacientes p);
 nodoArbol * insertar( nodoArbol * arbol, int dni);

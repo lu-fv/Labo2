@@ -41,7 +41,6 @@ pracXingreso crear_registro_practXingreso(int numIngreso)
             strcpy(pXi.nombre,nompractica);
             pXi.vigencia=0;
             strcpy(pXi.resultado,"A CONFIRMAR");
-            pXi.siguiente=NULL;
         }
     }
     return pXi;

@@ -655,6 +655,6 @@ void reactivacion_empleado(char archivoEmpleado[], int dni)
             }
         }
 
-    fclose(arch);
+        fclose(arch);
     }
 }

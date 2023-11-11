@@ -12,13 +12,13 @@
 void gotoxy(int x,int y);
 
 void marco_borde_ancho();
-void marco_plantilla();
-void marco_factura();
+///void marco_plantilla();
+///void marco_factura();
 void marco_menu();
 void marco_contrasenia();
 
-void plantilla_laboratorios_x_paciente();
-void factura();
+///void plantilla_laboratorios_x_paciente();
+///void factura();
 
 void menu();
 void menu_administrador();
@@ -34,7 +34,7 @@ void menu_gestion_administrativa_practicas();
 void menu_gestion_administrativa_laboratorios();
 void menu_contrasenia();
 
-void carga_arbol();
+nodoArbol * carga_arbol();
 int valida_existencia_de_ingresos_x_paciente(char archivoingresos[],int dni_paciente);
 nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni);
 nodoArbol * crear_nodo_arbol(pacientes p);

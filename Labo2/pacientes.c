@@ -31,7 +31,7 @@ pacientes cargaPacientes()
     fflush (stdin);
     gets (p.telefono);
     p.eliminado =0;
-    p.ingreso = NULL;
+    ///p.ingreso = NULL;
 
     return p;
 }

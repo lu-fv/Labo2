@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <conio.h>
+#include "conio.h"
 
 #define ESC 27
 #define BORRAR system("cls")
@@ -79,7 +79,7 @@ int verificarSiExistePractica(char archivo[], char PracticaNueva[])
 ///damos de alta una nueva práctica por usuario, verificando que no exista previamente en el archivo de prácticas
 void AltaDePracticasNuevas(char nombreArchivo[])
 {
-    char opcion='s', modifica;
+    char opcion='s', modifica, reactiva;
 
     while(opcion == 's'||opcion=='S')
     {
@@ -115,7 +115,7 @@ void AltaDePracticasNuevas(char nombreArchivo[])
 
             if(verificarSiExistePractica(nombreArchivo, NuevaPractica.nombre)==1)
             {
-                gotoxy(20,6);printf("La práctica ya existe. ¿Desea modificar su nombre? \"s\"o\"n\": ");
+                gotoxy(20,6);printf("La practica ya existe. Desea modificar su nombre? \"s\"o\"n\": ");
                 fflush(stdin);
                 gotoxy(90,6);scanf("%c",&modifica);
 
@@ -123,7 +123,7 @@ void AltaDePracticasNuevas(char nombreArchivo[])
                 {
                     ModificacionArchivoPracticas(nombreArchivo,NuevaPractica.nombre);
                     gotoxy(48,8);printf("MODIFICACION EXITOSA!");
-                    gotoxy(35,9);printf("¿Desea seguir cargando prácticas? S/N\n");
+                    gotoxy(35,9);printf("Desea seguir cargando prácticas? S/N\n");
                     fflush(stdin);
                     gotoxy(78,9);scanf("%c",&opcion);
                     BORRAR;
@@ -133,11 +133,11 @@ void AltaDePracticasNuevas(char nombreArchivo[])
             {
                 marco_menu();
                 gotoxy(52,2);printf("ALTA DE PRACTICA");
-                gotoxy(20,6);printf("La práctica ya existe pero esta dada de baja. ¿Desea Activarla nuevamente? s/n \n");
+                gotoxy(15,6);printf("La practica ya existe pero esta dada de baja.Desea Activarla nuevamente? s/n \n");
                 fflush(stdin);
-                gotoxy(85,6);modifica=getch();
+                gotoxy(94,6);scanf("%c",&reactiva);
 
-                if(modifica=='s'|| modifica=='S')
+                if(reactiva=='s'|| reactiva=='S')
                 {
                     reactivacion_Practica(nombreArchivo,NuevaPractica.nombre);
                 }
@@ -263,7 +263,7 @@ practicas buscaPoscionPractica(FILE * arch,char nombrePractica[])
     return registro;
 }
 
-void reactivacion_Practica(char archivoPractica[], char nombrePractica)
+void reactivacion_Practica(char archivoPractica[], char nombrePractica[])
 {
     FILE * arch=fopen(archivoPractica,"r+b");
     practicas p;
@@ -283,7 +283,7 @@ void reactivacion_Practica(char archivoPractica[], char nombrePractica)
             }
         }
 
-    fclose(arch);
+        fclose(arch);
     }
 }
 
@@ -375,4 +375,35 @@ void mostrar_una_practica(practicas p, int x, int y)
 {
     gotoxy(x,y++);printf("NOMBRE: %s [iD = %d]", p.nombre,p.nro_de_practica);
     gotoxy(x,y++);printf("=====================================================");
+}
+
+void busca_practica_y_muestra(char archivoPrac[], char nomPrac[])///pasa por parametro los caracteres que ingrese el usuario y muestra las practicas que comiencen de esa forma
+{
+    int caracteres=strlen(nomPrac);
+
+    FILE * arch=fopen(archivoPrac,"rb");
+    practicas p;
+    int i=0;
+    int distinto=0;
+
+    if(arch)
+    {
+        while(fread(&p,sizeof(practicas),1,arch)>0)
+        {
+            while(distinto=0 && i<caracteres )
+            {
+                if(p.nombre[i]!=nomPrac[i])
+                {
+                    distinto=1;
+                }
+                i++;
+            }
+            if(distinto==0)
+            {
+                ///mostrar_una_practica(p,)
+            }
+            distinto=0;///reinicia para leer otro registro
+        }
+        fclose(arch);
+    }
 }

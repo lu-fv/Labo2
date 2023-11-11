@@ -209,17 +209,17 @@
 	<stdlib.h>
 	"practicas_Labo.h"
 
-1699585828 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\practicas_labo.h
+1699661780 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\practicas_labo.h
 
-1699586205 source:c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\practicas_labo.c
+1699661780 source:c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\practicas_labo.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
-	<conio.h>
+	"conio.h"
 	"practicas_Labo.h"
 	"diseño.h"
 
-1699374037 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\diseño.h
+1699672433 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\diseño.h
 	"empleado_laboratorio.h"
 	"pacientes.h"
 	"ingresos_Labo.h"
@@ -233,7 +233,7 @@
 	"practicas_Labo.h"
 	"practicas_ingreso.h"
 
-1699486708 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\ingresos_labo.h
+1699672584 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\ingresos_labo.h
 	<time.h>
 	<stdio.h>
 	"practicas_ingreso.h"
@@ -242,20 +242,20 @@
 	"pacientes.h"
 	"practicas_Labo.h"
 
-1699487317 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\practicas_ingreso.h
+1699672334 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\practicas_ingreso.h
 	"diseño.h"
 	"empleado_laboratorio.h"
 	"ingresos_Labo.h"
 	"pacientes.h"
 	"practicas_Labo.h"
 
-1699374037 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\pacientes.h
+1699672334 c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\pacientes.h
 	"empleado_laboratorio.h"
 	"ingresos_Labo.h"
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1699501037 source:c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\empleado_laboratorio.c
+1699653725 source:c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\empleado_laboratorio.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -289,7 +289,7 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1699486965 source:c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\pacientes.c
+1699672376 source:c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\pacientes.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -301,7 +301,7 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1699487263 source:c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\practicas_ingreso.c
+1699672414 source:c:\users\mariu\onedrive\escritorio\gitkraken\labo2\labo2\practicas_ingreso.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

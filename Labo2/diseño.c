@@ -3,6 +3,7 @@
 #include <string.h>
 #include <windows.h>
 #include <conio.h>
+
 #include "empleado_laboratorio.h"
 #include "pacientes.h"
 #include "ingresos_Labo.h"
@@ -47,113 +48,6 @@ void marco_borde_ancho()
     }
 }
 
-void marco_plantilla()
-{
-    ///linea horizontal superior
-    printf("%c",201);
-    for(int i=1;i<=118;i++)
-    {
-        gotoxy(0+i,0);printf("%c",205);
-    }
-    printf("%c",187);
-
-    ///linea horizontal inferior
-    gotoxy(0,28);printf("%c",200);
-    for(int i=1;i<=118;i++)
-    {
-        gotoxy(0+i,28);printf("%c",205);
-    }
-    printf("%c",188);
-
-    ///linea vertical izquierda
-    for(int j=1;j<8;j++)
-    {
-        gotoxy(0,0+j);printf("%c",186);
-    }
-    gotoxy(0,8);printf("%c",204);
-
-     for(int i=1;i<=118;i++)
-    {
-        gotoxy(0+i,8);printf("%c",205);
-    }
-
-    for(int j=9;j<28;j++)
-    {
-        gotoxy(0,0+j);printf("%c",186);
-    }
-
-    for(int i=1;i<=118;i++)
-    {
-        gotoxy(0+i,28);printf("%c",205);
-    }
-    printf("%c",188);
-
-    ///linea vertical derecha
-    for(int j=1;j<8;j++)
-    {
-        gotoxy(119,0+j);printf("%c",186);
-    }
-    gotoxy(119,8);printf("%c",185);
-
-    for(int j=9;j<28;j++)
-    {
-        gotoxy(119,0+j);printf("%c",186);
-    }
-}
-
-void marco_factura()
-{
-    ///linea horizontal superior
-    printf("%c",201);
-    for(int i=1;i<=60;i++)
-    {
-        gotoxy(0+i,0);printf("%c",205);
-    }
-    printf("%c",187);
-
-    ///linea horizontal inferior
-    gotoxy(0,28);printf("%c",200);
-    for(int i=1;i<=60;i++)
-    {
-        gotoxy(0+i,28);printf("%c",205);
-    }
-    printf("%c",188);
-
-    ///linea vertical izquierda
-    for(int j=1;j<8;j++)
-    {
-        gotoxy(0,0+j);printf("%c",186);
-    }
-    gotoxy(0,8);printf("%c",204);
-
-     for(int i=1;i<=60;i++)
-    {
-        gotoxy(0+i,8);printf("%c",205);
-    }
-
-    for(int j=9;j<28;j++)
-    {
-        gotoxy(0,0+j);printf("%c",186);
-    }
-
-    for(int i=1;i<=60;i++)
-    {
-        gotoxy(0+i,28);printf("%c",205);
-    }
-    printf("%c",188);
-
-    ///linea vertical derecha
-    for(int j=1;j<8;j++)
-    {
-        gotoxy(61,0+j);printf("%c",186);
-    }
-    gotoxy(61,8);printf("%c",185);
-
-    for(int j=9;j<28;j++)
-    {
-        gotoxy(61,0+j);printf("%c",186);
-    }
-}
 
 void marco_menu()
 {
@@ -258,59 +152,6 @@ void marco_contrasenia()
 }
 
 
-///plantillas
-void plantilla_laboratorios_x_paciente()
-{
-    marco_plantilla();
-    system("COLOR E");
-    gotoxy(15,2);printf("FECHA: 10/10/2023");
-    gotoxy(80,2);printf("MEDICO: BELTRAN, JORGE");
-    gotoxy(15,5);printf("Nro LABORATORIO: 027");
-    gotoxy(80,5),printf("PACIENTE: 154");
-
-    gotoxy(10,11);printf("%c GLUCEMIA .................",254);
-    gotoxy(40,11);printf("RESULTADO: 107 mg/dl  ......");
-    gotoxy(70,11);printf("VALOR DE REFERENCIA:  < 110 mg/dl ......");
-
-    gotoxy(10,12);printf("%c CREATININEMIA ............",254);
-    gotoxy(40,12);printf("RESULTADO: 0.73 mg/dl  .....");
-    gotoxy(70,12);printf("VALOR DE REFERENCIA:  0.52-1.06 mg/dl ..");
-
-    gotoxy(10,13);printf("%c COLESTEROL TOTAL .........",254);
-    gotoxy(40,13);printf("RESULTADO: 205 mg/dl   .....");
-    gotoxy(70,13);printf("VALOR DE REFERENCIA:  < 200 mg/dl ......");
-
-    getch();
-
-}
-
-void factura()
-{
-    marco_factura();
-    system("COLOR E");
-    gotoxy(4,2);printf("FECHA: 10/10/2023");
-    gotoxy(37,2);printf("Nro FACTURA: 01-003");
-    gotoxy(4,4);printf("NOMBRE Y APELLIDO: NEIRA MARIA EUGENIA");
-    gotoxy(4,5);printf("DNI: 31561321");
-
-    gotoxy(6,11);printf("%c PRACTICA:  .......",254);
-    gotoxy(30,11);printf("IMPORTE: $   ......");
-
-    gotoxy(6,12);printf("%c PRACTICA:  .......",254);
-    gotoxy(30,12);printf("IMPORTE: $   ......");
-
-    gotoxy(6,13);printf("%c PRACTICA:  .......",254);
-    gotoxy(30,13);printf("IMPORTE: $   ......");
-
-    gotoxy(6,15);printf("%c COBERTURA:  .......",254);
-    gotoxy(4,17);printf("______________________________________________________");
-    gotoxy(15,20);printf("%c IMPORTE TOTAL:  .......",254);
-
-    gotoxy(65,2);printf("Presione ALT+P para imprimir");
-
-    getch();
-
-}
 
 
 ///menu
@@ -1366,7 +1207,7 @@ void menu_contrasenia()
 
 ///carga arbol de la base de datos de los 3 archivos (empleado,ingresos_lab y practicasXingreso)
 
-/*void carga_arbol()
+nodoArbol * carga_arbol()
 {
     nodoArbol * arbol=NULL;
 
@@ -1390,21 +1231,22 @@ void menu_contrasenia()
             {
                 nodoArbol * arbolpaciente=busca_nodopaciente_en_arbol(arbol,pacientito.dni);
 
-                while(fread(&ingreso,sizeof(laboratorios),1,ing)>0)
+                while(fread(&ingreso,sizeof(laboratorios),1,ing)==1)
                 {
+                    ///cargo el ingreso de acuerdo al paciente
                     if(ingreso.dni_paciente==pacientito.dni)
                     {
-                        ///arbolpaciente->ingreso=agregarAlFinalIngresos(arbolpaciente->ingreso,crearNodoIngreso(ingreso));
+                       ///arbol->listaIngresos=agregarAlFinalListaIngresos();
                     }
-                }
-                ///procedo a cargar las practicas al ingreso correspondiente
-                while(fread(&practica,sizeof(pracXingreso),1,ing)>0)
-                {
-                    if(practica.nro_de_ingreso == ingreso.Nro_de_ingreso)
+                    ///cargo las practicas del ingreso
+                    while(fread(&practica,sizeof(pracXingreso),1,ing)>0)
                     {
-                        ///arbolpaciente->ingreso->practica=agregarAlFinalListaPracticas(arbolpaciente->ingreso->practica,crearNodoListaPracticas(practica));
-
+                        if(practica.nro_de_ingreso == ingreso.Nro_de_ingreso)
+                        {
+                            ///arbol->listaIngresos->listaPracticas=agregar....
+                        }
                     }
+
                 }
             }
 
@@ -1419,16 +1261,24 @@ void menu_contrasenia()
 int valida_existencia_de_ingresos_x_paciente(char archivoingresos[],int dni_paciente)
 {
     laboratorios ing;
-    int existeIngreso=-1;
+    int existeIngreso=0;
     FILE * arch=fopen(archivoingresos,"rb");
 
     if(arch)
     {
-        while(existeIngreso==-1 && fread(&ing,sizeof(laboratorios),1,arch)>0)
+        while(existeIngreso==0 && fread(&ing,sizeof(laboratorios),1,arch)>0)
         {
-            if(ing.dni_paciente==dni_paciente)
+            if(ing.dni_paciente==dni_paciente && ing.vigencia==0)
             {
                 existeIngreso=1;
+            }
+            else
+            {
+                if(ing.dni_paciente==dni_paciente && ing.vigencia==1)
+                {
+                     existeIngreso=-1;
+                }
+
             }
         }
         fclose(arch);
@@ -1460,26 +1310,26 @@ nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
     return pacientebuscado;
 }
 
-/*nodoArbol * crear_nodo_arbol(pacientes p)
+nodoArbol * crear_nodo_arbol(pacientes p)
 {
     nodoArbol * nuevo=(nodoArbol*)malloc(sizeof(nodoArbol));
 
     nuevo->p=p;
     nuevo->izq=NULL;
-    nuevo->ingreso=NULL;
+    nuevo->der=NULL;
 
     return nuevo;
 }
 
-nodoListaPracticas * crearNodoListaPracticas(pracXingreso practica)
+/*pracXingreso * crearNodoListaPracticas(pracXingreso practica)
 {
-    nodoListaPracticas * nuevo = (nodoListaPracticas*)malloc(sizeof(nodoListaPracticas));
+    ///nodoListaPracticas * nuevo = (nodoListaPracticas*)malloc(sizeof(nodoListaPracticas));
 
-    nuevo->ingreso=practica;
-    nuevo->siguiente=NULL;
+    ///nuevo->ingreso=practica;
+    ///nuevo->siguiente=NULL;
 
     return nuevo;
-}
+}*/
 
  nodoArbol * carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
 {
@@ -1499,5 +1349,166 @@ nodoListaPracticas * crearNodoListaPracticas(pracXingreso practica)
         }
     }
 }
-*/
 
+
+/*
+void marco_plantilla()
+{
+    ///linea horizontal superior
+    printf("%c",201);
+    for(int i=1;i<=118;i++)
+    {
+        gotoxy(0+i,0);printf("%c",205);
+    }
+    printf("%c",187);
+
+    ///linea horizontal inferior
+    gotoxy(0,28);printf("%c",200);
+    for(int i=1;i<=118;i++)
+    {
+        gotoxy(0+i,28);printf("%c",205);
+    }
+    printf("%c",188);
+
+    ///linea vertical izquierda
+    for(int j=1;j<8;j++)
+    {
+        gotoxy(0,0+j);printf("%c",186);
+    }
+    gotoxy(0,8);printf("%c",204);
+
+     for(int i=1;i<=118;i++)
+    {
+        gotoxy(0+i,8);printf("%c",205);
+    }
+
+    for(int j=9;j<28;j++)
+    {
+        gotoxy(0,0+j);printf("%c",186);
+    }
+
+    for(int i=1;i<=118;i++)
+    {
+        gotoxy(0+i,28);printf("%c",205);
+    }
+    printf("%c",188);
+
+    ///linea vertical derecha
+    for(int j=1;j<8;j++)
+    {
+        gotoxy(119,0+j);printf("%c",186);
+    }
+    gotoxy(119,8);printf("%c",185);
+
+    for(int j=9;j<28;j++)
+    {
+        gotoxy(119,0+j);printf("%c",186);
+    }
+}
+void marco_factura()
+{
+    ///linea horizontal superior
+    printf("%c",201);
+    for(int i=1;i<=60;i++)
+    {
+        gotoxy(0+i,0);printf("%c",205);
+    }
+    printf("%c",187);
+
+    ///linea horizontal inferior
+    gotoxy(0,28);printf("%c",200);
+    for(int i=1;i<=60;i++)
+    {
+        gotoxy(0+i,28);printf("%c",205);
+    }
+    printf("%c",188);
+
+    ///linea vertical izquierda
+    for(int j=1;j<8;j++)
+    {
+        gotoxy(0,0+j);printf("%c",186);
+    }
+    gotoxy(0,8);printf("%c",204);
+
+     for(int i=1;i<=60;i++)
+    {
+        gotoxy(0+i,8);printf("%c",205);
+    }
+
+    for(int j=9;j<28;j++)
+    {
+        gotoxy(0,0+j);printf("%c",186);
+    }
+
+    for(int i=1;i<=60;i++)
+    {
+        gotoxy(0+i,28);printf("%c",205);
+    }
+    printf("%c",188);
+
+    ///linea vertical derecha
+    for(int j=1;j<8;j++)
+    {
+        gotoxy(61,0+j);printf("%c",186);
+    }
+    gotoxy(61,8);printf("%c",185);
+
+    for(int j=9;j<28;j++)
+    {
+        gotoxy(61,0+j);printf("%c",186);
+    }
+}
+
+void factura()
+{
+    marco_factura();
+    system("COLOR E");
+    gotoxy(4,2);printf("FECHA: 10/10/2023");
+    gotoxy(37,2);printf("Nro FACTURA: 01-003");
+    gotoxy(4,4);printf("NOMBRE Y APELLIDO: NEIRA MARIA EUGENIA");
+    gotoxy(4,5);printf("DNI: 31561321");
+
+    gotoxy(6,11);printf("%c PRACTICA:  .......",254);
+    gotoxy(30,11);printf("IMPORTE: $   ......");
+
+    gotoxy(6,12);printf("%c PRACTICA:  .......",254);
+    gotoxy(30,12);printf("IMPORTE: $   ......");
+
+    gotoxy(6,13);printf("%c PRACTICA:  .......",254);
+    gotoxy(30,13);printf("IMPORTE: $   ......");
+
+    gotoxy(6,15);printf("%c COBERTURA:  .......",254);
+    gotoxy(4,17);printf("______________________________________________________");
+    gotoxy(15,20);printf("%c IMPORTE TOTAL:  .......",254);
+
+    gotoxy(65,2);printf("Presione ALT+P para imprimir");
+
+    getch();
+
+}
+
+///plantillas
+void plantilla_laboratorios_x_paciente()
+{
+    marco_plantilla();
+    system("COLOR E");
+    gotoxy(15,2);printf("FECHA: 10/10/2023");
+    gotoxy(80,2);printf("MEDICO: BELTRAN, JORGE");
+    gotoxy(15,5);printf("Nro LABORATORIO: 027");
+    gotoxy(80,5),printf("PACIENTE: 154");
+
+    gotoxy(10,11);printf("%c GLUCEMIA .................",254);
+    gotoxy(40,11);printf("RESULTADO: 107 mg/dl  ......");
+    gotoxy(70,11);printf("VALOR DE REFERENCIA:  < 110 mg/dl ......");
+
+    gotoxy(10,12);printf("%c CREATININEMIA ............",254);
+    gotoxy(40,12);printf("RESULTADO: 0.73 mg/dl  .....");
+    gotoxy(70,12);printf("VALOR DE REFERENCIA:  0.52-1.06 mg/dl ..");
+
+    gotoxy(10,13);printf("%c COLESTEROL TOTAL .........",254);
+    gotoxy(40,13);printf("RESULTADO: 205 mg/dl   .....");
+    gotoxy(70,13);printf("VALOR DE REFERENCIA:  < 200 mg/dl ......");
+
+    getch();
+}
+*/
