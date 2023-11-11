@@ -46,39 +46,62 @@ int autoincrementalIngresos(char archivo[])
 
 laboratorios nuevoRegistro(char archivo[])
 {
-    ///le asigno la fecha de hoy al string "fecha", que se usará en la carga (automática, no la requerirá al usuario)
+    char ok ='n';
+    laboratorios nuevo;
     char fecha[50];
+    ///le asigno la fecha de hoy al string "fecha", que se usará en la carga (automática, no la requerirá al usuario)
     fechaActual(fecha);
 
-    laboratorios nuevo;
-    nuevo.Nro_de_ingreso=autoincrementalIngresos(archivo); ///automatico
-    strcpy(nuevo.fecha_de_ingreso, fecha);
-    strcpy(nuevo.fecha_de_retiro[15],"a confirmar");
-    printf("\nINGRESE DNI DEL PACIENTE: ");
-    scanf("%d", nuevo.dni_paciente);
+    marco_menu();
+    gotoxy(20,6);printf("Ingrese DNI del Paciente: ");
+    fflush(stdin);
+    gotoxy(33,6);scanf("%d",&nuevo.dni_paciente);
+
     ///ACA DEBERIA HABER UNA FUNCION QUE INFORME SI EL PACIENTE NO EXISTE EN LA BASE, PARA REMITIRLO A ESE MENU
-    printf("\nINGRESE NUMERO DE MATRICULA DEL MEDICO: ");
-    scanf("%d", nuevo.medico_matricula);
-    ///campo automatico al momento del alta
-    nuevo.vigencia=0; ///vigente
+
+
+
+    while(ok == 'n' || ok == 'N') /// AGREGAR TAMBIEN LO QUE LARGUE LA FUNCION DE VALIDACION
+    {
+
+        gotoxy(20,7);printf("Nro de Ingreso: ");///verificar string HACER FUNCION
+        gotoxy(20,8);printf("Fecha de ingreso: ");
+        gotoxy(20,9);printf("Fecha de retiro: ");
+        gotoxy(20,10);printf("Ingrese Matricula del Medico ordenante: ");
+
+
+        fflush(stdin);
+        gotoxy(47,7);nuevo.Nro_de_ingreso = autoincrementalIngresos(ARCHIVOINGRESOS);
+
+        fflush(stdin);
+        gotoxy(60,8);strcpy(nuevo.fecha_de_ingreso, fecha);
+
+        fflush(stdin);
+        gotoxy(58,9);strcpy(nuevo.fecha_de_retiro, "a confirmar");
+
+        fflush(stdin);
+        gotoxy(75,10);scanf("%d", nuevo.medico_matricula);
+
+        nuevo.vigencia=0; ///vigente
 
     return nuevo;
-}
+    }
 
-/*nodoListaIngreso * crearNodoIngreso(laboratorios nuevo)
+
+nodoListaIngresos * crearNodoIngreso(laboratorios nuevo)
 {
-    nodoArbol * lista = (nodoArbol*) malloc(sizeof((nodoArbol));
+    nodoListaIngresos * lista = (nodoListaIngresos*) malloc(sizeof(nodoListaIngresos));
 
-    lista->ingreso->dato=nuevo;
-    lista->ingreso->siguiente=NULL;
+    lista->lab = nuevo;
+    lista->siguiente=NULL;
 
     return lista;
 }
 
 
-nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIngreso * nuevo)
+nodoListaIngresos * agregarAlFinalIngresos(nodoListaIngresos * lista, nodoListaIngresos * nuevo)
 {
-    nodoListaIngreso * aux = lista;
+    nodoListaIngresos * aux = lista;
     if(lista==NULL)
     {
         lista=nuevo;
@@ -95,8 +118,9 @@ nodoListaIngreso * agregarAlFinalIngresos(nodoListaIngreso * lista, nodoListaIng
 
     return lista;
 }
-*/
-void altaDeLaboratorio(char archivo[], laboratorios registro)
+
+
+void altaDeLaboratorio(char archivo[], laboratorios registro, nodoArbol * arbol)
 {
     FILE * archi = fopen(archivo, "ab");
     int opc=0;
@@ -114,8 +138,12 @@ void altaDeLaboratorio(char archivo[], laboratorios registro)
             fwrite(&registro, sizeof(laboratorios), 1, archi);
         }
 
+
     fclose(archi);
     }
+
+    ///grabar el cambio tambien al arbol
+
 
 }
 
