@@ -1258,31 +1258,15 @@ nodoArbol * carga_arbol()
     }
 }
 
-int valida_existencia_de_ingresos_x_paciente(char archivoingresos[],int dni_paciente)
+void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente)
 {
-    laboratorios ing;
     int existeIngreso=0;
-    FILE * arch=fopen(archivoingresos,"rb");
 
-    if(arch)
+    if(arbol)
     {
-        while(existeIngreso==0 && fread(&ing,sizeof(laboratorios),1,arch)>0)
-        {
-            if(ing.dni_paciente==dni_paciente && ing.vigencia==0)
-            {
-                existeIngreso=1;
-            }
-            else
-            {
-                if(ing.dni_paciente==dni_paciente && ing.vigencia==1)
-                {
-                     existeIngreso=-1;
-                }
-
-            }
-        }
-        fclose(arch);
+        if(arbol->listaIngresos->ingr
     }
+
     return existeIngreso;
 }
 

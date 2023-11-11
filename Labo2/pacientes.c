@@ -58,6 +58,7 @@ nodoArbol * inicArbol()
 {
     return NULL;
 }
+
 nodoArbol * crearNodoPacientes (pacientes p)
 {
     nodoArbol* nuevoNodo = (nodoArbol*)malloc (sizeof (nodoArbol));
