@@ -25,21 +25,26 @@ typedef struct
 typedef struct
 {
     laboratorios lab;
-    struct nodoListaPracticas * listaPracticas;///deberia ser pracXingreso en lugar de nodolistapracticas
+<<<<<<< HEAD
+    nodoListaPracticas * listaPracticas;
+=======
+    nodoListaPracticas * listaPracticas;///deberia ser pracXingreso en lugar de nodolistapracticas
+>>>>>>> d92dac111805beff97532220a8ee613923924154
     struct nodoListaIngresos * siguiente;
 } nodoListaIngresos;
 
 
 void fechaActual(char fecha[]);
 int autoincrementalIngresos(char archivo[]);
-laboratorios nuevoRegistro(char archivo[]);
+laboratorios nuevoRegistro(char archivo[], nodoArbol * arbol);
 nodoListaIngresos * crearNodoIngreso(laboratorios nuevo);///deberia ser pracXingreso en lugar de nodolistapracticas
 nodoListaIngresos * agregarAlFinalIngresos(nodoListaIngresos * lista, nodoListaIngresos * nuevo);///deberia ser pracXingreso en lugar de nodolistapracticas
-void altaDeLaboratorio(char archivo[], laboratorios registro);
-void bajDeLabXId(int id, char archivo[]);
+void altaDeLaboratorio(char archivo[], laboratorios registro, nodoArbol * arbol);
+void bajDeLabXId(int id, char archivo[], nodoArbol * arbol);
 void modificacionDeLaboratorio(char archivo[]);
-void listadoDeLaboratoriosVigentes(char archivo[]);
-void listadoDeLaboratoriosEliminados(char archivo[]);
+void listadoDeLaboratoriosVigentes(nodoArbol * arbol);
+void mostrarListaiIngresos(nodoListaIngresos * lista);
+void mostrarListaiIngresos(nodoListaIngresos * lista);
 
 
 #endif // INGRESOS_LABO_H_INCLUDED

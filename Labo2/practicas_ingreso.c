@@ -119,6 +119,36 @@ int busca_num_practica_vigente(char practica[])
     return flag;
 }
 
+nodoListaPracticas * crearNodoPracticas(pracXingreso p)
+{
+    nodoListaPracticas * nuevo=(nodoListaPracticas *)malloc(sizeof(nodoListaPracticas));
+
+    nuevo->datoPractica=p;
+    nuevo->siguiente=NULL;
+
+    return nuevo;
+}
+
+nodoListaPracticas * agregarAlFinalListaPracticas(nodoListaPracticas * origen, nodoListaPracticas * nuevo)
+{
+    nodoListaPracticas * aux=origen;
+
+    if(aux)
+    {
+        while(aux->siguiente!=NULL)
+        {
+            aux=aux->siguiente;
+        }
+        aux->siguiente=nuevo;
+    }
+    else
+    {
+        origen=nuevo;
+    }
+
+    return origen;
+}
+
 
 
 

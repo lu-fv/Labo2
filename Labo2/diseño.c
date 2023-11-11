@@ -181,7 +181,6 @@ void marco_contrasenia()
 
 
 
-
 ///menu
 void menu()
 {
@@ -1408,7 +1407,7 @@ void menu_contrasenia()
 
 nodoArbol * carga_arbol()
 {
-    nodoArbol * arbol=NULL;
+    nodoArbol * arbol=inicArbol();
 
     FILE * pac=fopen(ARCHIVO_PACIENTES,"rb");
     pacientes pacientito;
@@ -1423,7 +1422,7 @@ nodoArbol * carga_arbol()
         while(fread(&pacientito,sizeof(pacientes),1,pac)>0)
         {
             ///cargo paciente en el arbol
-            carga_arbol_un_paciente(arbol,crearNodoPacientes(pacientito));
+            arbol=insertar(arbol,crearNodoPacientes(pacientito));
             ///verifico que el paciente tenga ingresos de laboratorios y
             ///si tiene ingresos procedo a cargar la lista de ingresos del nodo arbol paciente
             if(valida_existencia_de_ingresos_x_paciente(ARCHIVOINGRESOS,pacientito.dni)==1)
@@ -1435,19 +1434,25 @@ nodoArbol * carga_arbol()
                     ///cargo el ingreso de acuerdo al paciente
                     if(ingreso.dni_paciente==pacientito.dni)
                     {
+<<<<<<< HEAD
                         ///arbol->listaIngresos=agregarAlFinalListaIngresos();
+=======
+                       arbolpaciente->listaIngresos=agregarAlFinalIngresos(arbolpaciente->listaIngresos,crearNodoIngreso(ingreso));
+>>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
                     }
                     ///cargo las practicas del ingreso
-                    while(fread(&practica,sizeof(pracXingreso),1,ing)>0)
+                    while(fread(&practica,sizeof(pracXingreso),1,prac)>0)
                     {
                         if(practica.nro_de_ingreso == ingreso.Nro_de_ingreso)
                         {
-                            ///arbol->listaIngresos->listaPracticas=agregar....
+                           arbolpaciente->listaIngresos->listaPracticas=agregarAlFinalListaPracticas(arbolpaciente->listaIngresos->listaPracticas,crearNodoPracticas(practica));
                         }
                     }
 
                 }
             }
+            fseek(prac,0,SEEK_SET);///reinicio el cursor del archivo practicas
+            fseek(ing,0,SEEK_SET);///reinicio el cursir del archivo ingresos
 
         }
 
@@ -1455,18 +1460,47 @@ nodoArbol * carga_arbol()
         fclose(ing);
         fclose(prac);
     }
+    return arbol;
 }
 
+<<<<<<< HEAD
 /*void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente)
+=======
+<<<<<<< HEAD
+/*void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente)
+=======
+int valida_existencia_de_ingresos_x_paciente(char archIngresos[],int dni_paciente)
+>>>>>>> d92dac111805beff97532220a8ee613923924154
+>>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
 {
+    FILE * arch=fopen(archIngresos,"rb");
+    laboratorios lab;
     int existeIngreso=0;
 
-    if(arbol)
+    if(arch)
     {
-        if(arbol->listaIngresos->ingr
+        while(existeIngreso==0 && fread(&lab,sizeof(laboratorios),1,arch)>0)
+        {
+            if(lab.dni_paciente==dni_paciente)
+            {
+                if(lab.vigencia==0)
+                {
+                    existeIngreso=1;
+                }
+                else
+                {
+                    existeIngreso=-1;
+                }
+            }
+        }
+        fclose(arch);
     }
 
+<<<<<<< HEAD
 return existeIngreso;
+=======
+    return existeIngreso;
+>>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
 }*/
 
 nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
@@ -1493,6 +1527,7 @@ nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
     return pacientebuscado;
 }
 
+<<<<<<< HEAD
 nodoArbol * crear_nodo_arbol(pacientes p)
 {
     nodoArbol * nuevo=(nodoArbol*)malloc(sizeof(nodoArbol));
@@ -1534,7 +1569,10 @@ nodoArbol * carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
 }
 
 
+=======
+>>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
 /*
+
 void marco_plantilla()
 {
     ///linea horizontal superior

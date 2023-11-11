@@ -21,7 +21,7 @@ typedef struct
 typedef struct
 {
     pacientes p;
-    struct nodoListaIngresos * listaIngresos;
+    nodoListaIngresos * listaIngresos;
     struct nodoArbol *izq;
     struct nodoArbol *der;
 } nodoArbol;

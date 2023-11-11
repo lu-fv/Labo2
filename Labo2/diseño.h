@@ -37,9 +37,6 @@ void menu_contrasenia();
 nodoArbol * carga_arbol();
 int valida_existencia_de_ingresos_x_paciente(char archivoingresos[],int dni_paciente);
 nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni);
-nodoArbol * crear_nodo_arbol(pacientes p);
-///nodoListaPracticas * crearNodoListaPracticas(pracXingreso practica);
-nodoArbol * carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo);
 
 
 #endif // DISEÒO_H_INCLUDED
