@@ -32,5 +32,5 @@ nodoArbol * inicArbol();
 nodoArbol * crearNodoPacientes (pacientes p);
 nodoArbol * insertar( nodoArbol * arbol, int dni);
 
-
+void menu_modifica_campo_persona(FILE * archivo, pacientes paciente);
 #endif // PACIENTES_H_INCLUDED

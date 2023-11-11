@@ -10,6 +10,7 @@
 #include "practicas_Labo.h"
 #define ESC 27
 #define ARCHIVO_PACIENTES "pacientes.dat"
+#define BORRAR system("cls")
 
 pacientes cargaPacientes()
 {
@@ -31,7 +32,6 @@ pacientes cargaPacientes()
     fflush (stdin);
     gets (p.telefono);
     p.eliminado =0;
-    ///p.ingreso = NULL;
 
     return p;
 }
@@ -58,6 +58,7 @@ nodoArbol * inicArbol()
 {
     return NULL;
 }
+
 nodoArbol * crearNodoPacientes (pacientes p)
 {
     nodoArbol* nuevoNodo = (nodoArbol*)malloc (sizeof (nodoArbol));
@@ -65,6 +66,7 @@ nodoArbol * crearNodoPacientes (pacientes p)
     nuevoNodo->p = p;
     nuevoNodo->der =NULL;
     nuevoNodo ->izq = NULL;
+    nuevoNodo->listaIngresos = NULL;
 
     return nuevoNodo;
 
@@ -91,7 +93,7 @@ nodoArbol* insertarPacientes ( nodoArbol* miArbol, pacientes p)
     return miArbol;
 }
 
-int verificarPaciente (FILE* arc, int dni)
+int posicionPaciente (FILE* arc, int dni)
 {
    int flag =0;
    pacientes p;
@@ -113,6 +115,40 @@ int verificarPaciente (FILE* arc, int dni)
       }
     return flag;
 }
+int buscarPaciente (nodoArbol * arbol, int dni)
+{
+   nodoArbol* busca =NULL;
+   int flag =0;
+   pacientes p;
+
+    if ((flag ==0)&& arbol !=NULL)
+         {
+           if(arbol->p.dni==dni) //si encuentra dni
+            {
+               if(p.eliminado==0) // esta activo
+                {
+                    flag=1;
+                }
+                else // esta pero dado de baja
+                {
+                   flag=-1;
+                }
+            }
+
+         }
+    else{
+
+         if (arbol->p.dni > dni)
+         {
+            busca =buscarPaciente(arbol ->der, dni);
+         }
+         else{
+            busca= buscarPaciente(arbol ->izq, dni);
+         }
+    }
+    return arbol;
+}
+
 
 void reactivaPaciente (FILE* arc, pacientes p)
 {
@@ -126,8 +162,9 @@ void reactivaPaciente (FILE* arc, pacientes p)
 void altaPacientes (char archivo[])
 {
     pacientes p;
+    nodoArbol*arbol;
 
-    FILE* arc = fopen (archivo, "r+b");
+    FILE* arc = fopen (archivo, "a+b");
 
     if (arc)
     {
@@ -135,27 +172,25 @@ void altaPacientes (char archivo[])
     fflush (stdin);
     scanf ("%d", &p.dni);
 
-     if (verificarPaciente (arc, p.dni)==0)
+     if (buscarPaciente (arc, p.dni)==0)
      {
          p= cargaPacientes ();
-         fseek (arc, sizeof(pacientes)*-1, SEEK_CUR);
+         fseek (arc, 0, SEEK_END);
          fwrite(&p,sizeof(pacientes),1,arc);
      }
-     if (verificarPaciente (arc,p.dni)==1)
+     if (buscarPaciente (arc,p.dni)==1)
       {
           printf ("\n ya se encuentra ingresado\n");
       }
-     else (verificarPaciente (arc, p.dni)==-1);
+     else (buscarPaciente (arc, p.dni)==-1);
      {
          reactivaPaciente (arc, p);
      }
-
      fclose (arc);
    }
-
 }
 
-/*void menu_modifica_campo_registro(FILE * archivo, pacientes paciente)
+void menu_modifica_campo_persona(FILE * archivo, pacientes paciente)
 {
     menu:
     BORRAR;
@@ -189,7 +224,7 @@ void altaPacientes (char archivo[])
         case 2:
             system ("cls");
             marco_menu();
-            modificarDni (char ARCHIVO_PACIENTES,paciente);
+            modificarDni ( ARCHIVO_PACIENTES,paciente);
             goto menu;
 
         case 3:
@@ -221,6 +256,7 @@ void altaPacientes (char archivo[])
 
 void modificarNombreYapellido (char archivo[], pacientes p)
 {
+            char rta;
             printf("Ingrese el nuevo Apellido y Nombre : ");
             fflush(stdin);
             gets(p.nomb_apell);
@@ -242,8 +278,9 @@ void modificarNombreYapellido (char archivo[], pacientes p)
             }
 }
 
-void modificarDdni (char archivo[], pacientes p)
+void modificarDni (char archivo[], pacientes p)
 {
+            char rta;
             printf("Ingrese el nuevo DNI : ");
             fflush(stdin);
             scanf ("&c",p.dni);
@@ -265,6 +302,7 @@ void modificarDdni (char archivo[], pacientes p)
 
 void modificarEdad (char archivo[],pacientes p)
 {
+            char rta;
             printf("Ingrese el nueva edad : ");
             fflush(stdin);
             gets(p.edad);
@@ -286,6 +324,7 @@ void modificarEdad (char archivo[],pacientes p)
 
 void modificarTel (char archivo[], pacientes p)
 {
+            char rta;
             printf("Ingrese el nuevo cel : ");
             fflush(stdin);
             gets (p.telefono);
@@ -308,6 +347,7 @@ void modificarTel (char archivo[], pacientes p)
 void modificarDireccion (char archivo[], pacientes p)
 {
 
+            char rta;
             printf("Ingrese nueva direccion : ");
             fflush(stdin);
             gets (p.direccion);
@@ -327,4 +367,4 @@ void modificarDireccion (char archivo[], pacientes p)
             }
 }
 
-*/
+
