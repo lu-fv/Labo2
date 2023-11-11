@@ -4,13 +4,13 @@
 #define PAUSA system("pause")
 #define ARCHIVO_EMPLEADOS "archivo_empleados.dat"
 #include "practicas_Labo.h"
-
+#define ARCHIVO_PACIENTES "pacientes.dat"
 int main()
 {
     ///AltaDePracticasNuevas(Practicas_Laboratorio);
     ///mostrar_archivo(ARCHIVO_EMPLEADOS);
-
-    menu();
+    altaPacientes (ARCHIVO_PACIENTES);
+    //menu();
 
     ///carga el archivo empleados
     /*char rta='s';

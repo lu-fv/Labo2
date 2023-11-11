@@ -61,7 +61,7 @@ int verifica_existe_ingreso(int numIngreso)///verifica si existe ingreso "Y" si 
                 flag=1;
             }
         }
-         fclose(arch);
+        fclose(arch);
     }
     if(flag==0)
     {

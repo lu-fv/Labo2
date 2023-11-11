@@ -30,21 +30,25 @@ void gotoxy(int x,int y)
 ///marcos
 void marco_borde_ancho()
 {
-    for(int i=0;i<=119;i++)
+    for(int i=0; i<=119; i++)
     {
-        gotoxy(0+i,0);printf("%c",223);
+        gotoxy(0+i,0);
+        printf("%c",223);
     }
-    for(int i=0;i<=119;i++)
+    for(int i=0; i<=119; i++)
     {
-        gotoxy(0+i,28);printf("%c",220);
+        gotoxy(0+i,28);
+        printf("%c",220);
     }
-    for(int j=0;j<=28;j++)
+    for(int j=0; j<=28; j++)
     {
-        gotoxy(0,0+j);printf("%c",219);
+        gotoxy(0,0+j);
+        printf("%c",219);
     }
-    for(int j=0;j<=28;j++)
+    for(int j=0; j<=28; j++)
     {
-        gotoxy(119,0+j);printf("%c",219);
+        gotoxy(119,0+j);
+        printf("%c",219);
     }
 }
 
@@ -53,101 +57,125 @@ void marco_menu()
 {
     ///linea horizontal superior
     printf("%c",201);
-    for(int i=1;i<=118;i++)
+    for(int i=1; i<=118; i++)
     {
-        gotoxy(0+i,0);printf("%c",205);
+        gotoxy(0+i,0);
+        printf("%c",205);
     }
     printf("%c",187);
 
     ///linea horizontal inferior
-    gotoxy(0,28);printf("%c",200);
-    for(int i=1;i<=118;i++)
+    gotoxy(0,28);
+    printf("%c",200);
+    for(int i=1; i<=118; i++)
     {
-        gotoxy(0+i,28);printf("%c",205);
+        gotoxy(0+i,28);
+        printf("%c",205);
     }
     printf("%c",188);
 
     ///linea vertical izquierda
-    for(int j=1;j<8;j++)
+    for(int j=1; j<8; j++)
     {
-        gotoxy(0,0+j);printf("%c",186);
+        gotoxy(0,0+j);
+        printf("%c",186);
     }
-    gotoxy(0,4);printf("%c",204);
+    gotoxy(0,4);
+    printf("%c",204);
 
-     for(int i=1;i<=118;i++)
+    for(int i=1; i<=118; i++)
     {
-        gotoxy(0+i,4);printf("%c",205);
-    }
-
-    for(int j=5;j<28;j++)
-    {
-        gotoxy(0,0+j);printf("%c",186);
+        gotoxy(0+i,4);
+        printf("%c",205);
     }
 
-    for(int i=1;i<=118;i++)
+    for(int j=5; j<28; j++)
     {
-        gotoxy(0+i,28);printf("%c",205);
+        gotoxy(0,0+j);
+        printf("%c",186);
+    }
+
+    for(int i=1; i<=118; i++)
+    {
+        gotoxy(0+i,28);
+        printf("%c",205);
     }
     printf("%c",188);
 
     ///linea vertical derecha
-    for(int j=1;j<4;j++)
+    for(int j=1; j<4; j++)
     {
-        gotoxy(119,0+j);printf("%c",186);
+        gotoxy(119,0+j);
+        printf("%c",186);
     }
-    gotoxy(119,4);printf("%c",185);
+    gotoxy(119,4);
+    printf("%c",185);
 
-    for(int j=5;j<28;j++)
+    for(int j=5; j<28; j++)
     {
-        gotoxy(119,0+j);printf("%c",186);
+        gotoxy(119,0+j);
+        printf("%c",186);
     }
 }
 
 void marco_contrasenia()
 {
     ///linea horizontal superior
-    gotoxy(40,9);printf("%c",201);
-    for(int i=41;i<=79;i++)
+    gotoxy(40,9);
+    printf("%c",201);
+    for(int i=41; i<=79; i++)
     {
-        gotoxy(0+i,9);printf("%c",205);
+        gotoxy(0+i,9);
+        printf("%c",205);
     }
-    gotoxy(80,9);printf("%c",187);
+    gotoxy(80,9);
+    printf("%c",187);
 
     ///linea horizontal inferior
-    gotoxy(40,19);printf("%c",200);
-    for(int i=41;i<=79;i++)
+    gotoxy(40,19);
+    printf("%c",200);
+    for(int i=41; i<=79; i++)
     {
-        gotoxy(0+i,19);printf("%c",205);
+        gotoxy(0+i,19);
+        printf("%c",205);
     }
-    gotoxy(80,19);printf("%c",188);
+    gotoxy(80,19);
+    printf("%c",188);
 
     ///linea vertical izquierda
-    for(int j=10;j<14;j++)
+    for(int j=10; j<14; j++)
     {
-        gotoxy(40,0+j);printf("%c",186);
+        gotoxy(40,0+j);
+        printf("%c",186);
     }
-    gotoxy(40,14);printf("%c",204);
+    gotoxy(40,14);
+    printf("%c",204);
 
-    for(int j=15;j<19;j++)
+    for(int j=15; j<19; j++)
     {
-        gotoxy(40,0+j);printf("%c",186);
+        gotoxy(40,0+j);
+        printf("%c",186);
     }
 
-    for(int i=41;i<=79;i++)
+    for(int i=41; i<=79; i++)
     {
-        gotoxy(0+i,14);printf("%c",205);
+        gotoxy(0+i,14);
+        printf("%c",205);
     }
-    gotoxy(80,14);printf("%c",185);
+    gotoxy(80,14);
+    printf("%c",185);
 
     ///linea vertical derecha
-    for(int j=10;j<14;j++)
+    for(int j=10; j<14; j++)
     {
-        gotoxy(80,0+j);printf("%c",186);
+        gotoxy(80,0+j);
+        printf("%c",186);
     }
 
-    for(int j=15;j<19;j++)
+    for(int j=15; j<19; j++)
     {
-        gotoxy(80,0+j);printf("%c",186);
+        gotoxy(80,0+j);
+        printf("%c",186);
     }
 }
 
@@ -157,24 +185,32 @@ void marco_contrasenia()
 ///menu
 void menu()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(48,2);printf("MENU PRINCIPAL");
+    gotoxy(48,2);
+    printf("MENU PRINCIPAL");
 
-    gotoxy(43,6);printf("1) ACCESO ADMINISTRADOR");
-    gotoxy(43,7);printf("2) ACCESO ADMINISTRATIVO");
-    gotoxy(43,8);printf("3) ACCESO PROFESIONALES");
-    gotoxy(43,9);printf("4) SALIR");
+    gotoxy(43,6);
+    printf("1) ACCESO ADMINISTRADOR");
+    gotoxy(43,7);
+    printf("2) ACCESO ADMINISTRATIVO");
+    gotoxy(43,8);
+    printf("3) ACCESO PROFESIONALES");
+    gotoxy(43,9);
+    printf("4) SALIR");
     /*gotoxy(43,10);printf("5) QUINTA OPCION");
     gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");
     gotoxy(43,13);printf("8) SALIR");*/
-    gotoxy(45,11);printf("OPCION SELECCIONADA...");
-    gotoxy(70,11);scanf("%d",&opc);
+    gotoxy(45,11);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,11);
+    scanf("%d",&opc);
 
     do
     {
@@ -191,7 +227,8 @@ void menu()
             else
             {
                 marco_borde_ancho();
-                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                gotoxy(35,2);
+                printf("contraseña o usuario incorrecto");
                 getch();
             }
             goto menu;
@@ -207,7 +244,8 @@ void menu()
             else
             {
                 marco_borde_ancho();
-                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                gotoxy(35,2);
+                printf("contraseña o usuario incorrecto");
                 getch();
             }
             goto menu;
@@ -225,7 +263,8 @@ void menu()
             else
             {
                 marco_borde_ancho();
-                gotoxy(35,2);printf("contraseña o usuario incorrecto");
+                gotoxy(35,2);
+                printf("contraseña o usuario incorrecto");
                 getch();
             }
             goto menu;
@@ -261,35 +300,46 @@ void menu()
         case 4:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(50,3);printf("EXIT....");
+            gotoxy(50,3);
+            printf("EXIT....");
             getch();
             break;
         }
 
-    }while(opc!=4);
+    }
+    while(opc!=4);
 
 }
 
 void menu_administrador()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(45,2);printf("MENU ADMINISTRADOR");
+    gotoxy(45,2);
+    printf("MENU ADMINISTRADOR");
 
-    gotoxy(43,6);printf("1) EMPLEADOS");
-    gotoxy(43,7);printf("2) PACIENTES");
-    gotoxy(43,8);printf("3) PRACTICAS");
-    gotoxy(43,9);printf("4) LABORATORIOS");
+    gotoxy(43,6);
+    printf("1) EMPLEADOS");
+    gotoxy(43,7);
+    printf("2) PACIENTES");
+    gotoxy(43,8);
+    printf("3) PRACTICAS");
+    gotoxy(43,9);
+    printf("4) LABORATORIOS");
     /*gotoxy(43,10);printf("5) QUINTA OPCION");
     gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");*/
-    gotoxy(43,10);printf("5) SALIR");
-    gotoxy(45,12);printf("OPCION SELECCIONADA...");
-    gotoxy(70,12);scanf("%d",&opc);
+    gotoxy(43,10);
+    printf("5) SALIR");
+    gotoxy(45,12);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,12);
+    scanf("%d",&opc);
 
     do
     {
@@ -341,30 +391,39 @@ void menu_administrador()
             break;
         }
 
-    }while(opc!=5);
+    }
+    while(opc!=5);
 
 }
 
 void menu_gestion_administrativa()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(45,2);printf("MENU DE ADMINISTRACION");
+    gotoxy(45,2);
+    printf("MENU DE ADMINISTRACION");
 
-    gotoxy(47,6);printf("1) PACIENTE");
-    gotoxy(47,7);printf("2) PRACTICAS");
-    gotoxy(47,8);printf("3) LABORATORIOS");
-    gotoxy(47,9);printf("4) SALIR");
+    gotoxy(47,6);
+    printf("1) PACIENTE");
+    gotoxy(47,7);
+    printf("2) PRACTICAS");
+    gotoxy(47,8);
+    printf("3) LABORATORIOS");
+    gotoxy(47,9);
+    printf("4) SALIR");
     /*gotoxy(43,10);printf("5) QUINTA OPCION");
     gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");
     gotoxy(43,13);printf("8) SALIR");*/
-    gotoxy(50,11);printf("OPCION SELECCIONADA...");
-    gotoxy(72,11);scanf("%d",&opc);
+    gotoxy(50,11);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(72,11);
+    scanf("%d",&opc);
 
     do
     {
@@ -418,30 +477,38 @@ void menu_gestion_administrativa()
             break;
         }
 
-    }while(opc!=4);
+    }
+    while(opc!=4);
 
 }
 
 void menu_bioquimico()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(45,2);printf("MENU DE PROFESIONALES");
+    gotoxy(45,2);
+    printf("MENU DE PROFESIONALES");
 
-    gotoxy(40,6);printf("1) BUSQUEDA LABORATORIO X ID");
-    gotoxy(40,7);printf("2) BUSQUEDA DE LABORATORIO X PACIENTE");
+    gotoxy(40,6);
+    printf("1) BUSQUEDA LABORATORIO X ID");
+    gotoxy(40,7);
+    printf("2) BUSQUEDA DE LABORATORIO X PACIENTE");
     /*gotoxy(43,8);printf("3) TERCERA OPCION");
     gotoxy(43,9);printf("4) CUARTA OPCION");
     gotoxy(43,10);printf("5) QUINTA OPCION");
     gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");*/
-    gotoxy(40,8);printf("3) SALIR");
-    gotoxy(43,10);printf("OPCION SELECCIONADA...");
-    gotoxy(68,10);scanf("%d",&opc);
+    gotoxy(40,8);
+    printf("3) SALIR");
+    gotoxy(43,10);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(68,10);
+    scanf("%d",&opc);
 
     do
     {
@@ -450,14 +517,16 @@ void menu_bioquimico()
         case 1:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
             getch();
             goto menu;
 
         case 2:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
             getch();
             goto menu;
 
@@ -465,66 +534,78 @@ void menu_bioquimico()
             BORRAR;
             break;
 
-        /*case 4:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
-            getch();
-            goto menu;
+            /*case 4:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
+                getch();
+                goto menu;
 
-        case 5:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
-            getch();
-            goto menu;
+            case 5:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
+                getch();
+                goto menu;
 
-        case 6:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
-            getch();
-            goto menu;
+            case 6:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
+                getch();
+                goto menu;
 
-        case 7:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 7");
-            getch();
-            goto menu;
+            case 7:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 7");
+                getch();
+                goto menu;
 
-        case 8:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(50,3);printf("EXIT....");
-            getch();
-            break;*/
+            case 8:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(50,3);printf("EXIT....");
+                getch();
+                break;*/
 
         }
 
-    }while(opc!=3);
+    }
+    while(opc!=3);
 }
 
 void menu_administrador_empleados()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(42,2);printf("MENU ADMINISTRADOR - EMPLEADOS");
+    gotoxy(42,2);
+    printf("MENU ADMINISTRADOR - EMPLEADOS");
 
-    gotoxy(43,6);printf("1) ALTA DE EMPLEADO");
-    gotoxy(43,7);printf("2) BAJA DE EMPLEADO");
-    gotoxy(43,8);printf("3) MODIFICACION DE EMPLEADO");
-    gotoxy(43,9);printf("4) LISTADO DE EMPLEADOS EN NOMINA");
-    gotoxy(43,10);printf("5) LISTADO DE EMPLEADOS NO VIGENTES");
-    gotoxy(43,11);printf("6) BLANQUEO DE CLAVES");
+    gotoxy(43,6);
+    printf("1) ALTA DE EMPLEADO");
+    gotoxy(43,7);
+    printf("2) BAJA DE EMPLEADO");
+    gotoxy(43,8);
+    printf("3) MODIFICACION DE EMPLEADO");
+    gotoxy(43,9);
+    printf("4) LISTADO DE EMPLEADOS EN NOMINA");
+    gotoxy(43,10);
+    printf("5) LISTADO DE EMPLEADOS NO VIGENTES");
+    gotoxy(43,11);
+    printf("6) BLANQUEO DE CLAVES");
     ///gotoxy(43,12);printf("7) SEPTIMA OPCION");
-    gotoxy(43,12);printf("7) SALIR");
-    gotoxy(45,14);printf("OPCION SELECCIONADA...");
-    gotoxy(70,14);scanf("%d",&opc);
+    gotoxy(43,12);
+    printf("7) SALIR");
+    gotoxy(45,14);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,14);
+    scanf("%d",&opc);
 
     do
     {
@@ -547,10 +628,12 @@ void menu_administrador_empleados()
             BORRAR;
             int dnibaja;
             marco_menu();
-            gotoxy(52,2);printf("BAJA DE EMPLEADO");
+            gotoxy(52,2);
+            printf("BAJA DE EMPLEADO");
             gotoxy(20,6),printf("INGRESE EL DNI DEL EMPLEADO QUE QUIERE DAR DE BAJA : ");
             fflush(stdin);
-            gotoxy(80,6);scanf("%d",&dnibaja);
+            gotoxy(80,6);
+            scanf("%d",&dnibaja);
             BORRAR;
             ///validar dni
             baja_empleado(ARCHIVO_EMPLEADOS, dnibaja);
@@ -561,10 +644,12 @@ void menu_administrador_empleados()
             BORRAR;
             int dni_a_modificar;
             marco_menu();
-            gotoxy(45,2);printf("MODIFICACION DE EMPLEADO");
+            gotoxy(45,2);
+            printf("MODIFICACION DE EMPLEADO");
             gotoxy(20,6),printf("INGRESE EL DNI DEL EMPLEADO QUE QUIERE MODIFICAR : ");
             fflush(stdin);
-            gotoxy(75,6);scanf("%d",&dni_a_modificar);
+            gotoxy(75,6);
+            scanf("%d",&dni_a_modificar);
             ///validar dni
             modificacion_de_empleado(ARCHIVO_EMPLEADOS,dni_a_modificar);
             goto menu;
@@ -582,46 +667,59 @@ void menu_administrador_empleados()
         case 6:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("que se hace aca????");
+            gotoxy(35,2);
+            printf("que se hace aca????");
             getch();
             goto menu;
 
-       /*case 7:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 7");
-            getch();
-            goto menu;*/
+        /*case 7:
+             BORRAR;
+             marco_borde_ancho();
+             gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 7");
+             getch();
+             goto menu;*/
 
         case 7:
             BORRAR;
             break;
         }
 
-    }while(opc!=7);
+    }
+    while(opc!=7);
 
 }
 
 void menu_administrador_pacientes()
 {
-     menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(42,2);printf("MENU ADMINISTRADOR - PACIENTES");
+    gotoxy(42,2);
+    printf("MENU ADMINISTRADOR - PACIENTES");
 
-    gotoxy(43,6);printf("1) ALTA PACIENTES");
-    gotoxy(43,7);printf("2) BAJA PACIENTES");
-    gotoxy(43,8);printf("3) MODIFICACION DE PACIENTES");
-    gotoxy(43,9);printf("4) LISTADO DE PACIENTES VIGENTES");
-    gotoxy(43,10);printf("5) LISTADO DE PACIENTES ELIMINADOS");
-    gotoxy(43,11);printf("6) BUSQUEDA DE PACIENTES");
+    gotoxy(43,6);
+    printf("1) ALTA PACIENTES");
+    gotoxy(43,7);
+    printf("2) BAJA PACIENTES");
+    gotoxy(43,8);
+    printf("3) MODIFICACION DE PACIENTES");
+    gotoxy(43,9);
+    printf("4) LISTADO DE PACIENTES VIGENTES");
+    gotoxy(43,10);
+    printf("5) LISTADO DE PACIENTES ELIMINADOS");
+    gotoxy(43,11);
+    printf("6) BUSQUEDA DE PACIENTES");
     ///gotoxy(43,12);printf("7) SEPTIMA OPCION");
-    gotoxy(43,12);printf("7) SALIR");
-    gotoxy(45,14);printf("OPCION SELECCIONADA...");
-    gotoxy(70,14);scanf("%d",&opc);
+    gotoxy(43,12);
+    printf("7) SALIR");
+    gotoxy(45,14);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,14);
+    scanf("%d",&opc);
 
     do
     {
@@ -630,42 +728,48 @@ void menu_administrador_pacientes()
         case 1:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
             getch();
             goto menu;
 
         case 2:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
             getch();
             goto menu;
 
         case 3:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
             getch();
             goto menu;
 
         case 4:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
             getch();
             goto menu;
 
         case 5:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
             getch();
             goto menu;
 
         case 6:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
             getch();
             goto menu;
 
@@ -681,30 +785,40 @@ void menu_administrador_pacientes()
             break;
         }
 
-    }while(opc!=7);
+    }
+    while(opc!=7);
 
 }
 
 void menu_administrador_practicas()
 {
-     menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(42,2);printf("MENU ADMINISTRADOR - PRACTICAS");
+    gotoxy(42,2);
+    printf("MENU ADMINISTRADOR - PRACTICAS");
 
-    gotoxy(43,6);printf("1) ALTA DE PRACTICA");
-    gotoxy(43,7);printf("2) BAJA DE PRACTICA");
-    gotoxy(43,8);printf("3) MODIFICACION DE PRACTICA");
-    gotoxy(43,9);printf("4) LISTADO DE PRACTICAS AUTORIZADAS");
+    gotoxy(43,6);
+    printf("1) ALTA DE PRACTICA");
+    gotoxy(43,7);
+    printf("2) BAJA DE PRACTICA");
+    gotoxy(43,8);
+    printf("3) MODIFICACION DE PRACTICA");
+    gotoxy(43,9);
+    printf("4) LISTADO DE PRACTICAS AUTORIZADAS");
     /*gotoxy(43,10);printf("5) QUINTA OPCION");
     gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");*/
-    gotoxy(43,10);printf("5) SALIR");
-    gotoxy(45,12);printf("OPCION SELECCIONADA...");
-    gotoxy(70,12);scanf("%d",&opc);
+    gotoxy(43,10);
+    printf("5) SALIR");
+    gotoxy(45,12);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,12);
+    scanf("%d",&opc);
 
     do
     {
@@ -713,7 +827,8 @@ void menu_administrador_practicas()
         case 1:
             BORRAR;
             marco_menu();
-            gotoxy(52,2);printf("ALTA DE PRACTICA");
+            gotoxy(52,2);
+            printf("ALTA DE PRACTICA");
             AltaDePracticasNuevas(Practicas_Laboratorio);
             getch();
             goto menu;
@@ -721,9 +836,11 @@ void menu_administrador_practicas()
         case 2:
             BORRAR;
             marco_menu();
-            gotoxy(52,2);printf("BAJA DE PRACTICA");
+            gotoxy(52,2);
+            printf("BAJA DE PRACTICA");
             char nombre[30];
-            gotoxy(30,5);printf("Ingrese el Nombre de la Practica que desea dar de baja = ");
+            gotoxy(30,5);
+            printf("Ingrese el Nombre de la Practica que desea dar de baja = ");
             fflush(stdin);
             scanf("%s",&nombre);
             BORRAR;
@@ -734,10 +851,13 @@ void menu_administrador_practicas()
             BORRAR;
             marco_menu();
             char practicamodif[30];
-            gotoxy(52,2);printf("MODIFICACION DE PRACTICA");
-            gotoxy(30,6);printf("Ingrese el nombre de la practica: ");
+            gotoxy(52,2);
+            printf("MODIFICACION DE PRACTICA");
+            gotoxy(30,6);
+            printf("Ingrese el nombre de la practica: ");
             fflush(stdin);
-            gotoxy(65,6);gets(practicamodif);
+            gotoxy(65,6);
+            gets(practicamodif);
             ModificacionArchivoPracticas(Practicas_Laboratorio,practicamodif);
             getch();
             goto menu;
@@ -745,7 +865,8 @@ void menu_administrador_practicas()
         case 4:
             BORRAR;
             marco_menu();
-            gotoxy(52,2);printf("LISTADO DE PRACTICAS");
+            gotoxy(52,2);
+            printf("LISTADO DE PRACTICAS");
             listado_practicas_ordenadas_alfabeticamente(Practicas_Laboratorio);
             getch();
             goto menu;
@@ -777,30 +898,41 @@ void menu_administrador_practicas()
 
         }
 
-    }while(opc!=5);
+    }
+    while(opc!=5);
 
 }
 
 void menu_administrador_laboratorios()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(42,2);printf("MENU ADMINISTRADOR - LABORATORIOS");
+    gotoxy(42,2);
+    printf("MENU ADMINISTRADOR - LABORATORIOS");
 
-    gotoxy(43,6);printf("1) ALTA DE LABORATORIO");
-    gotoxy(43,7);printf("2) BAJA DE LABORATORIO");
-    gotoxy(43,8);printf("3) MODIFICACION DE LABORATORIO");
-    gotoxy(43,9);printf("4) LISTADO DE LABORATORIOS VIGENTES");
-    gotoxy(43,10);printf("5) LISTADO DE LABORATORIOS ELIMINADOS");
+    gotoxy(43,6);
+    printf("1) ALTA DE LABORATORIO");
+    gotoxy(43,7);
+    printf("2) BAJA DE LABORATORIO");
+    gotoxy(43,8);
+    printf("3) MODIFICACION DE LABORATORIO");
+    gotoxy(43,9);
+    printf("4) LISTADO DE LABORATORIOS VIGENTES");
+    gotoxy(43,10);
+    printf("5) LISTADO DE LABORATORIOS ELIMINADOS");
     /*gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");*/
-    gotoxy(43,11);printf("6) SALIR");
-    gotoxy(45,13);printf("OPCION SELECCIONADA...");
-    gotoxy(70,13);scanf("%d",&opc);
+    gotoxy(43,11);
+    printf("6) SALIR");
+    gotoxy(45,13);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,13);
+    scanf("%d",&opc);
 
     do
     {
@@ -809,35 +941,40 @@ void menu_administrador_laboratorios()
         case 1:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
             getch();
             goto menu;
 
         case 2:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
             getch();
             goto menu;
 
         case 3:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
             getch();
             goto menu;
 
         case 4:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
             getch();
             goto menu;
 
         case 5:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
             getch();
             goto menu;
 
@@ -861,29 +998,37 @@ void menu_administrador_laboratorios()
 
         }
 
-    }while(opc!=6);
+    }
+    while(opc!=6);
 }
 
 void menu_administrador_resultados()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(42,2);printf("ADMINISTRADOR - CARGA DE RESULTADOS");
+    gotoxy(42,2);
+    printf("ADMINISTRADOR - CARGA DE RESULTADOS");
 
-    gotoxy(43,6);printf("1) BUSQUEDA LABORATORIO X ID");
-    gotoxy(43,7);printf("2) BUSQUEDA DE LABORATORIO X PACIENTE");
+    gotoxy(43,6);
+    printf("1) BUSQUEDA LABORATORIO X ID");
+    gotoxy(43,7);
+    printf("2) BUSQUEDA DE LABORATORIO X PACIENTE");
     /*gotoxy(43,8);printf("3) TERCERA OPCION");
     gotoxy(43,9);printf("4) CUARTA OPCION");
     gotoxy(43,10);printf("5) QUINTA OPCION");
     gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");*/
-    gotoxy(43,8);printf("3) SALIR");
-    gotoxy(45,10);printf("OPCION SELECCIONADA...");
-    gotoxy(68,10);scanf("%d",&opc);
+    gotoxy(43,8);
+    printf("3) SALIR");
+    gotoxy(45,10);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(68,10);
+    scanf("%d",&opc);
 
     do
     {
@@ -892,14 +1037,16 @@ void menu_administrador_resultados()
         case 1:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
             getch();
             goto menu;
 
         case 2:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
             getch();
             goto menu;
 
@@ -907,66 +1054,78 @@ void menu_administrador_resultados()
             BORRAR;
             break;
 
-        /*case 4:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
-            getch();
-            goto menu;
+            /*case 4:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
+                getch();
+                goto menu;
 
-        case 5:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
-            getch();
-            goto menu;
+            case 5:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
+                getch();
+                goto menu;
 
-        case 6:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
-            getch();
-            goto menu;
+            case 6:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
+                getch();
+                goto menu;
 
-        case 7:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 7");
-            getch();
-            goto menu;
+            case 7:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 7");
+                getch();
+                goto menu;
 
-        case 8:
-            BORRAR;
-            marco_borde_ancho();
-            gotoxy(50,3);printf("EXIT....");
-            getch();
-            break;*/
+            case 8:
+                BORRAR;
+                marco_borde_ancho();
+                gotoxy(50,3);printf("EXIT....");
+                getch();
+                break;*/
 
         }
 
-    }while(opc!=3);
+    }
+    while(opc!=3);
 }
 
 void menu_gestion_administrativa_pacientes()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(42,2);printf("MENU ADMINISTRATIVO PACIENTES");
+    gotoxy(42,2);
+    printf("MENU ADMINISTRATIVO PACIENTES");
 
-    gotoxy(43,6);printf("1) ALTA DE PACIENTES");
-    gotoxy(43,7);printf("2) BAJA DE PACIENTES");
-    gotoxy(43,8);printf("3) MODIFICACION DE PACIENTES");
-    gotoxy(43,9);printf("4) LISTADO DE PACIENTES VIGENTES");
-    gotoxy(43,10);printf("5) LISTADO DE PACIENTES ELIMINADOS");
-    gotoxy(43,11);printf("6) BUSQUEDA DE PACIENTE");
+    gotoxy(43,6);
+    printf("1) ALTA DE PACIENTES");
+    gotoxy(43,7);
+    printf("2) BAJA DE PACIENTES");
+    gotoxy(43,8);
+    printf("3) MODIFICACION DE PACIENTES");
+    gotoxy(43,9);
+    printf("4) LISTADO DE PACIENTES VIGENTES");
+    gotoxy(43,10);
+    printf("5) LISTADO DE PACIENTES ELIMINADOS");
+    gotoxy(43,11);
+    printf("6) BUSQUEDA DE PACIENTE");
     ///gotoxy(43,12);printf("7) SEPTIMA OPCION");
-    gotoxy(43,12);printf("7) SALIR");
-    gotoxy(45,14);printf("OPCION SELECCIONADA...");
-    gotoxy(70,14);scanf("%d",&opc);
+    gotoxy(43,12);
+    printf("7) SALIR");
+    gotoxy(45,14);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,14);
+    scanf("%d",&opc);
 
     do
     {
@@ -975,42 +1134,48 @@ void menu_gestion_administrativa_pacientes()
         case 1:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
             getch();
             goto menu;
 
         case 2:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
             getch();
             goto menu;
 
         case 3:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
             getch();
             goto menu;
 
         case 4:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
             getch();
             goto menu;
 
         case 5:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
             getch();
             goto menu;
 
         case 6:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 6");
             getch();
             goto menu;
 
@@ -1026,30 +1191,40 @@ void menu_gestion_administrativa_pacientes()
             break;
         }
 
-    }while(opc!=7);
+    }
+    while(opc!=7);
 
 }
 
 void menu_gestion_administrativa_practicas()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(42,2);printf("MENU ADMINISTRATIVO PRACTICAS");
+    gotoxy(42,2);
+    printf("MENU ADMINISTRATIVO PRACTICAS");
 
-    gotoxy(43,6);printf("1) ALTA DE PRACTICA");
-    gotoxy(43,7);printf("2) BAJA DE PRACTICA");
-    gotoxy(43,8);printf("3) MODIFICACION DE PRACTICA");
-    gotoxy(43,9);printf("4) LISTADO DE PRACTICAS AUTORIZADAS");
-    gotoxy(43,10);printf("5) SALIR");
+    gotoxy(43,6);
+    printf("1) ALTA DE PRACTICA");
+    gotoxy(43,7);
+    printf("2) BAJA DE PRACTICA");
+    gotoxy(43,8);
+    printf("3) MODIFICACION DE PRACTICA");
+    gotoxy(43,9);
+    printf("4) LISTADO DE PRACTICAS AUTORIZADAS");
+    gotoxy(43,10);
+    printf("5) SALIR");
     /*gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");
     gotoxy(43,13);printf("8) SALIR");*/
-    gotoxy(45,12);printf("OPCION SELECCIONADA...");
-    gotoxy(70,12);scanf("%d",&opc);
+    gotoxy(45,12);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,12);
+    scanf("%d",&opc);
 
     do
     {
@@ -1058,28 +1233,32 @@ void menu_gestion_administrativa_practicas()
         case 1:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
             getch();
             goto menu;
 
         case 2:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
             getch();
             goto menu;
 
         case 3:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
             getch();
             goto menu;
 
         case 4:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
             getch();
             goto menu;
 
@@ -1109,30 +1288,41 @@ void menu_gestion_administrativa_practicas()
             break;
         }
 
-    }while(opc!=5);
+    }
+    while(opc!=5);
 
 }
 
 void menu_gestion_administrativa_laboratorios()
 {
-    menu:
+menu:
     BORRAR;
-    system("COLOR E");marco_menu();
+    system("COLOR E");
+    marco_menu();
 
     int opc;
 
-    gotoxy(42,2);printf("MENU ADMINISTRATIVO LABORATORIOS");
+    gotoxy(42,2);
+    printf("MENU ADMINISTRATIVO LABORATORIOS");
 
-    gotoxy(43,6);printf("1) ALTA DE LABORATORIOS");
-    gotoxy(43,7);printf("2) BAJA DE LABORATORIOS");
-    gotoxy(43,8);printf("3) MODIFICACION DE LABORATORIO");
-    gotoxy(43,9);printf("4) LISTADO DE LABORATORIOS VIGENTES");
-    gotoxy(43,10);printf("5) LISTADO DE LABORATORIOS ELIMINADOS");
+    gotoxy(43,6);
+    printf("1) ALTA DE LABORATORIOS");
+    gotoxy(43,7);
+    printf("2) BAJA DE LABORATORIOS");
+    gotoxy(43,8);
+    printf("3) MODIFICACION DE LABORATORIO");
+    gotoxy(43,9);
+    printf("4) LISTADO DE LABORATORIOS VIGENTES");
+    gotoxy(43,10);
+    printf("5) LISTADO DE LABORATORIOS ELIMINADOS");
     /*gotoxy(43,11);printf("6) SEXTA OPCION");
     gotoxy(43,12);printf("7) SEPTIMA OPCION");*/
-    gotoxy(43,11);printf("6) SALIR");
-    gotoxy(45,13);printf("OPCION SELECCIONADA...");
-    gotoxy(70,13);scanf("%d",&opc);
+    gotoxy(43,11);
+    printf("6) SALIR");
+    gotoxy(45,13);
+    printf("OPCION SELECCIONADA...");
+    gotoxy(70,13);
+    scanf("%d",&opc);
 
     do
     {
@@ -1141,35 +1331,40 @@ void menu_gestion_administrativa_laboratorios()
         case 1:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 1");
             getch();
             goto menu;
 
         case 2:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 2");
             getch();
             goto menu;
 
         case 3:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 3");
             getch();
             goto menu;
 
         case 4:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 4");
             getch();
             goto menu;
 
         case 5:
             BORRAR;
             marco_borde_ancho();
-            gotoxy(35,2);printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
+            gotoxy(35,2);
+            printf("HACEMOS LO QUE CORRESPONDE A LA OPCION 5");
             getch();
             goto menu;
 
@@ -1192,7 +1387,8 @@ void menu_gestion_administrativa_laboratorios()
             break;
         }
 
-    }while(opc!=6);
+    }
+    while(opc!=6);
 
 }
 
@@ -1201,7 +1397,10 @@ void menu_contrasenia()
     char login[20];
     int password;
     marco_contrasenia();
-    gotoxy(57,10);printf("LOGIN:");gotoxy(56,15);printf("PASSWORD:");
+    gotoxy(57,10);
+    printf("LOGIN:");
+    gotoxy(56,15);
+    printf("PASSWORD:");
 }
 
 
@@ -1236,7 +1435,7 @@ nodoArbol * carga_arbol()
                     ///cargo el ingreso de acuerdo al paciente
                     if(ingreso.dni_paciente==pacientito.dni)
                     {
-                       ///arbol->listaIngresos=agregarAlFinalListaIngresos();
+                        ///arbol->listaIngresos=agregarAlFinalListaIngresos();
                     }
                     ///cargo las practicas del ingreso
                     while(fread(&practica,sizeof(pracXingreso),1,ing)>0)
@@ -1258,7 +1457,7 @@ nodoArbol * carga_arbol()
     }
 }
 
-void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente)
+/*void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente)
 {
     int existeIngreso=0;
 
@@ -1267,8 +1466,8 @@ void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente
         if(arbol->listaIngresos->ingr
     }
 
-    return existeIngreso;
-}
+return existeIngreso;
+}*/
 
 nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
 {
@@ -1315,7 +1514,7 @@ nodoArbol * crear_nodo_arbol(pacientes p)
     return nuevo;
 }*/
 
- nodoArbol * carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
+nodoArbol * carga_arbol_un_paciente(nodoArbol * arbol,nodoArbol * nuevo)
 {
     if(arbol==NULL)
     {

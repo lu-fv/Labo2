@@ -14,13 +14,13 @@ typedef struct
     char nombre[20];
     int vigencia;///0 vigente,1 NO vigente
     char resultado [40];
-}pracXingreso;
+} pracXingreso;
 
 typedef struct
 {
     pracXingreso datoPractica;
     struct nodoListaPracticas * siguiente;
-}nodoListaPracticas;
+} nodoListaPracticas;
 
 void alta_de_UNA_practXingreso(int numIngreso);
 pracXingreso crear_registro_practXingreso(int numIngreso);

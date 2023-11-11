@@ -16,7 +16,7 @@ typedef struct
     char direccion[30];
     int eliminado;///0 vigente,1 eliminado
     ///struct laboratorios * ingreso;
-}pacientes;
+} pacientes;
 
 typedef struct
 {
@@ -24,7 +24,7 @@ typedef struct
     struct nodoListaIngresos * listaIngresos;
     struct nodoArbol *izq;
     struct nodoArbol *der;
-}nodoArbol;
+} nodoArbol;
 
 pacientes cargaPacientes();
 void imprimirUnPaciente(pacientes p);
