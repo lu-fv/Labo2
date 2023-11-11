@@ -44,11 +44,12 @@ int autoincrementalIngresos(char archivo[])
 
 }
 
-laboratorios nuevoRegistro(char archivo[])
+laboratorios nuevoRegistro(char archivo[], nodoArbol * arbol)
 {
     char ok ='n';
     laboratorios nuevo;
     char fecha[50];
+    char opc=0;
     ///le asigno la fecha de hoy al string "fecha", que se usará en la carga (automática, no la requerirá al usuario)
     fechaActual(fecha);
 
@@ -57,16 +58,57 @@ laboratorios nuevoRegistro(char archivo[])
     fflush(stdin);
     gotoxy(33,6);scanf("%d",&nuevo.dni_paciente);
 
+    int buscado = posicionPaciente(ARCHIVO_PACIENTES, nuevo.dni_paciente);
+
+    if(buscado == 0)
+    {
+        printf("\nEl paciente bajo el numero de DNI %d no existe, Desea darlo de alta? S/N: ", nuevo.dni_paciente);
+        fflush(stdin);
+        scanf("%c", &opc);
+        if(opc== 's' || 'S')
+        {
+            altaPacientes(ARCHIVO_PACIENTES);
+        }
+        else
+        {
+            printf("\nVolviendo al menu de laboratorios");
+            PAUSA;
+            /// agregar volver al menu de laboratorios
+        }
+
+
+    }
+    else
+    {
+        if(buscado == -1)
+        {
+            printf("\nEl paciente bajo el numero de DNI %d se encuentra dado de baja, desea reactivarlo? S/N");
+            fflush(stdin);
+            scanf("%c", &opc);
+            if(opc== 's' || 'S')
+            {
+                printf("\nRedirigiendo al menu de alta de pacientes\n");
+                altaPacientes(ARCHIVO_PACIENTES);
+            }
+            else
+            {
+                printf("\nVolviendo al menu de laboratorios");
+                PAUSA;
+                /// agregar volver al menu de laboratorios
+            }
+        }
+    }
+
     ///ACA DEBERIA HABER UNA FUNCION QUE INFORME SI EL PACIENTE NO EXISTE EN LA BASE, PARA REMITIRLO A ESE MENU
 
 
 
-    while(ok == 'n' || ok == 'N') /// AGREGAR TAMBIEN LO QUE LARGUE LA FUNCION DE VALIDACION
+    if(ok == 'n' || ok == 'N' && buscado == 1)
     {
 
-        gotoxy(20,7);printf("Nro de Ingreso: ");///verificar string HACER FUNCION
-        gotoxy(20,8);printf("Fecha de ingreso: ");
-        gotoxy(20,9);printf("Fecha de retiro: ");
+        gotoxy(20,7);printf("Nro de Ingreso: ");///automatico
+        gotoxy(20,8);printf("Fecha de ingreso: ");///automatico
+        gotoxy(20,9);printf("Fecha de retiro: ");///automatico
         gotoxy(20,10);printf("Ingrese Matricula del Medico ordenante: ");
 
 
@@ -86,6 +128,9 @@ laboratorios nuevoRegistro(char archivo[])
 
     return nuevo;
     }
+
+
+}
 
 
 nodoListaIngresos * crearNodoIngreso(laboratorios nuevo)
@@ -132,7 +177,7 @@ void altaDeLaboratorio(char archivo[], laboratorios registro, nodoArbol * arbol)
 
         while(opc!=27)
         {
-            registro = nuevoRegistro(archivo);
+            registro = nuevoRegistro(archivo, arbol);
             printf("\nDesea cargar otro laboratorio? Presione cualquier tecla para continuar o ESC para salir: ");
             scanf("%d", &opc);
             fwrite(&registro, sizeof(laboratorios), 1, archi);
@@ -142,12 +187,18 @@ void altaDeLaboratorio(char archivo[], laboratorios registro, nodoArbol * arbol)
     fclose(archi);
     }
 
-    ///grabar el cambio tambien al arbol
 
+
+    ///grabar el cambio tambien al arbol o  bien usar la funcion de traer todos los datos del archivo al ADLDL
 
 }
 
-void bajDeLabXId(int id, char archivo[])
+/*nodoArbol * grabarEnArbol(nodoArbol * arbol, laboratorios registro)
+{
+
+}*/
+
+void bajDeLabXId(int id, char archivo[], nodoArbol * arbol)
 {
     FILE *archi=fopen(archivo, "r+b");
     laboratorios lab;
@@ -156,6 +207,8 @@ void bajDeLabXId(int id, char archivo[])
     {
         while(bandera == 0 && fread(&lab, sizeof(laboratorios), 1, archi)>0)
         {
+            ///QUE NO TENGA PRACTICAS
+
             if(id==lab.Nro_de_ingreso && lab.vigencia==0) ///si encuentra el id y siempre y cuando no se encuentre dado de baja
             {
                 bandera=1; /// para cortar la busqueda si encuentra y no recorra todo el archivo
@@ -164,21 +217,47 @@ void bajDeLabXId(int id, char archivo[])
                 fwrite(&lab, sizeof(laboratorios), 1, archi);
                 printf("\n el Laboratorio de ID: %i  fue eliminado.\n", id);
                 PAUSA;
-
             }
 
         }
+
+        ///CONSULTAR SI PODEMOS UTILIZAR LA FUNCION DE TRAER TODOS LOS DATOS DEL ARCHIVO AL ARBOL
+        /*
+        ///busca el laboratorio con ese id en el arbol
+        nodoListaIngresos * aux= arbol->listaIngresos;
+
+
+        ///ELIMINAMOS LAS PRACTICAS REALIZADAS POR ESE LABORATORIO EN CASCADA
+        if(bandera == 1)
+        {
+             while(aux !=NULL)
+            {
+                if(aux->lab.Nro_de_ingreso == id)
+                {
+                    while(aux->listaPracticas != NULL)
+                    {
+                        aux->listaPracticas->datoPractica.vigencia=1;
+                        aux->listaPracticas = aux->listaPracticas->siguiente;
+                        ///ACA DEBERIA GRABAR EL CAMBIO EN EL ARCHIVO DE PRACTICAS X INGRESOS
+                    }
+                    aux= aux->siguiente;
+                }
+            }
+
         if(bandera==0)
         {
-                printf("\n La ID: %i  no fue encontrada en el archivo o se encuentra dado de baja, consultar en listado respectivo.");
+                printf("\n La ID: %i  no fue encontrada en el archivo o ya se encuentra dado de baja, consultar en listado respectivo.");
 
-        }
+        }*/
 
     fclose(archi);
 
     }
 
 }
+
+
+
 
 
 void modificacionDeLaboratorio(char archivo[])
@@ -276,9 +355,25 @@ void modificacionDeLaboratorio(char archivo[])
 
 
 
- void listadoDeLaboratoriosVigentes(char archivo[])
+ void listadoDeLaboratoriosVigentes(nodoArbol * arbol)
 {
-        FILE* archi = fopen(archivo,"rb");
+    nodoArbol * aux = arbol;
+    if(aux != NULL)
+    {
+        /// los muestra en orden
+        printf("\n.........................LISTADO DE INGRESO DE LABORATORIO VIGENTES.............................\n");
+
+        listadoDeLaboratoriosVigentes(aux->izq);
+        if(aux->listaIngresos->lab.vigencia==0)
+        {
+            mostrarListaiIngresos(aux->listaIngresos);
+        }
+        listadoDeLaboratoriosVigentes(aux->der);
+
+        }
+}
+
+        /*FILE* archi = fopen(archivo,"rb");
         laboratorios lab;
 
         if(archi)
@@ -304,13 +399,53 @@ void modificacionDeLaboratorio(char archivo[])
         else
         {
             printf("\nERROR DEL ARCHIVO\n");
-        }
+        }*/
 
 }
 
 
-void listadoDeLaboratoriosEliminados(char archivo[])
+void mostrarListaiIngresos(nodoListaIngresos * lista)
 {
+    nodoListaIngresos * ingreso = lista;
+
+    while(ingreso != NULL)
+    {
+        printf("\n          NUMERO DE INGRESO: %d\n", ingreso->lab.Nro_de_ingreso);
+        printf("\n           FECHA DE INGRESO: %s\n", ingreso->lab.fecha_de_ingreso);
+        printf("\n            FECHA DE RETIRO: %s\n", ingreso->lab.fecha_de_retiro);
+        printf("\n           DNI DEL PACIENTE: %d\n", ingreso->lab.dni_paciente);
+        printf("\n       MATRICULA DEL MEDICO: %d\n", ingreso->lab.medico_matricula);
+
+        puts("\n.........................................................................................\n");
+
+        ingreso=ingreso->siguiente;
+    }
+
+}
+
+
+void listadoDeLaboratoriosEliminados(nodoArbol * arbol)
+{
+
+    nodoArbol * aux = arbol;
+    if(aux != NULL)
+    {
+        /// los muestra en orden
+        printf("\n.........................LISTADO DE INGRESO DE LABORATORIO VIGENTES.............................\n");
+
+        listadoDeLaboratoriosEliminados(aux->izq);
+        if(aux->listaIngresos->lab.vigencia==1)
+        {
+            mostrarListaiIngresos(aux->listaIngresos);
+        }
+        listadoDeLaboratoriosEliminados(aux->der);
+
+    }
+}
+
+
+
+    /*
     FILE* archi = fopen(archivo,"rb");
     laboratorios lab;
 
@@ -339,4 +474,4 @@ void listadoDeLaboratoriosEliminados(char archivo[])
         printf("\nERROR DEL ARCHIVO\n");
     }
 
-}
+}*/

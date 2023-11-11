@@ -308,11 +308,13 @@
 	"conio.h"
 	"practicas_ingreso.h"
 
-<<<<<<< HEAD
+1699720570 D
+
 1699720450 source:c:\users\lagun\github ultimo\labo2\labo2\empleado_laboratorio.c
-=======
+
 1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\empleado_laboratorio.c
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
+
+1699721956 5884757b8b3ac8dc8116ef0014ae942158edd
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -322,34 +324,71 @@
 	"ingresos_Labo.h"
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
-
-<<<<<<< HEAD
-1699720450 c:\users\lagun\github ultimo\labo2\labo2\diseño.h
-=======
-1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\diseño.h
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
 	"empleado_laboratorio.h"
 	"pacientes.h"
 	"ingresos_Labo.h"
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
+	"diseño.h"
+	"ingresos_Labo.h"
+	"pacientes.h"
+	"practicas_Labo.h"
+	"practicas_ingreso.h"
+	<time.h>
+	<stdio.h>
+	"practicas_ingreso.h"
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"pacientes.h"
+	"practicas_Labo.h"
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"ingresos_Labo.h"
+	"pacientes.h"
+	"practicas_Labo.h"
+	"empleado_laboratorio.h"
+	"ingresos_Labo.h"
+	"practicas_ingreso.h"
+	"practicas_Labo.h"
+	<stdio.h>
+	<stdlib.h>
+	"practicas_Labo.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	"diseño.h"
+	"empleado_laboratorio.h"
+	"pacientes.h"
+	"ingresos_Labo.h"
+	"practicas_ingreso.h"
+	"practicas_Labo.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"conio.h"
+	"practicas_ingreso.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"conio.h"
+	"practicas_Labo.h"
+	"diseño.h"
 
-<<<<<<< HEAD
-1699720450 c:\users\lagun\github ultimo\labo2\labo2\empleado_laboratorio.h
-=======
-1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\empleado_laboratorio.h
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
+1699720450 c:\users\lagun\github ultimo\labo2\labo2\diseño.h
+
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\diseño.h
+
+1699732088 c:\users\lagun\github ultimo\labo2\labo2\empleado_laboratorio.h
 	"diseño.h"
 	"ingresos_Labo.h"
 	"pacientes.h"
 	"practicas_Labo.h"
 	"practicas_ingreso.h"
 
-<<<<<<< HEAD
-1699722653 c:\users\lagun\github ultimo\labo2\labo2\ingresos_labo.h
-=======
-1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\ingresos_labo.h
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\empleado_laboratorio.h
+
+1699734176 c:\users\lagun\github ultimo\labo2\labo2\ingresos_labo.h
 	<time.h>
 	<stdio.h>
 	"practicas_ingreso.h"
@@ -358,32 +397,24 @@
 	"pacientes.h"
 	"practicas_Labo.h"
 
-<<<<<<< HEAD
-1699720450 c:\users\lagun\github ultimo\labo2\labo2\practicas_ingreso.h
-=======
-1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_ingreso.h
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
-	"diseño.h"
-	"empleado_laboratorio.h"
-	"ingresos_Labo.h"
-	"pacientes.h"
-	"practicas_Labo.h"
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\ingresos_labo.h
 
-<<<<<<< HEAD
-1699721351 c:\users\lagun\github ultimo\labo2\labo2\pacientes.h
-=======
-1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\pacientes.h
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
+1699720450 c:\users\lagun\github ultimo\labo2\labo2\practicas_ingreso.h
+
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_ingreso.h
+
+1699734038 c:\users\lagun\github ultimo\labo2\labo2\pacientes.h
 	"empleado_laboratorio.h"
 	"ingresos_Labo.h"
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-<<<<<<< HEAD
+1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\pacientes.h
+
 1699720450 c:\users\lagun\github ultimo\labo2\labo2\practicas_labo.h
 
 1699720450 source:c:\users\lagun\github ultimo\labo2\labo2\main.c
-=======
+
 1699720570 c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_labo.h
 
 1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\ingreso_labo.c
@@ -398,16 +429,8 @@
 	"practicas_Labo.h"
 
 1699218073 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\main.c
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
-	<stdio.h>
-	<stdlib.h>
-	"practicas_Labo.h"
 
-<<<<<<< HEAD
-1699720450 source:c:\users\lagun\github ultimo\labo2\labo2\pacientes.c
-=======
-1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\pacientes.c
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
+1699725822 source:c:\users\lagun\github ultimo\labo2\labo2\pacientes.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -419,31 +442,17 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-<<<<<<< HEAD
+1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\pacientes.c
+
 1699720450 source:c:\users\lagun\github ultimo\labo2\labo2\practicas_ingreso.c
-=======
+
 1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_ingreso.c
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"conio.h"
-	"practicas_ingreso.h"
 
-<<<<<<< HEAD
 1699720450 source:c:\users\lagun\github ultimo\labo2\labo2\practicas_labo.c
-=======
-1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_labo.c
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
-	<stdio.h>
-	<string.h>
-	<stdlib.h>
-	"conio.h"
-	"practicas_Labo.h"
-	"diseño.h"
 
-<<<<<<< HEAD
-1699720450 source:c:\users\lagun\github ultimo\labo2\labo2\diseño.c
+1699720570 source:c:\users\win10\onedrive\escritorio\labo2\labo2\labo2\practicas_labo.c
+
+1699724958 source:c:\users\lagun\github ultimo\labo2\labo2\diseño.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -455,7 +464,7 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-1699721956 source:c:\users\lagun\github ultimo\labo2\labo2\ingreso_labo.c
+1699730113 source:c:\users\lagun\github ultimo\labo2\labo2\ingreso_labo.c
 	<time.h>
 	<stdio.h>
 	<string.h>
@@ -466,5 +475,5 @@
 	"practicas_ingreso.h"
 	"practicas_Labo.h"
 
-=======
->>>>>>> c2d5884757b8b3ac8dc8116ef0014ae942158edd
+1699721956 _Labo.h"
+

@@ -115,6 +115,8 @@ int posicionPaciente (FILE* arc, int dni)
       }
     return flag;
 }
+
+
 int buscarPaciente (nodoArbol * arbol, int dni)
 {
    nodoArbol* busca =NULL;

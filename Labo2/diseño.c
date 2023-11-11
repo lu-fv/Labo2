@@ -1258,7 +1258,7 @@ nodoArbol * carga_arbol()
     }
 }
 
-void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente)
+/*void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente)
 {
     int existeIngreso=0;
 
@@ -1268,7 +1268,7 @@ void valida_existencia_de_ingresos_x_paciente(nodoArbol * arbol,int dni_paciente
     }
 
     return existeIngreso;
-}
+}*/
 
 nodoArbol * busca_nodopaciente_en_arbol(nodoArbol * arbol, int dni)
 {
