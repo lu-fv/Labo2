@@ -108,7 +108,7 @@ laboratorios nuevoRegistro(char archivo[], nodoArbol * arbol)
     if(ok == 'n' || ok == 'N' && buscado == 1)
     {
 
-<<<<<<< HEAD
+
         gotoxy(20,7);
         printf("Nro de Ingreso: ");///verificar string HACER FUNCION
         gotoxy(20,8);
@@ -117,12 +117,12 @@ laboratorios nuevoRegistro(char archivo[], nodoArbol * arbol)
         printf("Fecha de retiro: ");
         gotoxy(20,10);
         printf("Ingrese Matricula del Medico ordenante: ");
-=======
+
         gotoxy(20,7);printf("Nro de Ingreso: ");///automatico
         gotoxy(20,8);printf("Fecha de ingreso: ");///automatico
         gotoxy(20,9);printf("Fecha de retiro: ");///automatico
         gotoxy(20,10);printf("Ingrese Matricula del Medico ordenante: ");
->>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
+
 
 
         fflush(stdin);
@@ -146,14 +146,13 @@ laboratorios nuevoRegistro(char archivo[], nodoArbol * arbol)
         return nuevo;
     }
 
-<<<<<<< HEAD
-}
-=======
 
 }
 
 
->>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
+
+
+
 nodoListaIngresos * crearNodoIngreso(laboratorios nuevo)
 {
     nodoListaIngresos * lista = (nodoListaIngresos*) malloc(sizeof(nodoListaIngresos));
@@ -210,13 +209,13 @@ nodoListaIngresos * agregarAlFinalIngresos(nodoListaIngresos * lista, nodoListaI
 
 
 
-<<<<<<< HEAD
+
 }*/
-=======
+
     ///grabar el cambio tambien al arbol o  bien usar la funcion de traer todos los datos del archivo al ADLDL
 
-}
->>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
+
+
 
 /*nodoArbol * grabarEnArbol(nodoArbol * arbol, laboratorios registro)
 {
@@ -374,9 +373,6 @@ void modificacionDeLaboratorio(char archivo[])
         }
 
 
-<<<<<<< HEAD
-=======
-
  void listadoDeLaboratoriosVigentes(nodoArbol * arbol)
 {
     nodoArbol * aux = arbol;
@@ -454,7 +450,6 @@ void listadoDeLaboratoriosVigentes(char archivo[])
 =======
             printf("\nERROR DEL ARCHIVO\n");
         }*/
->>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
 
         fclose(archi);
     }
@@ -462,8 +457,6 @@ void listadoDeLaboratoriosVigentes(char archivo[])
     {
         printf("\nERROR DEL ARCHIVO\n");
     }
-
-}
 
 
 void mostrarListaiIngresos(nodoListaIngresos * lista)
@@ -483,7 +476,7 @@ void mostrarListaiIngresos(nodoListaIngresos * lista)
         ingreso=ingreso->siguiente;
     }
 
-}
+
 
 
 void listadoDeLaboratoriosEliminados(nodoArbol * arbol)
@@ -504,7 +497,6 @@ void listadoDeLaboratoriosEliminados(nodoArbol * arbol)
 
     }
 }
-
 
 
     /*
@@ -536,9 +528,9 @@ void listadoDeLaboratoriosEliminados(nodoArbol * arbol)
         printf("\nERROR DEL ARCHIVO\n");
     }
 
-<<<<<<< HEAD
+
 }
 
-=======
+
 }*/
->>>>>>> d1dc65145e3ee9562b397570dd155d7646734a14
+

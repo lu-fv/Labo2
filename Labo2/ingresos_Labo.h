@@ -25,11 +25,9 @@ typedef struct
 typedef struct
 {
     laboratorios lab;
-<<<<<<< HEAD
-    nodoListaPracticas * listaPracticas;
-=======
-    nodoListaPracticas * listaPracticas;///deberia ser pracXingreso en lugar de nodolistapracticas
->>>>>>> d92dac111805beff97532220a8ee613923924154
+
+    struct nodoListaPracticas * listaPracticas;///deberia ser pracXingreso en lugar de nodolistapracticas
+
     struct nodoListaIngresos * siguiente;
 } nodoListaIngresos;
 

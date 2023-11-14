@@ -12,13 +12,13 @@
 #define ARCHIVO_PACIENTES "pacientes.dat"
 #define BORRAR system("cls")
 
-pacientes cargaPacientes()
+pacientes cargaPacientes(int dni)
 {
     pacientes p;
 
     printf ("\n\n\t\t>>>>> INGRESO NUEVO PACIENTE: <<<<<<\n");
 
-
+    p.dni = dni;
     printf ("\n NOMBRE Y APELLIDO: \n");
     fflush (stdin);
     gets (p.nomb_apell);
@@ -118,18 +118,16 @@ int posicionPaciente (FILE* arc, int dni)
     return flag;
 }
 
-
 int buscarPaciente (nodoArbol * arbol, int dni)
 {
-    nodoArbol* busca =NULL;
+
     int flag =0;
-    pacientes p;
 
     if ((flag ==0)&& arbol !=NULL)
     {
         if(arbol->p.dni==dni) //si encuentra dni
         {
-            if(p.eliminado==0) // esta activo
+            if(arbol->p.eliminado==0) // esta activo
             {
                 flag=1;
             }
@@ -144,21 +142,29 @@ int buscarPaciente (nodoArbol * arbol, int dni)
 
         if (arbol->p.dni > dni)
         {
-            busca =buscarPaciente(arbol ->der, dni);
+            flag =buscarPaciente(arbol ->der, dni);
         }
         else
         {
-            busca= buscarPaciente(arbol ->izq, dni);
+            flag= buscarPaciente(arbol ->izq, dni);
         }
     }
-    return busca;
+    return flag;
 }
 
 void reactivaPaciente (FILE* arc, pacientes p)
 {
+    char opc = 0;
+    printf ("\n Desea reactivar paciente? s/n \n");
+    fflush(stdin);
+    scanf("%c", &opc);
+    if(opc== 's' || 'S')
+    {
+
     p.eliminado =0;
     fseek (arc, sizeof (pacientes)*-1, SEEK_CUR);
     fwrite (&p, sizeof (pacientes), 1, arc);
+    }
 
     printf ("\n Se reactivo paciente correctamente\n");
 }
@@ -167,19 +173,19 @@ void altaPacientes (char archivo[])
 {
     pacientes p;
     nodoArbol*arbol = NULL;
-
+    int dni;
     FILE* arc = fopen (archivo, "a+b");
 
     if (arc)
     {
         printf ("\n DNI:\n");
         fflush (stdin);
-        scanf ("%d", &p.dni);
+        scanf ("%d", &dni);
 
-        if (buscarPaciente (arbol->p.dni, p.dni)==0)
+        if (buscarPaciente (arbol, p.dni)==0)
         {
-            p= cargaPacientes ();
-            fseek (arc, 0, SEEK_END);
+            p= cargaPacientes (dni);
+            //fseek (arc, 0, SEEK_END);
             fwrite(&p,sizeof(pacientes),1,arc);
         }
         if (buscarPaciente (arbol->p.dni,p.dni)==1)
